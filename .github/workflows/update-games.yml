@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -21,12 +20,7 @@ jobs:
             "https://raw.githubusercontent.com/niemasd/GameDB-PS2/master/PS2.data.json" \
             -o PS2.data.json
 
-      - name: Show downloaded file
-        run: |
-          ls -lh PS2.data.json
-          head -c 500 PS2.data.json
-
-            - name: Inspect database
+      - name: Inspect database
         run: |
           echo "===== PRIMEIRAS 30 LINHAS ====="
           head -n 30 PS2.data.json

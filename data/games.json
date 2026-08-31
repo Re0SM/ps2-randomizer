@@ -1,13 +1,5 @@
 [
   {
-    "title": ".Hack Akunshou Heni Vol.2 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-72231"
-  },
-  {
     "title": ".Hack Shinsoku Osen Vol.3",
     "year": null,
     "developer": null,
@@ -1328,18 +1320,6 @@
       "Simulation."
     ],
     "serial": "SCKA-20082"
-  },
-  {
-    "title": "Ace Combat 5: The Unsung War [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Project Aces",
-    "publisher": "Sony",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Simulation."
-    ],
-    "serial": "SCAJ-20136"
   },
   {
     "title": "Ace Combat Zero: The Belkan War",
@@ -3899,14 +3879,6 @@
     "serial": "SLES-52949"
   },
   {
-    "title": "Arcade Classics Volume 1",
-    "year": null,
-    "developer": "Lucky Chicken",
-    "publisher": "Play It!",
-    "genre": "Other",
-    "serial": "SLES-52902"
-  },
-  {
     "title": "Arcade USA",
     "year": null,
     "developer": "Mere Mortals Ltd.",
@@ -4259,14 +4231,6 @@
     "serial": "SLUS-20249"
   },
   {
-    "title": "Armored Core 2: PlayStation 2 the Best",
-    "year": null,
-    "developer": "FromSoftware",
-    "publisher": "FromSoftware",
-    "genre": "Third-person Shooter",
-    "serial": "SLPS-73403"
-  },
-  {
     "title": "Armored Core 3",
     "year": null,
     "developer": null,
@@ -4529,22 +4493,6 @@
     "publisher": "Agetec",
     "genre": "Simulation",
     "serial": "SLUS-21079"
-  },
-  {
-    "title": "Armored Core: Nexus: PlayStation 2 the Best (Disc 1)",
-    "year": null,
-    "developer": "FromSoftware",
-    "publisher": "FromSoftware",
-    "genre": "Third-person Shooter",
-    "serial": "SLPS-73202"
-  },
-  {
-    "title": "Armored Core: Nexus: PlayStation 2 the Best (Disc 2)",
-    "year": null,
-    "developer": "FromSoftware",
-    "publisher": "FromSoftware",
-    "genre": "Third-person Shooter",
-    "serial": "SLPS-73203"
   },
   {
     "title": "Armored Core: Nine Breaker",
@@ -5252,14 +5200,6 @@
     "serial": "SLUS-97405"
   },
   {
-    "title": "ATV Offroad Fury 3: Greatest Hits (SCUS-97514)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97514"
-  },
-  {
     "title": "ATV Offroad Fury 4",
     "year": null,
     "developer": null,
@@ -5828,17 +5768,6 @@
       "Racing."
     ],
     "serial": "SLPM-65234"
-  },
-  {
-    "title": "Bakusou Dekotora Densetsu: Otoko Hanamichi Yume Roman [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Dual",
-    "publisher": "Spike",
-    "genre": [
-      "Driving",
-      "Racing."
-    ],
-    "serial": "SLPM-74419"
   },
   {
     "title": "Bakusou Mountain Bikers",
@@ -7278,18 +7207,6 @@
     "serial": "SLPN-40002"
   },
   {
-    "title": "BioHazard: Outbreak [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Survival Horror."
-    ],
-    "serial": "SLPM-74201"
-  },
-  {
     "title": "Biohazard: Outbreak: File 2",
     "year": null,
     "developer": "Capcom",
@@ -8378,14 +8295,6 @@
     "serial": "SLPS-62291"
   },
   {
-    "title": "Bomberman Land 2: Game Shijou Saidai no Theme Park (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-74101"
-  },
-  {
     "title": "Bomberman Land 3",
     "year": null,
     "developer": "Racjin",
@@ -8427,166 +8336,6 @@
       "RPG."
     ],
     "serial": "SLPM-67536"
-  },
-  {
-    "title": "Bonus Demo 10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53515"
-  },
-  {
-    "title": "Bonus Demo 10 (Old)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53514"
-  },
-  {
-    "title": "Bonus Demo 10 (You)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53513"
-  },
-  {
-    "title": "Bonus Demo 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54338"
-  },
-  {
-    "title": "Bonus Demo 11 (You)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54101"
-  },
-  {
-    "title": "Bonus Demo 11m",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54102"
-  },
-  {
-    "title": "Bonus Demo 12",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54399"
-  },
-  {
-    "title": "Bonus Demo 12 (You)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54397"
-  },
-  {
-    "title": "Bonus Demo 12m",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54398"
-  },
-  {
-    "title": "Bonus Demo 4",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51486"
-  },
-  {
-    "title": "Bonus Demo 5",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51940"
-  },
-  {
-    "title": "Bonus Demo 5",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51941"
-  },
-  {
-    "title": "Bonus Demo 6",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52390"
-  },
-  {
-    "title": "Bonus Demo 6",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52391"
-  },
-  {
-    "title": "Bonus Demo 7 (6/7)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52436"
-  },
-  {
-    "title": "Bonus Demo 8 (Geu)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53018"
-  },
-  {
-    "title": "Bonus Demo 8 (Old)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52932"
-  },
-  {
-    "title": "Bonus Demo 8 (You)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52933"
-  },
-  {
-    "title": "Bonus Demo 9 (Old)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53117"
-  },
-  {
-    "title": "Bonus Demo 9 (You)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53116"
   },
   {
     "title": "Boogie",
@@ -9424,14 +9173,6 @@
     "serial": "SLUS-20497"
   },
   {
-    "title": "Burnout 2: Point of Impact: Platinum (Electronic Arts)",
-    "year": null,
-    "developer": "Criterion Games",
-    "publisher": "Electronic Arts",
-    "genre": "Racing",
-    "serial": "SLES-52968"
-  },
-  {
     "title": "Burnout 3: Takedown",
     "year": null,
     "developer": null,
@@ -9510,14 +9251,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLUS-29113"
-  },
-  {
-    "title": "Burnout 3: Takedown: Platinum (Most Wanted)",
-    "year": null,
-    "developer": "Criterion Games",
-    "publisher": "Electronic Arts",
-    "genre": "Racing",
-    "serial": "SLES-52585"
   },
   {
     "title": "Burnout Anthology",
@@ -9694,14 +9427,6 @@
     "publisher": "Atlus",
     "genre": "RPG",
     "serial": "SLPM-62098"
-  },
-  {
-    "title": "Busin: Wizardry Alternative (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-74007"
   },
   {
     "title": "Busou Renkin: Youkoso Papillon Park e",
@@ -11020,14 +10745,6 @@
     "serial": "SLES-53561"
   },
   {
-    "title": "Canis Canem Edit: Platinum",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Action",
-    "serial": "SLEX-53561"
-  },
-  {
     "title": "Canvas 2: Nijiiro no Sketch",
     "year": null,
     "developer": null,
@@ -11074,54 +10791,6 @@
     "publisher": "NEC Interchannel",
     "genre": "Adventure.",
     "serial": "SLPS-25223"
-  },
-  {
-    "title": "Capcom Classics Collection",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": "Action",
-    "serial": "SLES-53661"
-  },
-  {
-    "title": "Capcom Classics Collection",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Arcade",
-    "serial": "SLPM-66317"
-  },
-  {
-    "title": "Capcom Classics Collection",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-66852"
-  },
-  {
-    "title": "Capcom Classics Collection Vol. 1",
-    "year": null,
-    "developer": "Digital Eclipse Software, Inc.",
-    "publisher": "Capcom",
-    "genre": "Arcade",
-    "serial": "SLUS-21316"
-  },
-  {
-    "title": "Capcom Classics Collection Vol. 2",
-    "year": null,
-    "developer": "Backbone Entertainment",
-    "publisher": "CE Europe Ltd.",
-    "genre": "Arcade",
-    "serial": "SLES-54561"
-  },
-  {
-    "title": "Capcom Classics Collection Vol. 2",
-    "year": null,
-    "developer": "Digital Eclipse Software, Inc.",
-    "publisher": "Capcom",
-    "genre": "Arcade",
-    "serial": "SLUS-21473"
   },
   {
     "title": "Capcom Fighting Evolution",
@@ -14890,14 +14559,6 @@
     "serial": "SLUS-20674"
   },
   {
-    "title": "Cyber Troopers: Virtual-On Marz [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Hitmaker Co., Ltd",
-    "publisher": "Sega",
-    "genre": "Action.",
-    "serial": "SLPM-74421"
-  },
-  {
     "title": "Cyclone Circus",
     "year": null,
     "developer": "Playlogic",
@@ -15176,14 +14837,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLPS-25537"
-  },
-  {
-    "title": "Dai-3-Ji Super Robot Taisen Alpha: Shuuen no Ginga e: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Banpresto",
-    "publisher": "Banpresto",
-    "genre": "Strategy",
-    "serial": "SLPS-73238"
   },
   {
     "title": "Daidassou: The Great Escape",
@@ -15770,14 +15423,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCUS-97152"
-  },
-  {
-    "title": "Dark Cloud (Promo)",
-    "year": null,
-    "developer": "Level-5",
-    "publisher": "Sony Computer Entertainment Europe",
-    "genre": "RPG",
-    "serial": "SCES-50296"
   },
   {
     "title": "Dark Cloud 2",
@@ -16523,62 +16168,6 @@
     "serial": "SLPM-66638"
   },
   {
-    "title": "Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95204"
-  },
-  {
-    "title": "Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95205"
-  },
-  {
-    "title": "Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95506"
-  },
-  {
-    "title": "Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95514"
-  },
-  {
-    "title": "Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95520"
-  },
-  {
-    "title": "Demo Disc Version 2.1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97117"
-  },
-  {
-    "title": "Demo Disc Version 2.2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97126"
-  },
-  {
     "title": "Demolition Girl",
     "year": null,
     "developer": "Tamsoft Corporation",
@@ -17129,14 +16718,6 @@
     "publisher": "Taito",
     "genre": "Simulation.",
     "serial": "SLPM-66771"
-  },
-  {
-    "title": "Densha de Go! Shinkansen: Sanyou Shinkansen-hen [PlayStation 2 the Best with Controller]",
-    "year": null,
-    "developer": "Taito",
-    "publisher": "Taito",
-    "genre": "Simulation.",
-    "serial": "TCPS-10058"
   },
   {
     "title": "Der Herr der Ringe: Das dritte Zeitalter",
@@ -17851,59 +17432,12 @@
     "serial": "SLPM-74268"
   },
   {
-    "title": "Devil May Cry 3: Trial Version",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-60251"
-  },
-  {
-    "title": "Devil May Cry [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Capcom Co., Ltd",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Survival Horror"
-    ],
-    "serial": "SLPM-74230"
-  },
-  {
     "title": "Devil May Cry: 5th Anniversary Collection (dark cover)",
     "year": null,
     "developer": "Capcom",
     "publisher": "Capcom",
     "genre": "Action",
     "serial": "SLUS-27004"
-  },
-  {
-    "title": "Devil May Cry: Trial Edition",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Survival Horror."
-    ],
-    "serial": "SLPM-65023"
-  },
-  {
-    "title": "Devil May Cry: Trial Edition Ver. 2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-61008"
-  },
-  {
-    "title": "Devil May Cry: Trial Edition Ver. 2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-61010"
   },
   {
     "title": "Devil Summoner: Kuzunoha Raidou (Atlus Best Collection)",
@@ -19256,17 +18790,6 @@
     "serial": "SCES-50597"
   },
   {
-    "title": "Disney's Pixar: Monsters, Inc.: Scare Island [Disney / Pixar Classics]",
-    "year": null,
-    "developer": "Artificial Mind and Movement (A2M)",
-    "publisher": "Sony Computer Entertaiment America",
-    "genre": [
-      "Action",
-      "Platformer"
-    ],
-    "serial": "SLUS-21052"
-  },
-  {
     "title": "Disney's Pixar: Monstres & Cie.: L'ile de l'pouvante",
     "year": null,
     "developer": "Artificial Mind and Movement (A2M)",
@@ -19497,14 +19020,6 @@
     "publisher": "Sony Computer Entertainment America",
     "genre": "Platformer",
     "serial": "SCUS-97146"
-  },
-  {
-    "title": "Disney's Treasure Planet (Classics)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-21054"
   },
   {
     "title": "Disney's Winnie the Pooh's Rumbly Tumbly Adventure",
@@ -20553,38 +20068,6 @@
       "RPG."
     ],
     "serial": "SLPM-66623"
-  },
-  {
-    "title": "Doko Demo Issho: Toro to Ippai",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PAPX-90519"
-  },
-  {
-    "title": "Doko Demo Issho: Toro to Ippai",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-15081"
-  },
-  {
-    "title": "Doko Demo Issho: Toro to Nagare-boshi",
-    "year": null,
-    "developer": "Sony",
-    "publisher": "Sony",
-    "genre": "Adventure.",
-    "serial": "SCPS-15067"
-  },
-  {
-    "title": "Doko Demo Issho: Watashi na Ehon",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-15047"
   },
   {
     "title": "Doko e Iku no Anohi: Hikaru Ashita e...",
@@ -22898,118 +22381,6 @@
     "serial": "SLAJ-25047"
   },
   {
-    "title": "DVD Player Version 2.01",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95206"
-  },
-  {
-    "title": "DVD Player Version 2.10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95207"
-  },
-  {
-    "title": "DVD Player Version 2.10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95208"
-  },
-  {
-    "title": "DVD Player Version 2.10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95209"
-  },
-  {
-    "title": "DVD Player Version 2.10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95210"
-  },
-  {
-    "title": "DVD Player Version 2.12",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95218"
-  },
-  {
-    "title": "DVD Player Version 2.12",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95221"
-  },
-  {
-    "title": "DVD Player Version 2.14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95219"
-  },
-  {
-    "title": "DVD Player Version 2.14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95220"
-  },
-  {
-    "title": "DVD Player Version 2.14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95222"
-  },
-  {
-    "title": "DVD Player Version 2.14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95223"
-  },
-  {
-    "title": "DVD Player Version 2.16",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95224"
-  },
-  {
-    "title": "DVD Player Version 3.00",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95228"
-  },
-  {
-    "title": "DVD Player Version 3.04",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PDPX-99109"
-  },
-  {
     "title": "Dynamite 100",
     "year": null,
     "developer": "Mere Mortals Ltd.",
@@ -23512,22 +22883,6 @@
     "serial": "SLPS-25115"
   },
   {
-    "title": "EA Demo Disc: From Russia with Love + Need for Speed: Most Wanted + SSX on Tour",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLED-53681"
-  },
-  {
-    "title": "EA Demo Disc: From Russia with Love + Need for Speed: Most Wanted + SSX on Tour",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-29167"
-  },
-  {
     "title": "EA Sports Rugby '08",
     "year": null,
     "developer": null,
@@ -23710,14 +23065,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLES-51101"
-  },
-  {
-    "title": "Eidos Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-29035"
   },
   {
     "title": "Eien no Aseria: Kono Daichi no Hate de",
@@ -25455,14 +24802,6 @@
     "serial": "SLPS-25309"
   },
   {
-    "title": "Exclusive PlayStation 2 Summer Sample Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCES-51407"
-  },
-  {
     "title": "Extermination",
     "year": null,
     "developer": null,
@@ -25517,14 +24856,6 @@
     "publisher": "Sony Computer Entertainment Europe",
     "genre": "Survival Horror",
     "serial": "SLES-50240"
-  },
-  {
-    "title": "Extermination (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-19002"
   },
   {
     "title": "Extreme Sprint 3010",
@@ -25591,14 +24922,6 @@
     "serial": "SCES-55083"
   },
   {
-    "title": "EyeToy Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53177"
-  },
-  {
     "title": "EyeToy: Antigrav",
     "year": null,
     "developer": "Harmonix",
@@ -25629,14 +24952,6 @@
     "publisher": "Sony Computer Entertainment America",
     "genre": "Racing",
     "serial": "SLUS-97414"
-  },
-  {
-    "title": "EyeToy: Antigrav + SpyToy Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53792"
   },
   {
     "title": "EyeToy: Chat",
@@ -25893,14 +25208,6 @@
     "publisher": "Sony Computer Entertainment America",
     "genre": "Other",
     "serial": "SCUS-97319"
-  },
-  {
-    "title": "EyeToy: Play (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-19315"
   },
   {
     "title": "EyeToy: Play (With Camera)",
@@ -26921,14 +26228,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLUS-29160"
-  },
-  {
-    "title": "FIFA 06: Demo Pre-Release Version",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLED-53664"
   },
   {
     "title": "FIFA 07",
@@ -28595,38 +27894,6 @@
     "serial": "SLUS-29171"
   },
   {
-    "title": "Final Fantasy XII International: Zodiac Job System",
-    "year": null,
-    "developer": "S-Force",
-    "publisher": "Square Enix",
-    "genre": "RPG",
-    "serial": "SCAJ-20188"
-  },
-  {
-    "title": "Final Fantasy XII International: Zodiac Job System",
-    "year": null,
-    "developer": "S-Force",
-    "publisher": "Square Enix",
-    "genre": "RPG",
-    "serial": "SLPM-55210"
-  },
-  {
-    "title": "Final Fantasy XII International: Zodiac Job System",
-    "year": null,
-    "developer": "S-Force",
-    "publisher": "Square Enix",
-    "genre": "RPG",
-    "serial": "SLPM-66750"
-  },
-  {
-    "title": "Final Fantasy XII International: Zodiac Job System [Ultimate Hits]",
-    "year": null,
-    "developer": "S-Force",
-    "publisher": "Square Enix",
-    "genre": "RPG",
-    "serial": "SCKA-20138"
-  },
-  {
     "title": "Final Fight Streetwise",
     "year": null,
     "developer": "Capcom",
@@ -29105,14 +28372,6 @@
     "publisher": "Midas Interactive Entertainment",
     "genre": "Sports",
     "serial": "SLES-51959"
-  },
-  {
-    "title": "Football Kingdom: Trial Edition",
-    "year": null,
-    "developer": "Namco",
-    "publisher": "Namco",
-    "genre": "Sports",
-    "serial": "SLPS-20374"
   },
   {
     "title": "Football Manager Campionato 2002",
@@ -30724,14 +29983,6 @@
     "serial": "PAPX-90515"
   },
   {
-    "title": "G-Con 2 Competition Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52094"
-  },
-  {
     "title": "G-Force",
     "year": null,
     "developer": "Phoenix Games Ltd.",
@@ -32184,14 +31435,6 @@
     "serial": "SCKA-20104"
   },
   {
-    "title": "Genji Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53733"
-  },
-  {
     "title": "Genji: Dawn of the Samurai",
     "year": null,
     "developer": "Game Republic",
@@ -33573,14 +32816,6 @@
     "serial": "SLPM-61161"
   },
   {
-    "title": "God of War: Platinum",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Action",
-    "serial": "SCES-53113"
-  },
-  {
     "title": "God of War: The Hydra Battle",
     "year": null,
     "developer": null,
@@ -33899,14 +33134,6 @@
       "Mini Games."
     ],
     "serial": "SLUS-21834"
-  },
-  {
-    "title": "Gottlieb Pinball Classics",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Pinball",
-    "serial": "SLES-54181"
   },
   {
     "title": "Gradius III and IV",
@@ -34366,14 +33593,6 @@
     "serial": "PAPX-90523"
   },
   {
-    "title": "Gran Turismo 4: Prius Trial Version",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PAPX-90512"
-  },
-  {
     "title": "Gran Turismo 4: Prologue",
     "year": null,
     "developer": "Polyphony Digital",
@@ -34428,14 +33647,6 @@
     "publisher": "Sony Computer Entertainment Inc.",
     "genre": "Racing",
     "serial": "SCPS-19304"
-  },
-  {
-    "title": "Gran Turismo Concept 2001 Tokyo Collection: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Poliphany Digital Inc.",
-    "publisher": "Sony Computer Entertainment Inc. (Japan)",
-    "genre": "Racing",
-    "serial": "SCPS-19208"
   },
   {
     "title": "Gran Turismo Concept: 2001 Tokyo",
@@ -34524,14 +33735,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-52455"
-  },
-  {
-    "title": "Gran Turismo Special Edition 2004 Toyota Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97384"
   },
   {
     "title": "Gran Turismo: Nissan Micra Edition",
@@ -36033,14 +35236,6 @@
     "serial": "SLPS-25886"
   },
   {
-    "title": "Guitar Hero: Greatest Hits",
-    "year": null,
-    "developer": "Beenox",
-    "publisher": "Activision Publishing, Inc.",
-    "genre": "Rhythm",
-    "serial": "SLES-55544"
-  },
-  {
     "title": "Guitar Hero: Metallica",
     "year": null,
     "developer": "Neversoft Entertainment",
@@ -36397,14 +35592,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLPM-74276"
-  },
-  {
-    "title": "Gundam Musou 2: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Omega Force",
-    "publisher": "Bandai Namco Games",
-    "genre": null,
-    "serial": "SLPM-75276"
   },
   {
     "title": "Gundam Musou 2: Treasure Box",
@@ -38853,38 +38040,6 @@
     "serial": "SLPS-20385"
   },
   {
-    "title": "HDD Utility Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95216"
-  },
-  {
-    "title": "HDD Utility Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95237"
-  },
-  {
-    "title": "HDD Utility Disc",
-    "year": null,
-    "developer": "Square PDD 3",
-    "publisher": "Sony Computer Entertainment",
-    "genre": "MMORPG",
-    "serial": "SCUS-97395"
-  },
-  {
-    "title": "HDD Utility Disc Version 1.00",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95211"
-  },
-  {
     "title": "Headhunter",
     "year": null,
     "developer": "Amuze",
@@ -40075,38 +39230,6 @@
     "serial": "SLPM-66941"
   },
   {
-    "title": "Holiday 2004 Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97455"
-  },
-  {
-    "title": "Holiday 2004 Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97456"
-  },
-  {
-    "title": "Holiday 2005 Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97528"
-  },
-  {
-    "title": "Holiday 2005 Demo Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97529"
-  },
-  {
     "title": "Home Alone",
     "year": null,
     "developer": "Coyote Console",
@@ -41063,17 +40186,6 @@
       "Platform."
     ],
     "serial": "SLUS-21307"
-  },
-  {
-    "title": "Ice Age 2: The Meltdown (with DVD)",
-    "year": null,
-    "developer": "Eurocom Entertainment Software",
-    "publisher": "Vivendi Games",
-    "genre": [
-      "Action",
-      "Platform."
-    ],
-    "serial": "VUGJ-10001"
   },
   {
     "title": "Ice Age 3: Dawn of the Dinosaurs",
@@ -42671,14 +41783,6 @@
     "serial": "SCUS-97412"
   },
   {
-    "title": "Jak 3 (Greatest Hits)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97516"
-  },
-  {
     "title": "Jak and Daxter Complete Trilogy",
     "year": null,
     "developer": null,
@@ -42761,22 +41865,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCUS-97171"
-  },
-  {
-    "title": "Jak and Daxter: The Precursor Legacy DVD",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50621"
-  },
-  {
-    "title": "Jak and Daxter: The Precursor Legacy: Greatest Hits",
-    "year": null,
-    "developer": "Naughty Dog",
-    "publisher": "Sony Computer Entertainment America",
-    "genre": "Platformer",
-    "serial": "SLUS-97124"
   },
   {
     "title": "Jak II",
@@ -42938,18 +42026,6 @@
     "serial": "SCPS-55004"
   },
   {
-    "title": "Jak x Daxter: Kyuusekai no Isan [PlayStation 2 the Best Series]",
-    "year": null,
-    "developer": "Naughty Dog",
-    "publisher": "Sony",
-    "genre": [
-      "Action",
-      "Adventure",
-      "Platform."
-    ],
-    "serial": "SCPS-19210"
-  },
-  {
     "title": "Jak X: Combat Racing",
     "year": null,
     "developer": "Naughty Dog",
@@ -42983,14 +42059,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCUS-97574"
-  },
-  {
-    "title": "Jak X: Platinum [IT]",
-    "year": null,
-    "developer": "Naughty Dog",
-    "publisher": "Sony Computer Entertainment Europe",
-    "genre": "Racing",
-    "serial": "SLES-53286"
   },
   {
     "title": "James Cameron's Dark Angel",
@@ -43027,102 +42095,6 @@
       "Platformer."
     ],
     "serial": "SLES-53682"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97406"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97410"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97417"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97418"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 12",
-    "year": null,
-    "developer": "Sony Computer Entertainment America",
-    "publisher": "Sony Computer Entertainment America",
-    "genre": null,
-    "serial": "SCUS-97419"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 12",
-    "year": null,
-    "developer": "Sony Computer Entertainment America",
-    "publisher": "Sony Computer Entertainment America",
-    "genre": null,
-    "serial": "SCUS-97420"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 13",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97491"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 13",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97492"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97493"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97494"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 15",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97564"
-  },
-  {
-    "title": "Jampack Demo Disc Volume 15",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97565"
   },
   {
     "title": "Jampack: Summer 2003",
@@ -46637,14 +45609,6 @@
     "serial": "SLPS-25961"
   },
   {
-    "title": "Kidou Senshi Gundam SEED Destiny: Rengou vs. Z.A.F.T. II Plus: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-73269"
-  },
-  {
     "title": "Kidou Senshi Gundam Seed: Owaranai Ashita e",
     "year": null,
     "developer": null,
@@ -46675,14 +45639,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLKA-25035"
-  },
-  {
-    "title": "Kidou Senshi Gundam: Ghiren no Yabou: Axis no Kyoui V: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Bec",
-    "publisher": "Bandai Namco Games",
-    "genre": "Strategy",
-    "serial": "SLPS-73268"
   },
   {
     "title": "Kidou Senshi Gundam: Ghiren no Yabou: Zeon Dokuritsu Sensouki + Kouryaku Shireisho: Gundam the Best (Disc 1)",
@@ -46817,28 +45773,12 @@
     "serial": "SLPS-25305"
   },
   {
-    "title": "Kidou Senshi Z Gundam: AEUG Vs. Titans (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73234"
-  },
-  {
     "title": "Kidou Senshi Z Gundam: AEUG Vs. Titans (PS2 Bundle)",
     "year": null,
     "developer": null,
     "publisher": null,
     "genre": null,
     "serial": "SLPN-40001"
-  },
-  {
-    "title": "Kidou Senshi Z Gundam: AEUG vs. Titans: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Bandai",
-    "genre": null,
-    "serial": "SLPS-73234"
   },
   {
     "title": "Kidou Shinsengumi: Moe yo Ken",
@@ -47956,86 +46896,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCUS-97383"
-  },
-  {
-    "title": "Kiosk Demo Disc 2.3",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97156"
-  },
-  {
-    "title": "Kiosk Demo Disc 2.4",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97174"
-  },
-  {
-    "title": "Kiosk Demo Disc 2.5",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97200"
-  },
-  {
-    "title": "Kiosk Demo Disc 2.6",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97218"
-  },
-  {
-    "title": "Kiosk Demo Disc 2.8",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97261"
-  },
-  {
-    "title": "Kiosk Demo Disc 2.9",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97270"
-  },
-  {
-    "title": "Kiosk Demo Disc Q1-Q2 2005",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97422"
-  },
-  {
-    "title": "Kiosk Demo Disc Q2-Q3 2005",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97423"
-  },
-  {
-    "title": "Kiosk Demo Disc Q3-Q4 2004",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97428"
-  },
-  {
-    "title": "Kiosk Demo Disc Q4 2004-Q1 2005",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97421"
   },
   {
     "title": "Kiosk Disc 2.1",
@@ -51970,126 +50830,6 @@
     "serial": "SLUS-20671"
   },
   {
-    "title": "Magazine Ufficiale PlayStation 2 Demo 2005/01 Ita",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53070"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 01/2006",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53933"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 03/2006",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54090"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 04/03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51652"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 05/2006",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54180"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 06/03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51752"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 07-2006",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54314"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 07/03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51836"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 08/02",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51111"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 08/03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51880"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 09/02",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51173"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia 09/03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51894"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Italia Special Racing",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54069"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Demo Special Cinema",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54543"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Italia 01/04 Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52186"
-  },
-  {
     "title": "Magazine Ufficiale PlayStation 2 Italia 02/03",
     "year": null,
     "developer": null,
@@ -52138,14 +50878,6 @@
     "serial": "SCED-52855"
   },
   {
-    "title": "Magazine Ufficiale PlayStation 2 Italia 10/2005: Italian Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53294"
-  },
-  {
     "title": "Magazine Ufficiale PlayStation 2 Italia 11/04",
     "year": null,
     "developer": null,
@@ -52160,22 +50892,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-52057"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Italia Demo 02/04",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52272"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Italia Demo Speciale Horror",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53947"
   },
   {
     "title": "Magazine Ufficiale PlayStation 2 Italia Speciale Kids",
@@ -52194,44 +50910,12 @@
     "serial": "SCED-54602"
   },
   {
-    "title": "Magazine Ufficiale PlayStation 2 Italian Demo 61 07/05",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53516"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Platinum Speciale 2003",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52183"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Special Sports Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53905"
-  },
-  {
     "title": "Magazine Ufficiale PlayStation 2 Speciale di Corso",
     "year": null,
     "developer": null,
     "publisher": null,
     "genre": null,
     "serial": "SCED-52795"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Speciale Platinum Italia",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53043"
   },
   {
     "title": "Mageru Tsukeru Hashiru: Ore * Dead Heat",
@@ -55114,30 +53798,6 @@
     "serial": "SLPS-25696"
   },
   {
-    "title": "Metal Arms: Glitch in the System",
-    "year": null,
-    "developer": "Swingin' Ape Studios",
-    "publisher": "Sierra Entertainment",
-    "genre": "Third-person Shooter",
-    "serial": "SLES-51758"
-  },
-  {
-    "title": "Metal Arms: Glitch in the System",
-    "year": null,
-    "developer": "Swingin' Ape Studios",
-    "publisher": "Sierra",
-    "genre": "Third-person Shooter",
-    "serial": "SLUS-20786"
-  },
-  {
-    "title": "Metal Arms: Glitch in the System",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-29081"
-  },
-  {
     "title": "Metal Gear & Metal Gear 2: Solid Snake",
     "year": null,
     "developer": "Konami",
@@ -55341,22 +54001,6 @@
       "Adventure"
     ],
     "serial": "SLPM-66793"
-  },
-  {
-    "title": "Metal Gear Solid 2: Sons of Liberty: Trial Edition",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLED-50117"
-  },
-  {
-    "title": "Metal Gear Solid 2: Sons of Liberty: Trial Edition",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-29003"
   },
   {
     "title": "Metal Gear Solid 2: Substance",
@@ -56351,14 +54995,6 @@
     "serial": "SLES-53717"
   },
   {
-    "title": "Midnight Club 3: DUB Edition Remix Greatest Hits",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-21355"
-  },
-  {
     "title": "Midnight Club II",
     "year": null,
     "developer": "Rockstar San Diego",
@@ -56535,14 +55171,6 @@
     "serial": "SLPM-66052"
   },
   {
-    "title": "Military Multi Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52355"
-  },
-  {
     "title": "Million God",
     "year": null,
     "developer": "Nippon Amuse",
@@ -56656,14 +55284,6 @@
     "serial": "SCAJ-20059"
   },
   {
-    "title": "Minna no Golf 4: Everybody's Golf [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Clap Hanz",
-    "publisher": "Sony",
-    "genre": "Golf.",
-    "serial": "SCAJ-20094"
-  },
-  {
     "title": "Minna no Golf Online",
     "year": null,
     "developer": null,
@@ -56726,14 +55346,6 @@
     "publisher": "Sony",
     "genre": "Tennis.",
     "serial": "SCKA-20085"
-  },
-  {
-    "title": "Minna no Tennis: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Clap Hanz",
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Sports",
-    "serial": "SCPS-19302"
   },
   {
     "title": "Minority Report: Everybody Runs",
@@ -57601,14 +56213,6 @@
     "serial": "SLPM-62555"
   },
   {
-    "title": "Momotarou Dentetsu USA: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Hudson",
-    "genre": "Party",
-    "serial": "SLPM-74103"
-  },
-  {
     "title": "Money Sugoroku: Kabukoro",
     "year": null,
     "developer": null,
@@ -57779,14 +56383,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLPS-73423"
-  },
-  {
-    "title": "Monster Farm 4: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Tecmo",
-    "publisher": "Tecmo",
-    "genre": "Simulation",
-    "serial": "SLPM-73423"
   },
   {
     "title": "Monster Farm 5: Circus Caravan",
@@ -58982,14 +57578,6 @@
     "serial": "SLPM-74271"
   },
   {
-    "title": "Musou Orochi (Playstation 2 The Best Reprint)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-74285"
-  },
-  {
     "title": "Musou Orochi Super Premium Pack",
     "year": null,
     "developer": "Omega Force",
@@ -59694,14 +58282,6 @@
     "serial": "SLUS-20273"
   },
   {
-    "title": "Namco Museum -50th Anniversary Greatest Hits",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-21164"
-  },
-  {
     "title": "Namco Museum 50th Anniversary",
     "year": null,
     "developer": null,
@@ -59786,25 +58366,6 @@
       "Tactical RPG."
     ],
     "serial": "SLPS-25505"
-  },
-  {
-    "title": "Namco X Capcom [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Monolith Soft",
-    "publisher": "Namco",
-    "genre": [
-      "Action",
-      "Tactical RPG."
-    ],
-    "serial": "SLPS-73243"
-  },
-  {
-    "title": "Namco x Capcom: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Monolith Soft",
-    "publisher": "Namco",
-    "genre": "Strategy",
-    "serial": "SLPM-73243"
   },
   {
     "title": "Nana",
@@ -65151,14 +63712,6 @@
     "serial": "SLPS-25892"
   },
   {
-    "title": "Nordic Fall 2003 Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLED-51962"
-  },
-  {
     "title": "North Wind: Eien no Yakusoku",
     "year": null,
     "developer": "Datam Polystar",
@@ -65431,2036 +63984,12 @@
     "serial": "SLES-50232"
   },
   {
-    "title": "Official Demo Disc 1: Retail Edition November 01",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50615"
-  },
-  {
-    "title": "Official Demo Disc Retail Edition February 02",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50732"
-  },
-  {
     "title": "Official Disc 2003",
     "year": null,
     "developer": null,
     "publisher": null,
     "genre": null,
     "serial": "PAPX-90507"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50065"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50145"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 10",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50404"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 100",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55119"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 101",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55120"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50146"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50460"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50463"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 12",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50147"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 12",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50506"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 12",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50543"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 13",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50148"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 13",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50593"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 13",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50594"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50149"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50610"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 14",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50622"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 15",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50150"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 15",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50685"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 15",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50708"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 16",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50151"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 16",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50675"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 16",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50736"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 17",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50152"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 17",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50697"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 18",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50153"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 18",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50698"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 18",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50825"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 19",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50154"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50066"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 20",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50699"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 20",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50743"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 20",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50945"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 21",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50700"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 21",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50742"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 21",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50989"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 22",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50701"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 22",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50744"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 22/23",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51016"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 23",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50745"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 23",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51163"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 24",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50746"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 24",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51147"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 24",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51185"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 25",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50747"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 25",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51262"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 25",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51279"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 26",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50748"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 26",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51321"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 27",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50749"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 27",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51319"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 27",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51359"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 28",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50750"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 28",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51376"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 29",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51384"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 29",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51432"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 29",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51440"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 3",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50067"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 30",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51457"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 30",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51483"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 30",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51485"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 30",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51489"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 30",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51552"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 31",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51529"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 31",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51556"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 31",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51566"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 32",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51530"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 32",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51558"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 32",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51567"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 32",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51656"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 33",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51531"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 33",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51559"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 33",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51568"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 34",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51532"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 34",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51560"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 34",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51569"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 34",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51760"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 35",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51533"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 35",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51561"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 35",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51570"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 36",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51534"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 36",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51571"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 37",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51537"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 37",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51563"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 37",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51572"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 38",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51538"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 38",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51573"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 38",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51935"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 39",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51540"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 39",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52037"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 40",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51535"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 40",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51565"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 40",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51575"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 40",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52053"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 40",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52054"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 41",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51536"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 41",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52068"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 41",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52081"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 41",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52158"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 41",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52177"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 41",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52185"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 42",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51539"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 42",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52069"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 42",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52270"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 42",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52271"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 42",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52273"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 43",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52051"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 43",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52083"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 43",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52354"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 44",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52052"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 44",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52377"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 45",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52085"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 45",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52160"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 45",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52442"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 45",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52452"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 46",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52161"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 47",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52087"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 47",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52162"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 47",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52549"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 48",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52088"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 48",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52163"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 48",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52619"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 49",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52076"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 49",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52164"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 49",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52728"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 5",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50140"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 50",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52090"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 50",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52165"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 50",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52785"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 50",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52796"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 51",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52091"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 51",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52166"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 51",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52786"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 52",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52092"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 52",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52167"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 52",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52938"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 53",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52080"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 53",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52168"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 53",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52990"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 53",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52991"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 54",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52169"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 54",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53056"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 54",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53067"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 54",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53068"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 55",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52120"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 55",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52170"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 55",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53123"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 56",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53122"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 56",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53132"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 56",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53176"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 57",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53159"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 57",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53160"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 57",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53228"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 58",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53161"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 58",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53206"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 58",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53288"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 58",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53325"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 58",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53348"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 59",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53162"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 59",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53207"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 59",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53289"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 6",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50141"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 60",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53163"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 60",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53208"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 60",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53290"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 61",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53164"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 61",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53209"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 61",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53291"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 62",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53165"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 62",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53210"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 62",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53292"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 63",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53166"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 63",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53211"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 63",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53293"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 64",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53167"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 64",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53212"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 65",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53168"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 65",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53213"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 66",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53169"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 66",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53214"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 67",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53170"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 67",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53215"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 67",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53916"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 67",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53932"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 67",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53939"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 68",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53171"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 68",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53216"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 69",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53217"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 69",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53978"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 69",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54001"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 69 & 70",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54036"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 7",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50142"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 70",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54024"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 70",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54037"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 71",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54043"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 71",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54050"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 71",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54070"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 71",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54079"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 71",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54099"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 72",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54044"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 72",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54051"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 72",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54144"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 73",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54045"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 73",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54052"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 73",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54176"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 74",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54046"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 74",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54053"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 74",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54202"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 75",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54047"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 75",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54054"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 76",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54048"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 76",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54055"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 77",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54049"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 77",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54056"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 78",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54057"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 78",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54403"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 78",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54480"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 79",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54058"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 79",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54404"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 79",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54481"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 8",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50143"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 8",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50381"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 80",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54059"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 80",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54405"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 80",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54567"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 81",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54406"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 81",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54603"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 81",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54605"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 82",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54407"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 82",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54642"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 83",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54408"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 83",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54692"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 84",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54409"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 84",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54758"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 85",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54410"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 86",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54411"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 87",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54412"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 88",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54413"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 89",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54414"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 9",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50144"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 90",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54415"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 91",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54416"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 92",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54417"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 93",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54418"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 94",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55113"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 95",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55114"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 96",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55115"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 97",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55116"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 98",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55117"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine Demo 99",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-55118"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine French Christmas Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53854"
   },
   {
     "title": "Official PlayStation 2 Magazine Germany Special 2/2005",
@@ -67559,78 +64088,6 @@
     "serial": "SCED-52996"
   },
   {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 1: Special Edition: Buyers Guide",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50161"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 2: Special Edition: A-Z of PS2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50162"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 3: Special Edition: Players Guide",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50163"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 4: Special Edition: Yearbook 2001",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50164"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 5: Special Edition: Action Heroes",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50784"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 6: Special Edition: Awards 2002",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50783"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 7: Special Edition: Sports Games",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50785"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 8: Special Edition: Racing Games",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50786"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 9: Special Edition: Buyers Guide",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51280"
-  },
-  {
     "title": "Official PlayStation 2 Magazine-UK Special Edition 11: The World's Best PS2 Games Ever",
     "year": null,
     "developer": null,
@@ -67695,14 +64152,6 @@
     "serial": "SCED-52193"
   },
   {
-    "title": "Official PlayStation 2 Magazine-UK Special Edition 19: 2004 Classics Hitlist",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52194"
-  },
-  {
     "title": "Official PlayStation 2 Magazine-UK Special Edition 20: It's Here!",
     "year": null,
     "developer": null,
@@ -67725,494 +64174,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-53611"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 100",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97452"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 101",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97453"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 102",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97454"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 103",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97531"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 104",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97532"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 105",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97533"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 106",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97534"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 107",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97535"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 108",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97536"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 109",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97537"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 110",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97538"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 111",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97539"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 112",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97540"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 49",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97158"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 51",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97165"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 53",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97176"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 55",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97181"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 56",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97182"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 57",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97183"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 58",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97184"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 59",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97185"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 60",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97186"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 61",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97187"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 62",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97188"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 63",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97189"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 64",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97190"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 65",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97191"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 66",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97241"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 67",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97242"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 68",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97243"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 69",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97244"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 70",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97245"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 71",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97246"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 72",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97247"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 73",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97248"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 74",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97249"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 75",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97250"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 76",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97251"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 77",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97252"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 78",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97331"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 79",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97332"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 80",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97333"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 81",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97334"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 82",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97335"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 83",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97336"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 84",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97337"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 85",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97338"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 86",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97339"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 87",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97340"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 88",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97341"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 89",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97342"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 90",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97442"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 91",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97443"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 92",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97444"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 93",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97445"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 94",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97446"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 95",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97447"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 96",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97448"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 97",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97449"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 98",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97450"
-  },
-  {
-    "title": "Official U.S. PlayStation Magazine Demo Disc 99",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97451"
   },
   {
     "title": "Offroad Extreme!",
@@ -68605,18 +64566,6 @@
       "Beat'em Up."
     ],
     "serial": "SLUS-20694"
-  },
-  {
-    "title": "Onimusha [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Adventure",
-      "Beat'em Up"
-    ],
-    "serial": "SLPM-74206"
   },
   {
     "title": "Onimusha Buraiden",
@@ -69016,14 +64965,6 @@
     "publisher": "SCEI",
     "genre": "Action.",
     "serial": "SCPS-19213"
-  },
-  {
-    "title": "Operator's Side [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Sony Computer Entertainment Inc",
-    "publisher": "SCEI",
-    "genre": "Action.",
-    "serial": "SCPS-19214"
   },
   {
     "title": "Opowieści z Narnii: Lew, Czarownica i Stara Szafa",
@@ -71270,22 +67211,6 @@
     "serial": "SLPS-73106"
   },
   {
-    "title": "Pilot Nina Rou! 2 (Playstation 2 The Best Reprint)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73106"
-  },
-  {
-    "title": "Pilot Nina Rou! 2 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73001"
-  },
-  {
     "title": "Pinball",
     "year": null,
     "developer": null,
@@ -71834,28 +67759,12 @@
     "serial": "PCPX-96501"
   },
   {
-    "title": "PlayStation 2 Demo Disc Version 2.3",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97155"
-  },
-  {
     "title": "PlayStation 2 Magazine Ufficiale Italia Presenta: Speciale Sport",
     "year": null,
     "developer": null,
     "publisher": null,
     "genre": null,
     "serial": "SCED-54640"
-  },
-  {
-    "title": "PlayStation 2 Official Demo Disc Edition Pour Revendeurs #5",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51591"
   },
   {
     "title": "PlayStation 2 Revista Oficial: Portugal 9",
@@ -71952,14 +67861,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-51938"
-  },
-  {
-    "title": "PlayStation Index (DVD-ROM-ban): PlayStation 2 Official Soft Catalog 2002 April",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PCPX-96626"
   },
   {
     "title": "PlayStation Seizou Kensa-you Disc 3 CD-ROM US-ban Ver1.1",
@@ -73252,14 +69153,6 @@
     "serial": "FVGK-0002"
   },
   {
-    "title": "Prismix: PlayStation 2 Sen'you Music Visual Soft: Demo Disc Vol. 1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-61027"
-  },
-  {
     "title": "Prisoner of War",
     "year": null,
     "developer": "Wide Games",
@@ -73909,30 +69802,6 @@
     "publisher": "TDK Mediactive",
     "genre": "Action.",
     "serial": "SLUS-20172"
-  },
-  {
-    "title": "PS2 Bonus Demo 03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51140"
-  },
-  {
-    "title": "PS2 Bonus Demo Jan 2001",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50133"
-  },
-  {
-    "title": "PS2 Bonus Demo Jan 2002",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50734"
   },
   {
     "title": "PS2 Kiosk Q2-Q3 2004: Summer 2004",
@@ -75302,14 +71171,6 @@
     "serial": "SCUS-97323"
   },
   {
-    "title": "Ratchet & Clank: Going Commando (Greatest Hits)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97513"
-  },
-  {
     "title": "Ratchet & Clank: Going Commando + Jak II",
     "year": null,
     "developer": null,
@@ -75348,14 +71209,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCKA-20060"
-  },
-  {
-    "title": "Ratchet & Clank: PlayStation 2 the Best (SCPS-19310)",
-    "year": null,
-    "developer": "Insomniac Games",
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Platformer",
-    "serial": "SCPS-19310"
   },
   {
     "title": "Ratchet & Clank: Size Matters",
@@ -76456,22 +72309,6 @@
     "publisher": "Capcom Entertainment",
     "genre": "Survival Horror",
     "serial": "SLUS-27011"
-  },
-  {
-    "title": "Retail Demo 11",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54105"
-  },
-  {
-    "title": "Retro Classics: 8 Arcade Classics from Yesteryears",
-    "year": null,
-    "developer": "Aqua Pacific",
-    "publisher": "Phoenix Games",
-    "genre": "Arcade",
-    "serial": "SLES-52346"
   },
   {
     "title": "Return to Castle Wolfenstein: Operation Resurrection",
@@ -78590,14 +74427,6 @@
     "serial": "SLUS-20471"
   },
   {
-    "title": "Ryu ga Gotoku 2: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Action-Adventure",
-    "serial": "SLPM-74302"
-  },
-  {
     "title": "Ryu-Koku",
     "year": null,
     "developer": "CyberFront",
@@ -79572,17 +75401,6 @@
     "serial": "SLPM-74405"
   },
   {
-    "title": "Samurai Kanzenban [PlayStation 2 the Best Reprint]",
-    "year": null,
-    "developer": "Acquire Corp",
-    "publisher": "Spike",
-    "genre": [
-      "Action",
-      "Adventure."
-    ],
-    "serial": "SLPM-74222"
-  },
-  {
     "title": "Samurai Shodown Anthology",
     "year": null,
     "developer": "SNK Playmore",
@@ -80216,14 +76034,6 @@
     "serial": "SCPS-15077"
   },
   {
-    "title": "Saru Get You: Million Monkeys: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Japan Studio",
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Platformer",
-    "serial": "SCPS-19325"
-  },
-  {
     "title": "Saru! Get You! 2",
     "year": null,
     "developer": "Sony",
@@ -80624,14 +76434,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-51278"
-  },
-  {
-    "title": "SCEE Hits Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52970"
   },
   {
     "title": "School Days LxH",
@@ -81483,14 +77285,6 @@
     "serial": "SLPM-62691"
   },
   {
-    "title": "Sega Ages 2500 Series Vol. 21: SDI & Quartet: Sega System 16 Collection",
-    "year": null,
-    "developer": null,
-    "publisher": "Sega",
-    "genre": "Action",
-    "serial": "SLPM-62692"
-  },
-  {
     "title": "Sega Ages 2500 Series Vol. 22: Advanced Daisenryaku: Deutsch Dengeki Sakusen",
     "year": null,
     "developer": "Sega",
@@ -81739,34 +77533,6 @@
     "serial": "SLUS-20339"
   },
   {
-    "title": "Sega Classics Collection",
-    "year": null,
-    "developer": "Sega of Japan",
-    "publisher": "Sega",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Driving",
-      "Puzzle",
-      "Racing."
-    ],
-    "serial": "SLES-53461"
-  },
-  {
-    "title": "Sega Classics Collection",
-    "year": null,
-    "developer": "Sega of Japan",
-    "publisher": "Sega",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Driving",
-      "Puzzle",
-      "Racing."
-    ],
-    "serial": "SLUS-21009"
-  },
-  {
     "title": "Sega Genesis Collection",
     "year": null,
     "developer": "Digital Eclipse Software, Inc.",
@@ -81912,14 +77678,6 @@
     "serial": "SLUS-21733"
   },
   {
-    "title": "Sega³ Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50761"
-  },
-  {
     "title": "Seigi no Mikata",
     "year": null,
     "developer": "SCEI",
@@ -82036,62 +77794,6 @@
     "publisher": "Alchemist",
     "genre": "Adventure.",
     "serial": "ALCH-00021"
-  },
-  {
-    "title": "Selector Demo 01",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50811"
-  },
-  {
-    "title": "Selector Demo 03",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51146"
-  },
-  {
-    "title": "Selector Demo 04",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51269"
-  },
-  {
-    "title": "Selector Demo 05",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51683"
-  },
-  {
-    "title": "Selector Demo 06",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51596"
-  },
-  {
-    "title": "Selector Demo 08",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51598"
-  },
-  {
-    "title": "Selector Demo 7",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51597"
   },
   {
     "title": "Sengoku Anthology",
@@ -82437,22 +78139,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLPM-67014"
-  },
-  {
-    "title": "Sengoku Musou 2: PlayStation 2 the Best (SLPM-74247)",
-    "year": null,
-    "developer": "Omega Force",
-    "publisher": "Koei",
-    "genre": "Action",
-    "serial": "SLPM-74247"
-  },
-  {
-    "title": "Sengoku Musou 2: PlayStation 2 the Best (SLPM-74280)",
-    "year": null,
-    "developer": "Omega Force",
-    "publisher": "Koei",
-    "genre": "Action",
-    "serial": "SLPM-74280"
   },
   {
     "title": "Sengoku Musou 2: Treasure Box",
@@ -82832,22 +78518,6 @@
     "serial": "SLPS-73215"
   },
   {
-    "title": "Shadow Hearts II: Director's Cut [PlayStation 2 the Best] (Disc 1)",
-    "year": null,
-    "developer": "Aruze Corp",
-    "publisher": "Aruze Corp",
-    "genre": "RPG.",
-    "serial": "SLPM-73214"
-  },
-  {
-    "title": "Shadow Hearts II: Director's Cut [PlayStation 2 the Best] (Disc 2)",
-    "year": null,
-    "developer": "Aruze Corp",
-    "publisher": "Aruze Corp",
-    "genre": "RPG.",
-    "serial": "SLPM-73215"
-  },
-  {
     "title": "Shadow Hearts: Covenant (Disc 1)",
     "year": null,
     "developer": "Aruze Corp",
@@ -83116,14 +78786,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-53990"
-  },
-  {
-    "title": "Shadow of the Colossus: Greatest Hits",
-    "year": null,
-    "developer": "Team Ico",
-    "publisher": "Sony Computer Entertainment",
-    "genre": "Action-Adventure",
-    "serial": "SCUS-97578"
   },
   {
     "title": "Shadow the Hedgehog",
@@ -84507,14 +80169,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLPM-62728"
-  },
-  {
-    "title": "Shin Sangoku Musou 4 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLAJ-25092"
   },
   {
     "title": "Shin Sangoku Musou 4 (Treasure Box)",
@@ -85920,14 +81574,6 @@
     "serial": "SLPS-73402"
   },
   {
-    "title": "Shutokou Battle 0 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73402"
-  },
-  {
     "title": "Shutokou Battle 01",
     "year": null,
     "developer": null,
@@ -85950,14 +81596,6 @@
     "publisher": "Genki Co. Ltd.",
     "genre": "Racing",
     "serial": "SLPM-65308"
-  },
-  {
-    "title": "Shutokou Battle 01: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Genki",
-    "publisher": "Genki Co. Ltd.",
-    "genre": "Racing",
-    "serial": "SLPM-74204"
   },
   {
     "title": "Shuumatsu Shoujo Gensou Alicematic Apocalypse",
@@ -86086,14 +81724,6 @@
     "publisher": null,
     "genre": "Flight Simulator",
     "serial": "SLPS-25271"
-  },
-  {
-    "title": "Signore degli Anelli, il: La terza Era: Platinum",
-    "year": null,
-    "developer": "Electronic Arts",
-    "publisher": "Electronic Arts",
-    "genre": "RPG",
-    "serial": "SLES-52084"
   },
   {
     "title": "Siksin-ui Seong",
@@ -88748,14 +84378,6 @@
     "serial": "SCES-56362"
   },
   {
-    "title": "SingStar Italian Greatest Hits",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCES-55059"
-  },
-  {
     "title": "SingStar Italian Party",
     "year": null,
     "developer": null,
@@ -89836,14 +85458,6 @@
     "serial": "SCAJ-20161"
   },
   {
-    "title": "Siren: Trial Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PAPX-90511"
-  },
-  {
     "title": "Sitting Ducks",
     "year": null,
     "developer": "Asobo Studio",
@@ -90413,14 +86027,6 @@
     "serial": "SCUS-97527"
   },
   {
-    "title": "Sly 3: Honor Among Thieves: Greatest Hits",
-    "year": null,
-    "developer": "Sucker Punch Productions",
-    "publisher": "Sony Computer Entertainment America",
-    "genre": "Action",
-    "serial": "SCUS-97576"
-  },
-  {
     "title": "Sly 3: Honour Among Thieves",
     "year": null,
     "developer": null,
@@ -90722,30 +86328,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLUS-21231"
-  },
-  {
-    "title": "SNK Arcade Classics Vol. 1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLES-55232"
-  },
-  {
-    "title": "SNK Arcade Classics Vol. 1",
-    "year": null,
-    "developer": "SNK Playmore",
-    "publisher": "SNK Playmore",
-    "genre": "Other",
-    "serial": "SLUS-21724"
-  },
-  {
-    "title": "SNK Arcade Classics Vol.1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLKA-25424"
   },
   {
     "title": "SNK Slot Panic Kyuuji",
@@ -91412,14 +86994,6 @@
     "serial": "SLUS-21846"
   },
   {
-    "title": "Sony DVD Test Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "GLD-DR01"
-  },
-  {
     "title": "Sorairo no Fuukin Remix [Limited Edition]",
     "year": null,
     "developer": "The Lotus",
@@ -91760,14 +87334,6 @@
     "serial": "SLUS-21216"
   },
   {
-    "title": "SoulCalibur III: Platinum [SE][DK][FI][NO]",
-    "year": null,
-    "developer": "Namco",
-    "publisher": "Namco",
-    "genre": "Fighting",
-    "serial": "SLES-53312"
-  },
-  {
     "title": "Sousei no Aquarion",
     "year": null,
     "developer": null,
@@ -91837,14 +87403,6 @@
     ],
     "genre": "Dancing",
     "serial": "SLPM-74404"
-  },
-  {
-    "title": "Space Channel 5: Part 2 Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51405"
   },
   {
     "title": "Space Channel 5: Special Edition (Disc 1)",
@@ -92863,22 +88421,6 @@
     "serial": "SCES-53347"
   },
   {
-    "title": "Square Enix Sampler Disc Volume One: Drakengard Playable Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-29087"
-  },
-  {
-    "title": "Square Enix Sampler Disc Volume Two: Front Mission 4 Playable Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-29098"
-  },
-  {
     "title": "SRS: Street Racing Syndicate",
     "year": null,
     "developer": "Eutechnyx Limited",
@@ -93340,14 +88882,6 @@
     "publisher": "Majesco",
     "genre": "First-person Shooter",
     "serial": "SLUS-20227"
-  },
-  {
-    "title": "Star Wars Battlefront II: Platinum",
-    "year": null,
-    "developer": "Pandemic Studios",
-    "publisher": "LucasArts Entertainment Company",
-    "genre": "First-person Shooter",
-    "serial": "SLES-53501"
   },
   {
     "title": "Star Wars: Battlefront",
@@ -94127,17 +89661,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLUS-28056"
-  },
-  {
-    "title": "State of Emergency [Platinum]",
-    "year": null,
-    "developer": "VIS entertainment plc",
-    "publisher": "Rockstar Games",
-    "genre": [
-      "Action",
-      "Beat'em Up."
-    ],
-    "serial": "SLES-51046"
   },
   {
     "title": "State of Emergency Revenge",
@@ -95601,14 +91124,6 @@
     "serial": "SLPS-25733"
   },
   {
-    "title": "Super Robot Taisen OG: Original Generations: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Bandai Namco Games",
-    "genre": "Strategy",
-    "serial": "SLPS-73262"
-  },
-  {
     "title": "Super Robot Taisen Original Generation Gaiden",
     "year": null,
     "developer": null,
@@ -95641,22 +91156,6 @@
     "serial": "SCKA-20097"
   },
   {
-    "title": "Super Robot Taisen Original Generations (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-20200"
-  },
-  {
-    "title": "Super Robot Taisen Original Generations (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73262"
-  },
-  {
     "title": "Super Robot Taisen Z",
     "year": null,
     "developer": null,
@@ -95687,14 +91186,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCAJ-20202"
-  },
-  {
-    "title": "Super Robot Taisen Z: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Bandai Namco Games",
-    "genre": "Strategy",
-    "serial": "SLPS-73270"
   },
   {
     "title": "Super Robot Taisen Z: Special Disc",
@@ -96797,14 +92288,6 @@
     "serial": "SLPS-20321"
   },
   {
-    "title": "Taiko no Tatsujin: Appare Sandaime (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-73110"
-  },
-  {
     "title": "Taiko no Tatsujin: Atsumare! Matsuri da!! Yondaime",
     "year": null,
     "developer": null,
@@ -97779,30 +93262,6 @@
     "serial": "SLPM-66433"
   },
   {
-    "title": "Tango: Game On Demo Disc 1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51454"
-  },
-  {
-    "title": "Tango: Game On Demo Disc 2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51643"
-  },
-  {
-    "title": "Tango: Game On Demo Disc 3",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51644"
-  },
-  {
     "title": "Tank Elite",
     "year": null,
     "developer": "Vingt-et-un Systems",
@@ -98311,14 +93770,6 @@
     "serial": "SLUS-29034"
   },
   {
-    "title": "Tekken 4: PlayStation 2 the Best (SLPS-73414)",
-    "year": null,
-    "developer": "Namco",
-    "publisher": "Namco",
-    "genre": "Fighting",
-    "serial": "SLPS-73414"
-  },
-  {
     "title": "Tekken 5",
     "year": null,
     "developer": null,
@@ -98397,14 +93848,6 @@
     "publisher": "Namco Hometek",
     "genre": "Action",
     "serial": "SLUS-21160"
-  },
-  {
-    "title": "Tekken 5 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-20199"
   },
   {
     "title": "Tekken Tag Tournament",
@@ -98723,14 +94166,6 @@
     "serial": "SLPM-65402"
   },
   {
-    "title": "Tengai Makyou II: Manji Maru: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "RPG",
-    "serial": "SLPM-74208"
-  },
-  {
     "title": "Tengai Makyou III: Namida",
     "year": null,
     "developer": null,
@@ -98753,14 +94188,6 @@
     "publisher": null,
     "genre": "RPG",
     "serial": "MH051013"
-  },
-  {
-    "title": "Tengai Makyou III: Namida: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "RPG",
-    "serial": "SLPM-74240"
   },
   {
     "title": "Tengai Premium Package",
@@ -103337,22 +98764,6 @@
     "serial": "SLUS-20219"
   },
   {
-    "title": "Time Crisis II (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-10004"
-  },
-  {
-    "title": "Time Crisis II: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Light Gun Shooter",
-    "serial": "SLPS-73006"
-  },
-  {
     "title": "Time Crisis: Crisis Zone",
     "year": null,
     "developer": "Namco",
@@ -103608,14 +99019,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLUS-29178"
-  },
-  {
-    "title": "TOCA Race Driver 3 (Honda Civic 2006 Demo)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLED-53951"
   },
   {
     "title": "TOCA Race Driver 3 + V8 Supercars Australia 3",
@@ -104568,14 +99971,6 @@
     "serial": "SLUS-20013"
   },
   {
-    "title": "Tony Hawk's Pro Skater 3: Platinum",
-    "year": null,
-    "developer": "Neversoft",
-    "publisher": "Activision",
-    "genre": "Sports",
-    "serial": "SLES-50432"
-  },
-  {
     "title": "Tony Hawk's Pro Skater 4",
     "year": null,
     "developer": "Neversoft",
@@ -104961,22 +100356,6 @@
     "serial": "SCPS-15015"
   },
   {
-    "title": "Toro to Kyuujitsu (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-19212"
-  },
-  {
-    "title": "Toro to Kyuujitsu: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Adventure",
-    "serial": "SCPS-19334"
-  },
-  {
     "title": "Torrente 3: El Protector",
     "year": null,
     "developer": null,
@@ -105173,14 +100552,6 @@
     "publisher": "Sony Computer Entertainment",
     "genre": "Racing",
     "serial": "SCUS-97502"
-  },
-  {
-    "title": "Tourist Trophy: Platinum",
-    "year": null,
-    "developer": "Polyphony Digital",
-    "publisher": "Sony Computer Entertainment Europe",
-    "genre": "Racing",
-    "serial": "SLES-53372"
   },
   {
     "title": "Tourist Trophy: The Real Riding Simulator",
@@ -106785,30 +102156,6 @@
     "serial": "SLUS-20596"
   },
   {
-    "title": "Ufficiale PlayStation 2 Italia Kids Special 2005 Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53798"
-  },
-  {
-    "title": "Ufficiale PlayStation 2 Special Platinum 2006",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53946"
-  },
-  {
-    "title": "Ufficiale PlayStation 2 Speciale Platinum 2007",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54682"
-  },
-  {
     "title": "Ufficiale PlayStation 2 Speciale Racing 2007",
     "year": null,
     "developer": null,
@@ -107023,14 +102370,6 @@
     "publisher": "Banpresto",
     "genre": "Fighting",
     "serial": "SLPS-25529"
-  },
-  {
-    "title": "Ultraman: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Fighting",
-    "serial": "SLSP-73220"
   },
   {
     "title": "Umisho [Limited Edition]",
@@ -107429,30 +102768,6 @@
       "Tactical RPG."
     ],
     "serial": "SLPS-25679"
-  },
-  {
-    "title": "Utility Disc",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95201"
-  },
-  {
-    "title": "Utility Disc Version 1.01",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95202"
-  },
-  {
-    "title": "Utility Disc Version 1.01",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "PBPX-95203"
   },
   {
     "title": "V-Rally 3",
@@ -108155,14 +103470,6 @@
     "publisher": "Sega",
     "genre": "Fighting",
     "serial": "SLPM-65270"
-  },
-  {
-    "title": "Virtua Fighter 4: Evolution [Greatest Hits]",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-20616"
   },
   {
     "title": "Virtua Fighter Cyber Generation: Judgment Six No Yabou",
@@ -109277,14 +104584,6 @@
     "publisher": "Sony",
     "genre": "RPG",
     "serial": "SCPS-55006"
-  },
-  {
-    "title": "Wild Arms: Advanced 3rd [Playstation 2 The Best Reprint]",
-    "year": null,
-    "developer": "Media Vision (Sony)",
-    "publisher": "Sony",
-    "genre": "RPG",
-    "serial": "SCPS-19323"
   },
   {
     "title": "Wild Arms: Alter Code F",
@@ -111050,14 +106349,6 @@
     "serial": "TCES-52389"
   },
   {
-    "title": "WRC 4: The Official Game of the FIA World Rally Championship (Ford Fiesta Sports Edition Demo)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52945"
-  },
-  {
     "title": "WRC 4: The Official Game of the FIA World Rally Championship [SE][DK][FI][NO]",
     "year": null,
     "developer": "Evolution Studios",
@@ -111115,30 +106406,6 @@
     "serial": "SLPM-65573"
   },
   {
-    "title": "WRC II Extreme: Peugeot Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51304"
-  },
-  {
-    "title": "WRC II Extreme: Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51305"
-  },
-  {
-    "title": "WRC II Extreme: Special Demo",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51632"
-  },
-  {
     "title": "WRC II: EXTREME",
     "year": null,
     "developer": null,
@@ -111185,14 +106452,6 @@
     "publisher": "Evolution Studios",
     "genre": "Racing",
     "serial": "SLUS-20419"
-  },
-  {
-    "title": "WRC: World Rally Championship: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Evolution Studios",
-    "publisher": "Spike",
-    "genre": "Racing",
-    "serial": "SLPM-74406"
   },
   {
     "title": "Wreckless: The Yakuza Missions",
@@ -111970,14 +107229,6 @@
     "publisher": "Namco",
     "genre": "RPG",
     "serial": "SLUS-20469"
-  },
-  {
-    "title": "Xenosaga Episode I: Der Wille zur Macht (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-30001"
   },
   {
     "title": "Xenosaga Episode II: Jenseits von Gut und Bose (Disc 1)",
@@ -113210,14 +108461,6 @@
     "publisher": "Banpresto",
     "genre": "Fighting",
     "serial": "SLPS-25499"
-  },
-  {
-    "title": "Yuu Yuu Hakusho Forever: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Matrix Software",
-    "publisher": "Banpresto",
-    "genre": "Fighting",
-    "serial": "SLPS-73239"
   },
   {
     "title": "Yuusei kara no Buttai X: Episode II",

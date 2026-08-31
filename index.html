@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Catálogo e sorteador de jogos de PlayStation 2."
+  >
+
+  <title>PS2 Randomizer</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+
+    <a class="brand" href="#">
+      PS2<span>RANDOMIZER</span>
+    </a>
+
+    <nav class="nav">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#minha-lista">Minha Lista</a>
+
+      <button id="randomOneTop" class="nav-button">
+        🎲 Sortear
+      </button>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          PLAYSTATION 2
+        </p>
+
+        <h1>
+          Encontre seu próximo jogo.
+        </h1>
+
+        <p class="hero-text">
+          Explore o catálogo, marque o que você já jogou
+          e deixe a sorte escolher sua próxima aventura.
+        </p>
+
+        <div class="hero-actions">
+
+          <button
+            id="randomFiveHero"
+            class="primary-button"
+          >
+            🎲 Sortear 5 jogos
+          </button>
+
+          <a
+            href="#catalogo"
+            class="secondary-button"
+          >
+            Ver catálogo
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATÁLOGO -->
+
+    <section
+      class="toolbar-section"
+      id="catalogo"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            CATÁLOGO
+          </p>
+
+          <h2>
+            Jogos de PS2
+          </h2>
+
+        </div>
+
+        <span
+          id="gameCount"
+          class="game-count"
+        ></span>
+
+      </div>
+
+
+      <!-- PESQUISA E FILTROS -->
+
+      <div class="toolbar">
+
+        <label
+          class="search-box"
+          aria-label="Pesquisar jogos"
+        >
+
+          <span>🔎</span>
+
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Pesquisar jogo..."
+            autocomplete="off"
+          >
+
+        </label>
+
+
+        <label class="filter-control">
+
+          <span>
+            Gênero
+          </span>
+
+          <select id="genreFilter">
+
+            <option value="all">
+              Todos
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label class="filter-control">
+
+          <span>
+            Status
+          </span>
+
+          <select id="statusFilter">
+
+            <option value="all">
+              Todos
+            </option>
+
+            <option value="played">
+              Já joguei
+            </option>
+
+            <option value="backlog">
+              Pretendo jogar
+            </option>
+
+            <option value="favorite">
+              Favoritos
+            </option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <!-- GRID DOS JOGOS -->
+
+      <div
+        id="gameGrid"
+        class="game-grid"
+        aria-live="polite"
+      ></div>
+
+
+      <!-- NENHUM RESULTADO -->
+
+      <div
+        id="emptyState"
+        class="empty-state hidden"
+      >
+
+        <div class="empty-icon">
+          🎮
+        </div>
+
+        <h3>
+          Nenhum jogo encontrado
+        </h3>
+
+        <p>
+          Tente outro termo de pesquisa
+          ou altere os filtros.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- MINHA LISTA -->
+
+    <section
+      class="my-list-section"
+      id="minha-lista"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <p class="eyebrow">
+            MINHA LISTA
+          </p>
+
+          <h2>
+            Seu progresso
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <article class="stat-card">
+
+          <strong id="playedCount">
+            0
+          </strong>
+
+          <span>
+            Já joguei
+          </span>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <strong id="backlogCount">
+            0
+          </strong>
+
+          <span>
+            Pretendo jogar
+          </span>
+
+        </article>
+
+
+        <article class="stat-card">
+
+          <strong id="favoriteCount">
+            0
+          </strong>
+
+          <span>
+            Favoritos
+          </span>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- MODAL DE INFORMAÇÕES DO JOGO -->
+
+  <div
+    id="gameModal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-close-modal
+    ></div>
+
+
+    <div class="modal-panel">
+
+      <button
+        class="close-button"
+        data-close-modal
+        aria-label="Fechar"
+      >
+        ✕
+      </button>
+
+
+      <div class="modal-content">
+
+        <div
+          id="modalCover"
+          class="modal-cover"
+        ></div>
+
+
+        <div class="modal-info">
+
+          <p
+            id="modalGenre"
+            class="eyebrow"
+          ></p>
+
+          <h2 id="modalTitle"></h2>
+
+          <p
+            id="modalMeta"
+            class="modal-meta"
+          ></p>
+
+          <p
+            id="modalDescription"
+            class="modal-description"
+          ></p>
+
+
+          <div class="action-row">
+
+            <button
+              id="togglePlayed"
+              class="action-button"
+            >
+              ☐ Já joguei
+            </button>
+
+            <button
+              id="toggleBacklog"
+              class="action-button"
+            >
+              ＋ Pretendo jogar
+            </button>
+
+            <button
+              id="toggleFavorite"
+              class="action-button"
+            >
+              ☆ Favorito
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MODAL DO SORTEIO -->
+
+  <div
+    id="randomModal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="randomTitle"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-close-random
+    ></div>
+
+
+    <div class="random-panel">
+
+      <button
+        class="close-button"
+        data-close-random
+        aria-label="Fechar"
+      >
+        ✕
+      </button>
+
+
+      <p class="eyebrow">
+        SORTEIO
+      </p>
+
+      <h2 id="randomTitle">
+        Seus jogos sorteados
+      </h2>
+
+
+      <div
+        id="randomResults"
+        class="random-results"
+      ></div>
+
+
+      <button
+        id="rerollButton"
+        class="primary-button full-width"
+      >
+        🎲 Sortear novamente
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <footer class="footer">
+
+    <p>
+      PS2 Randomizer · Projeto em desenvolvimento
+    </p>
+
+  </footer>
+
+
+  <script src="js/app.js"></script>
+
+</body>
+</html>

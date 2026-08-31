@@ -17,7 +17,7 @@ jobs:
       - name: Download GameDB-PS2
         run: |
           curl -L \
-            "https://raw.githubusercontent.com/niemasd/GameDB-PS2/master/PS2.data.json" \
+            "https://raw.githubusercontent.com/niemasd/GameDB-PS2/main/PS2.data.json" \
             -o PS2.data.json
 
       - name: Inspect database

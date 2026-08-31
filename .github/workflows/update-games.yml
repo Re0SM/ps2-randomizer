@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-                - name: Download GameDB-PS2
+      - name: Download GameDB-PS2
         run: |
           curl -L \
             "https://github.com/niemasd/GameDB-PS2/releases/latest/download/PS2.data.json" \

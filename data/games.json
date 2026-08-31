@@ -1,0 +1,98 @@
+[
+  {
+    "id": "black",
+    "title": "Black",
+    "year": 2006,
+    "developer": "Criterion Games",
+    "publisher": "Electronic Arts",
+    "genres": [
+      "Ação",
+      "FPS"
+    ],
+    "description": "Black é um jogo de tiro em primeira pessoa focado em combates intensos e destruição cinematográfica."
+  },
+  {
+    "id": "bully",
+    "title": "Bully",
+    "year": 2006,
+    "developer": "Rockstar Vancouver",
+    "publisher": "Rockstar Games",
+    "genres": [
+      "Ação",
+      "Aventura"
+    ],
+    "description": "Aventura de mundo aberto ambientada na Bullworth Academy, acompanhando o estudante Jimmy Hopkins."
+  },
+  {
+    "id": "god-hand",
+    "title": "God Hand",
+    "year": 2006,
+    "developer": "Clover Studio",
+    "publisher": "Capcom",
+    "genres": [
+      "Ação",
+      "Beat 'em up"
+    ],
+    "description": "Beat 'em up de ação conhecido pelo combate extremamente rápido, dificuldade elevada e humor absurdo."
+  },
+  {
+    "id": "gran-turismo-4",
+    "title": "Gran Turismo 4",
+    "year": 2004,
+    "developer": "Polyphony Digital",
+    "publisher": "Sony Computer Entertainment",
+    "genres": [
+      "Corrida",
+      "Simulação"
+    ],
+    "description": "Simulador de corrida com uma enorme variedade de carros, pistas e modos de jogo."
+  },
+  {
+    "id": "shadow-of-the-colossus",
+    "title": "Shadow of the Colossus",
+    "year": 2005,
+    "developer": "Team Ico",
+    "publisher": "Sony Computer Entertainment",
+    "genres": [
+      "Ação",
+      "Aventura"
+    ],
+    "description": "Aventura em que Wander atravessa uma terra proibida para enfrentar gigantescos colossos."
+  },
+  {
+    "id": "okami",
+    "title": "Okami",
+    "year": 2006,
+    "developer": "Clover Studio",
+    "publisher": "Capcom",
+    "genres": [
+      "Ação",
+      "Aventura"
+    ],
+    "description": "Aventura inspirada na mitologia japonesa em que a deusa Amaterasu assume a forma de um lobo branco."
+  },
+  {
+    "id": "silent-hill-2",
+    "title": "Silent Hill 2",
+    "year": 2001,
+    "developer": "Konami Computer Entertainment Tokyo",
+    "publisher": "Konami",
+    "genres": [
+      "Terror",
+      "Aventura"
+    ],
+    "description": "James Sunderland chega à misteriosa cidade de Silent Hill após receber uma carta de sua falecida esposa."
+  },
+  {
+    "id": "resident-evil-4",
+    "title": "Resident Evil 4",
+    "year": 2005,
+    "developer": "Capcom Production Studio 4",
+    "publisher": "Capcom",
+    "genres": [
+      "Ação",
+      "Terror"
+    ],
+    "description": "Leon S. Kennedy é enviado para uma região rural da Europa em uma missão para resgatar a filha do presidente."
+  }
+]

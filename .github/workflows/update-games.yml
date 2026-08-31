@@ -25,50 +25,154 @@ jobs:
           python3 - <<'PY'
           import json
           import os
+          import re
 
           with open("PS2.data.json", "r", encoding="utf-8") as f:
               data = json.load(f)
 
-          games = []
-
           if isinstance(data, dict):
-              entries = data.values()
+              entries = list(data.values())
           elif isinstance(data, list):
               entries = data
           else:
               raise ValueError("Formato inesperado da base")
 
+          remove_patterns = [
+              r"\bdemo\b",
+              r"\bdemo disc\b",
+              r"\bpromotional\b",
+              r"\bpromo\b",
+              r"\bsample disc\b",
+              r"\btrial\b",
+              r"\butility\b",
+              r"\bsystem\b",
+              r"\baction replay\b",
+              r"\bgameshark\b",
+              r"\bdvd\b",
+              r"\bbrowser\b",
+              r"\binstallation disc\b",
+              r"\bplaystation 2 the best\b",
+              r"\bps2 the best\b",
+              r"\bgreatest hits\b",
+              r"\bplatinum\b",
+              r"\bclassics\b"
+          ]
+
+          games = []
+          review = []
+          seen = set()
+
+          def get_value(game, *names):
+              for name in names:
+                  value = game.get(name)
+                  if value is not None and value != "":
+                      return value
+              return None
+
+          def should_remove(title):
+              normalized = title.lower()
+
+              for pattern in remove_patterns:
+                  if re.search(pattern, normalized):
+                      return True
+
+              return False
+
           for game in entries:
               if not isinstance(game, dict):
                   continue
 
-              title = (
-                  game.get("title")
-                  or game.get("name")
-                  or game.get("Title")
-                  or game.get("Name")
+              title = get_value(
+                  game,
+                  "title",
+                  "name",
+                  "Title",
+                  "Name"
+              )
+
+              serial = get_value(
+                  game,
+                  "serial",
+                  "Serial"
               )
 
               if not title:
                   continue
 
-              games.append({
+              record = {
                   "title": title,
-                  "year": game.get("year"),
-                  "developer": game.get("developer"),
-                  "publisher": game.get("publisher"),
-                  "genre": game.get("genre"),
-                  "serial": game.get("serial")
-              })
+                  "year": get_value(
+                      game,
+                      "year",
+                      "release_year",
+                      "releaseYear"
+                  ),
+                  "developer": get_value(
+                      game,
+                      "developer",
+                      "Developer"
+                  ),
+                  "publisher": get_value(
+                      game,
+                      "publisher",
+                      "Publisher"
+                  ),
+                  "genre": get_value(
+                      game,
+                      "genre",
+                      "genres",
+                      "Genre"
+                  ),
+                  "serial": serial
+              }
 
-          games.sort(key=lambda x: x["title"].lower())
+              if should_remove(title):
+                  review.append(record)
+                  continue
+
+              key = serial or title.strip().lower()
+
+              if key in seen:
+                  continue
+
+              seen.add(key)
+              games.append(record)
+
+          games.sort(
+              key=lambda x: x["title"].lower()
+          )
 
           os.makedirs("data", exist_ok=True)
 
-          with open("data/games.json", "w", encoding="utf-8") as f:
-              json.dump(games, f, ensure_ascii=False, indent=2)
+          with open(
+              "data/games.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  games,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
 
-          print(f"Jogos encontrados: {len(games)}")
+          with open(
+              "data/games-review.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  review,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+
+          print("================================")
+          print(f"Entradas originais: {len(entries)}")
+          print(f"Entradas removidas: {len(review)}")
+          print(f"Jogos no catálogo: {len(games)}")
+          print("================================")
           PY
 
       - name: Save games.json
@@ -76,7 +180,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/games.json
+          git add data/games.json data/games-review.json
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração no catálogo."

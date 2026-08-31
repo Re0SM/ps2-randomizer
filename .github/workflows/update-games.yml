@@ -26,22 +26,15 @@ jobs:
           ls -lh PS2.data.json
           head -c 500 PS2.data.json
 
-      - name: Process database
+            - name: Inspect database
         run: |
-          python3 - <<'PY'
-          import json
+          echo "===== PRIMEIRAS 30 LINHAS ====="
+          head -n 30 PS2.data.json
 
-          with open("PS2.data.json", "r", encoding="utf-8") as f:
-              data = json.load(f)
+          echo ""
+          echo "===== TAMANHO ====="
+          wc -c PS2.data.json
 
-          print("Tipo da base:", type(data).__name__)
-
-          if isinstance(data, dict):
-              print("Chaves principais:")
-              for key in list(data.keys())[:20]:
-                  print(" -", key)
-
-          elif isinstance(data, list):
-              print("Quantidade de entradas:", len(data))
-
-          PY
+          echo ""
+          echo "===== TIPO ====="
+          file PS2.data.json

@@ -20,15 +20,67 @@ jobs:
             "https://github.com/niemasd/GameDB-PS2/releases/latest/download/PS2.data.json" \
             -o PS2.data.json
 
-      - name: Inspect database
+      - name: Generate games.json
         run: |
-          echo "===== PRIMEIRAS 30 LINHAS ====="
-          head -n 30 PS2.data.json
+          python3 - <<'PY'
+          import json
+          import os
 
-          echo ""
-          echo "===== TAMANHO ====="
-          wc -c PS2.data.json
+          with open("PS2.data.json", "r", encoding="utf-8") as f:
+              data = json.load(f)
 
-          echo ""
-          echo "===== TIPO ====="
-          file PS2.data.json
+          games = []
+
+          if isinstance(data, dict):
+              entries = data.values()
+          elif isinstance(data, list):
+              entries = data
+          else:
+              raise ValueError("Formato inesperado da base")
+
+          for game in entries:
+              if not isinstance(game, dict):
+                  continue
+
+              title = (
+                  game.get("title")
+                  or game.get("name")
+                  or game.get("Title")
+                  or game.get("Name")
+              )
+
+              if not title:
+                  continue
+
+              games.append({
+                  "title": title,
+                  "year": game.get("year"),
+                  "developer": game.get("developer"),
+                  "publisher": game.get("publisher"),
+                  "genre": game.get("genre"),
+                  "serial": game.get("serial")
+              })
+
+          games.sort(key=lambda x: x["title"].lower())
+
+          os.makedirs("data", exist_ok=True)
+
+          with open("data/games.json", "w", encoding="utf-8") as f:
+              json.dump(games, f, ensure_ascii=False, indent=2)
+
+          print(f"Jogos encontrados: {len(games)}")
+          PY
+
+      - name: Save games.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/games.json
+
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração no catálogo."
+          else
+            git commit -m "Update PS2 games catalog"
+            git push
+          fi

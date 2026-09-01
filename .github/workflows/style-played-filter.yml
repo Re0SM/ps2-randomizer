@@ -1,0 +1,44 @@
+name: Style played-games randomizer filter
+
+on:
+  push:
+    paths:
+      - '.github/workflows/style-played-filter.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  style-filter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add checkbox styling
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('css/style.css')
+          css = path.read_text(encoding='utf-8')
+
+          marker = '/* =========================\n   FILTRO DE JOGOS JÁ JOGADOS\n========================= */'
+
+          if marker not in css:
+              css += '''\n\n\n/* =========================\n   FILTRO DE JOGOS JÁ JOGADOS\n========================= */\n\n.random-option-checkbox {\n\n  position: relative;\n\n  display: flex;\n\n  align-items: center;\n\n  justify-content: space-between;\n\n  gap: 14px;\n\n  min-height: 48px;\n\n  padding: 0 14px;\n\n  cursor: pointer;\n\n  user-select: none;\n\n}\n\n\n.random-option-checkbox:hover {\n\n  border-color: rgba(88, 180, 255, 0.28);\n\n  background: rgba(35, 134, 209, 0.06);\n\n}\n\n\n.random-option-checkbox:focus-within {\n\n  border-color: rgba(88, 180, 255, 0.45);\n\n  box-shadow: 0 0 0 3px rgba(35, 134, 209, 0.08);\n\n}\n\n\n.random-option-label {\n\n  color: #d9e7f5;\n\n  font-size: 0.88rem;\n\n  font-weight: 700;\n\n  line-height: 1.35;\n\n}\n\n\n.random-option-checkbox input {\n\n  appearance: none;\n\n  -webkit-appearance: none;\n\n  flex: 0 0 auto;\n\n  width: 20px;\n\n  height: 20px;\n\n  margin: 0;\n\n  border: 1px solid rgba(120, 180, 230, 0.35);\n\n  border-radius: 5px;\n\n  background: #0a111b;\n\n  cursor: pointer;\n\n  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;\n\n}\n\n\n.random-option-checkbox input:hover {\n\n  border-color: rgba(88, 180, 255, 0.65);\n\n}\n\n\n.random-option-checkbox input:checked {\n\n  background: var(--accent);\n\n  border-color: var(--accent-light);\n\n  box-shadow: 0 0 0 3px rgba(35, 134, 209, 0.12);\n\n}\n\n\n.random-option-checkbox input:checked::after {\n\n  content: "✓";\n\n  display: block;\n\n  color: white;\n\n  font-size: 0.78rem;\n\n  font-weight: 900;\n\n  line-height: 18px;\n\n  text-align: center;\n\n}\n\n\n.random-option-checkbox input:focus-visible {\n\n  outline: 2px solid var(--accent-light);\n\n  outline-offset: 2px;\n\n}\n'''
+              path.write_text(css, encoding='utf-8')
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add css/style.css
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+          git commit -m "Style played-games filter"
+          git push

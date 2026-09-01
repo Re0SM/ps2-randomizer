@@ -240,64 +240,12 @@
     "serial": "PDPX-99109"
   },
   {
-    "title": "Time Crisis II (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-10004"
-  },
-  {
-    "title": "Minna no Golf 4: Everybody's Golf [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Clap Hanz",
-    "publisher": "Sony",
-    "genre": "Golf.",
-    "serial": "SCAJ-20094"
-  },
-  {
-    "title": "Ace Combat 5: The Unsung War [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Project Aces",
-    "publisher": "Sony",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Simulation."
-    ],
-    "serial": "SCAJ-20136"
-  },
-  {
     "title": "Final Fantasy XII International: Zodiac Job System",
     "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
     "genre": "RPG",
     "serial": "SCAJ-20188"
-  },
-  {
-    "title": "Tekken 5 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-20199"
-  },
-  {
-    "title": "Super Robot Taisen Original Generations (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-20200"
-  },
-  {
-    "title": "Xenosaga Episode I: Der Wille zur Macht (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCAJ-30001"
   },
   {
     "title": "Official PlayStation 2 Magazine Demo 1",
@@ -450,38 +398,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-50154"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 1: Special Edition: Buyers Guide",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50161"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 2: Special Edition: A-Z of PS2",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50162"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 3: Special Edition: Players Guide",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50163"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 4: Special Edition: Yearbook 2001",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50164"
   },
   {
     "title": "Official PlayStation 2 Magazine Demo 8",
@@ -748,38 +664,6 @@
     "serial": "SCED-50761"
   },
   {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 6: Special Edition: Awards 2002",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50783"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 5: Special Edition: Action Heroes",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50784"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 7: Special Edition: Sports Games",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50785"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 8: Special Edition: Racing Games",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-50786"
-  },
-  {
     "title": "Selector Demo 01",
     "year": null,
     "developer": null,
@@ -898,14 +782,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-51279"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Greatest Hits Volume 9: Special Edition: Buyers Guide",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-51280"
   },
   {
     "title": "WRC II Extreme: Peugeot Special Demo",
@@ -1668,14 +1544,6 @@
     "serial": "SCED-52177"
   },
   {
-    "title": "Magazine Ufficiale PlayStation 2 Platinum Speciale 2003",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52183"
-  },
-  {
     "title": "Official PlayStation 2 Magazine Demo 41",
     "year": null,
     "developer": null,
@@ -1690,14 +1558,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-52186"
-  },
-  {
-    "title": "Official PlayStation 2 Magazine-UK Special Edition 19: 2004 Classics Hitlist",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-52194"
   },
   {
     "title": "Official PlayStation 2 Magazine Demo 42",
@@ -1906,14 +1766,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-53018"
-  },
-  {
-    "title": "Magazine Ufficiale PlayStation 2 Speciale Platinum Italia",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53043"
   },
   {
     "title": "Official PlayStation 2 Magazine Demo 54",
@@ -2386,14 +2238,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCED-53939"
-  },
-  {
-    "title": "Ufficiale PlayStation 2 Special Platinum 2006",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-53946"
   },
   {
     "title": "Magazine Ufficiale PlayStation 2 Italia Demo Speciale Horror",
@@ -2900,14 +2744,6 @@
     "serial": "SCED-54642"
   },
   {
-    "title": "Ufficiale PlayStation 2 Speciale Platinum 2007",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCED-54682"
-  },
-  {
     "title": "Official PlayStation 2 Magazine Demo 83",
     "year": null,
     "developer": null,
@@ -3004,22 +2840,6 @@
     "serial": "SCES-51407"
   },
   {
-    "title": "God of War: Platinum",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Action",
-    "serial": "SCES-53113"
-  },
-  {
-    "title": "SingStar Italian Greatest Hits",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCES-55059"
-  },
-  {
     "title": "Final Fantasy XII International: Zodiac Job System [Ultimate Hits]",
     "year": null,
     "developer": "S-Force",
@@ -3050,98 +2870,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SCPS-15081"
-  },
-  {
-    "title": "Extermination (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-19002"
-  },
-  {
-    "title": "Gran Turismo Concept 2001 Tokyo Collection: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Poliphany Digital Inc.",
-    "publisher": "Sony Computer Entertainment Inc. (Japan)",
-    "genre": "Racing",
-    "serial": "SCPS-19208"
-  },
-  {
-    "title": "Jak x Daxter: Kyuusekai no Isan [PlayStation 2 the Best Series]",
-    "year": null,
-    "developer": "Naughty Dog",
-    "publisher": "Sony",
-    "genre": [
-      "Action",
-      "Adventure",
-      "Platform."
-    ],
-    "serial": "SCPS-19210"
-  },
-  {
-    "title": "Toro to Kyuujitsu (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-19212"
-  },
-  {
-    "title": "Operator's Side [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Sony Computer Entertainment Inc",
-    "publisher": "SCEI",
-    "genre": "Action.",
-    "serial": "SCPS-19214"
-  },
-  {
-    "title": "Minna no Tennis: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Clap Hanz",
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Sports",
-    "serial": "SCPS-19302"
-  },
-  {
-    "title": "Ratchet & Clank: PlayStation 2 the Best (SCPS-19310)",
-    "year": null,
-    "developer": "Insomniac Games",
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Platformer",
-    "serial": "SCPS-19310"
-  },
-  {
-    "title": "EyeToy: Play (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCPS-19315"
-  },
-  {
-    "title": "Wild Arms: Advanced 3rd [Playstation 2 The Best Reprint]",
-    "year": null,
-    "developer": "Media Vision (Sony)",
-    "publisher": "Sony",
-    "genre": "RPG",
-    "serial": "SCPS-19323"
-  },
-  {
-    "title": "Saru Get You: Million Monkeys: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Japan Studio",
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Platformer",
-    "serial": "SCPS-19325"
-  },
-  {
-    "title": "Toro to Kyuujitsu: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Sony Computer Entertainment Inc.",
-    "genre": "Adventure",
-    "serial": "SCPS-19334"
   },
   {
     "title": "Demo Disc Version 2.1",
@@ -3768,30 +3496,6 @@
     "serial": "SCUS-97494"
   },
   {
-    "title": "Ratchet & Clank: Going Commando (Greatest Hits)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97513"
-  },
-  {
-    "title": "ATV Offroad Fury 3: Greatest Hits (SCUS-97514)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97514"
-  },
-  {
-    "title": "Jak 3 (Greatest Hits)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SCUS-97516"
-  },
-  {
     "title": "Holiday 2005 Demo Disc",
     "year": null,
     "developer": null,
@@ -3904,30 +3608,6 @@
     "serial": "SCUS-97565"
   },
   {
-    "title": "Sly 3: Honor Among Thieves: Greatest Hits",
-    "year": null,
-    "developer": "Sucker Punch Productions",
-    "publisher": "Sony Computer Entertainment America",
-    "genre": "Action",
-    "serial": "SCUS-97576"
-  },
-  {
-    "title": "Shadow of the Colossus: Greatest Hits",
-    "year": null,
-    "developer": "Team Ico",
-    "publisher": "Sony Computer Entertainment",
-    "genre": "Action-Adventure",
-    "serial": "SCUS-97578"
-  },
-  {
-    "title": "Shin Sangoku Musou 4 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLAJ-25092"
-  },
-  {
     "title": "Metal Gear Solid 2: Sons of Liberty: Trial Edition",
     "year": null,
     "developer": null,
@@ -3968,173 +3648,12 @@
     "serial": "SLED-53951"
   },
   {
-    "title": "Tony Hawk's Pro Skater 3: Platinum",
-    "year": null,
-    "developer": "Neversoft",
-    "publisher": "Activision",
-    "genre": "Sports",
-    "serial": "SLES-50432"
-  },
-  {
-    "title": "State of Emergency [Platinum]",
-    "year": null,
-    "developer": "VIS entertainment plc",
-    "publisher": "Rockstar Games",
-    "genre": [
-      "Action",
-      "Beat'em Up."
-    ],
-    "serial": "SLES-51046"
-  },
-  {
     "title": "Metal Arms: Glitch in the System",
     "year": null,
     "developer": "Swingin' Ape Studios",
     "publisher": "Sierra Entertainment",
     "genre": "Third-person Shooter",
     "serial": "SLES-51758"
-  },
-  {
-    "title": "Signore degli Anelli, il: La terza Era: Platinum",
-    "year": null,
-    "developer": "Electronic Arts",
-    "publisher": "Electronic Arts",
-    "genre": "RPG",
-    "serial": "SLES-52084"
-  },
-  {
-    "title": "Retro Classics: 8 Arcade Classics from Yesteryears",
-    "year": null,
-    "developer": "Aqua Pacific",
-    "publisher": "Phoenix Games",
-    "genre": "Arcade",
-    "serial": "SLES-52346"
-  },
-  {
-    "title": "Burnout 3: Takedown: Platinum (Most Wanted)",
-    "year": null,
-    "developer": "Criterion Games",
-    "publisher": "Electronic Arts",
-    "genre": "Racing",
-    "serial": "SLES-52585"
-  },
-  {
-    "title": "Arcade Classics Volume 1",
-    "year": null,
-    "developer": "Lucky Chicken",
-    "publisher": "Play It!",
-    "genre": "Other",
-    "serial": "SLES-52902"
-  },
-  {
-    "title": "Burnout 2: Point of Impact: Platinum (Electronic Arts)",
-    "year": null,
-    "developer": "Criterion Games",
-    "publisher": "Electronic Arts",
-    "genre": "Racing",
-    "serial": "SLES-52968"
-  },
-  {
-    "title": "Jak X: Platinum [IT]",
-    "year": null,
-    "developer": "Naughty Dog",
-    "publisher": "Sony Computer Entertainment Europe",
-    "genre": "Racing",
-    "serial": "SLES-53286"
-  },
-  {
-    "title": "SoulCalibur III: Platinum [SE][DK][FI][NO]",
-    "year": null,
-    "developer": "Namco",
-    "publisher": "Namco",
-    "genre": "Fighting",
-    "serial": "SLES-53312"
-  },
-  {
-    "title": "Tourist Trophy: Platinum",
-    "year": null,
-    "developer": "Polyphony Digital",
-    "publisher": "Sony Computer Entertainment Europe",
-    "genre": "Racing",
-    "serial": "SLES-53372"
-  },
-  {
-    "title": "Sega Classics Collection",
-    "year": null,
-    "developer": "Sega of Japan",
-    "publisher": "Sega",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Driving",
-      "Puzzle",
-      "Racing."
-    ],
-    "serial": "SLES-53461"
-  },
-  {
-    "title": "Star Wars Battlefront II: Platinum",
-    "year": null,
-    "developer": "Pandemic Studios",
-    "publisher": "LucasArts Entertainment Company",
-    "genre": "First-person Shooter",
-    "serial": "SLES-53501"
-  },
-  {
-    "title": "Capcom Classics Collection",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": "Action",
-    "serial": "SLES-53661"
-  },
-  {
-    "title": "Gottlieb Pinball Classics",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Pinball",
-    "serial": "SLES-54181"
-  },
-  {
-    "title": "Capcom Classics Collection Vol. 2",
-    "year": null,
-    "developer": "Backbone Entertainment",
-    "publisher": "CE Europe Ltd.",
-    "genre": "Arcade",
-    "serial": "SLES-54561"
-  },
-  {
-    "title": "SNK Arcade Classics Vol. 1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLES-55232"
-  },
-  {
-    "title": "Guitar Hero: Greatest Hits",
-    "year": null,
-    "developer": "Beenox",
-    "publisher": "Activision Publishing, Inc.",
-    "genre": "Rhythm",
-    "serial": "SLES-55544"
-  },
-  {
-    "title": "Canis Canem Edit: Platinum",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Action",
-    "serial": "SLEX-53561"
-  },
-  {
-    "title": "SNK Arcade Classics Vol.1",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLKA-25424"
   },
   {
     "title": "Final Fantasy XII International: Zodiac Job System",
@@ -4196,254 +3715,12 @@
     "serial": "SLPM-65023"
   },
   {
-    "title": "Capcom Classics Collection",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Arcade",
-    "serial": "SLPM-66317"
-  },
-  {
     "title": "Final Fantasy XII International: Zodiac Job System",
     "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
     "genre": "RPG",
     "serial": "SLPM-66750"
-  },
-  {
-    "title": "Capcom Classics Collection",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-66852"
-  },
-  {
-    "title": "Pilot Nina Rou! 2 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73001"
-  },
-  {
-    "title": "Pilot Nina Rou! 2 (Playstation 2 The Best Reprint)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73106"
-  },
-  {
-    "title": "Shadow Hearts II: Director's Cut [PlayStation 2 the Best] (Disc 1)",
-    "year": null,
-    "developer": "Aruze Corp",
-    "publisher": "Aruze Corp",
-    "genre": "RPG.",
-    "serial": "SLPM-73214"
-  },
-  {
-    "title": "Shadow Hearts II: Director's Cut [PlayStation 2 the Best] (Disc 2)",
-    "year": null,
-    "developer": "Aruze Corp",
-    "publisher": "Aruze Corp",
-    "genre": "RPG.",
-    "serial": "SLPM-73215"
-  },
-  {
-    "title": "Kidou Senshi Z Gundam: AEUG Vs. Titans (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73234"
-  },
-  {
-    "title": "Namco x Capcom: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Monolith Soft",
-    "publisher": "Namco",
-    "genre": "Strategy",
-    "serial": "SLPM-73243"
-  },
-  {
-    "title": "Super Robot Taisen Original Generations (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73262"
-  },
-  {
-    "title": "Shutokou Battle 0 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-73402"
-  },
-  {
-    "title": "Monster Farm 4: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Tecmo",
-    "publisher": "Tecmo",
-    "genre": "Simulation",
-    "serial": "SLPM-73423"
-  },
-  {
-    "title": "Busin: Wizardry Alternative (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-74007"
-  },
-  {
-    "title": "Momotarou Dentetsu USA: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Hudson",
-    "genre": "Party",
-    "serial": "SLPM-74103"
-  },
-  {
-    "title": "BioHazard: Outbreak [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Survival Horror."
-    ],
-    "serial": "SLPM-74201"
-  },
-  {
-    "title": "Shutokou Battle 01: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Genki",
-    "publisher": "Genki Co. Ltd.",
-    "genre": "Racing",
-    "serial": "SLPM-74204"
-  },
-  {
-    "title": "Onimusha [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Adventure",
-      "Beat'em Up"
-    ],
-    "serial": "SLPM-74206"
-  },
-  {
-    "title": "Tengai Makyou II: Manji Maru: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "RPG",
-    "serial": "SLPM-74208"
-  },
-  {
-    "title": "Samurai Kanzenban [PlayStation 2 the Best Reprint]",
-    "year": null,
-    "developer": "Acquire Corp",
-    "publisher": "Spike",
-    "genre": [
-      "Action",
-      "Adventure."
-    ],
-    "serial": "SLPM-74222"
-  },
-  {
-    "title": "Devil May Cry [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Capcom Co., Ltd",
-    "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Survival Horror"
-    ],
-    "serial": "SLPM-74230"
-  },
-  {
-    "title": "Tengai Makyou III: Namida: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "RPG",
-    "serial": "SLPM-74240"
-  },
-  {
-    "title": "Sengoku Musou 2: PlayStation 2 the Best (SLPM-74247)",
-    "year": null,
-    "developer": "Omega Force",
-    "publisher": "Koei",
-    "genre": "Action",
-    "serial": "SLPM-74247"
-  },
-  {
-    "title": "Sengoku Musou 2: PlayStation 2 the Best (SLPM-74280)",
-    "year": null,
-    "developer": "Omega Force",
-    "publisher": "Koei",
-    "genre": "Action",
-    "serial": "SLPM-74280"
-  },
-  {
-    "title": "Musou Orochi (Playstation 2 The Best Reprint)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPM-74285"
-  },
-  {
-    "title": "Ryu ga Gotoku 2: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Action-Adventure",
-    "serial": "SLPM-74302"
-  },
-  {
-    "title": "WRC: World Rally Championship: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Evolution Studios",
-    "publisher": "Spike",
-    "genre": "Racing",
-    "serial": "SLPM-74406"
-  },
-  {
-    "title": "Bakusou Dekotora Densetsu: Otoko Hanamichi Yume Roman [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Dual",
-    "publisher": "Spike",
-    "genre": [
-      "Driving",
-      "Racing."
-    ],
-    "serial": "SLPM-74419"
-  },
-  {
-    "title": "Cyber Troopers: Virtual-On Marz [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Hitmaker Co., Ltd",
-    "publisher": "Sega",
-    "genre": "Action.",
-    "serial": "SLPM-74421"
-  },
-  {
-    "title": "Gundam Musou 2: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Omega Force",
-    "publisher": "Bandai Namco Games",
-    "genre": null,
-    "serial": "SLPM-75276"
   },
   {
     "title": "Football Kingdom: Trial Edition",
@@ -4454,232 +3731,12 @@
     "serial": "SLPS-20374"
   },
   {
-    "title": ".Hack Akunshou Heni Vol.2 (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-72231"
-  },
-  {
-    "title": "Time Crisis II: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Light Gun Shooter",
-    "serial": "SLPS-73006"
-  },
-  {
-    "title": "Taiko no Tatsujin: Appare Sandaime (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-73110"
-  },
-  {
-    "title": "Armored Core: Nexus: PlayStation 2 the Best (Disc 1)",
-    "year": null,
-    "developer": "FromSoftware",
-    "publisher": "FromSoftware",
-    "genre": "Third-person Shooter",
-    "serial": "SLPS-73202"
-  },
-  {
-    "title": "Armored Core: Nexus: PlayStation 2 the Best (Disc 2)",
-    "year": null,
-    "developer": "FromSoftware",
-    "publisher": "FromSoftware",
-    "genre": "Third-person Shooter",
-    "serial": "SLPS-73203"
-  },
-  {
-    "title": "Kidou Senshi Z Gundam: AEUG vs. Titans: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Capcom",
-    "publisher": "Bandai",
-    "genre": null,
-    "serial": "SLPS-73234"
-  },
-  {
-    "title": "Dai-3-Ji Super Robot Taisen Alpha: Shuuen no Ginga e: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Banpresto",
-    "publisher": "Banpresto",
-    "genre": "Strategy",
-    "serial": "SLPS-73238"
-  },
-  {
-    "title": "Yuu Yuu Hakusho Forever: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Matrix Software",
-    "publisher": "Banpresto",
-    "genre": "Fighting",
-    "serial": "SLPS-73239"
-  },
-  {
-    "title": "Namco X Capcom [PlayStation 2 the Best]",
-    "year": null,
-    "developer": "Monolith Soft",
-    "publisher": "Namco",
-    "genre": [
-      "Action",
-      "Tactical RPG."
-    ],
-    "serial": "SLPS-73243"
-  },
-  {
-    "title": "Super Robot Taisen OG: Original Generations: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Bandai Namco Games",
-    "genre": "Strategy",
-    "serial": "SLPS-73262"
-  },
-  {
-    "title": "Kidou Senshi Gundam: Ghiren no Yabou: Axis no Kyoui V: PlayStation 2 the Best",
-    "year": null,
-    "developer": "Bec",
-    "publisher": "Bandai Namco Games",
-    "genre": "Strategy",
-    "serial": "SLPS-73268"
-  },
-  {
-    "title": "Kidou Senshi Gundam SEED Destiny: Rengou vs. Z.A.F.T. II Plus: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-73269"
-  },
-  {
-    "title": "Super Robot Taisen Z: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": "Bandai Namco Games",
-    "genre": "Strategy",
-    "serial": "SLPS-73270"
-  },
-  {
-    "title": "Armored Core 2: PlayStation 2 the Best",
-    "year": null,
-    "developer": "FromSoftware",
-    "publisher": "FromSoftware",
-    "genre": "Third-person Shooter",
-    "serial": "SLPS-73403"
-  },
-  {
-    "title": "Tekken 4: PlayStation 2 the Best (SLPS-73414)",
-    "year": null,
-    "developer": "Namco",
-    "publisher": "Namco",
-    "genre": "Fighting",
-    "serial": "SLPS-73414"
-  },
-  {
-    "title": "Bomberman Land 2: Game Shijou Saidai no Theme Park (Playstation 2 The Best)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLPS-74101"
-  },
-  {
-    "title": "Ultraman: PlayStation 2 the Best",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": "Fighting",
-    "serial": "SLSP-73220"
-  },
-  {
-    "title": "Virtua Fighter 4: Evolution [Greatest Hits]",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-20616"
-  },
-  {
     "title": "Metal Arms: Glitch in the System",
     "year": null,
     "developer": "Swingin' Ape Studios",
     "publisher": "Sierra",
     "genre": "Third-person Shooter",
     "serial": "SLUS-20786"
-  },
-  {
-    "title": "Sega Classics Collection",
-    "year": null,
-    "developer": "Sega of Japan",
-    "publisher": "Sega",
-    "genre": [
-      "Action",
-      "Shooter",
-      "Driving",
-      "Puzzle",
-      "Racing."
-    ],
-    "serial": "SLUS-21009"
-  },
-  {
-    "title": "Disney's Pixar: Monsters, Inc.: Scare Island [Disney / Pixar Classics]",
-    "year": null,
-    "developer": "Artificial Mind and Movement (A2M)",
-    "publisher": "Sony Computer Entertaiment America",
-    "genre": [
-      "Action",
-      "Platformer"
-    ],
-    "serial": "SLUS-21052"
-  },
-  {
-    "title": "Disney's Treasure Planet (Classics)",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-21054"
-  },
-  {
-    "title": "Namco Museum -50th Anniversary Greatest Hits",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-21164"
-  },
-  {
-    "title": "Capcom Classics Collection Vol. 1",
-    "year": null,
-    "developer": "Digital Eclipse Software, Inc.",
-    "publisher": "Capcom",
-    "genre": "Arcade",
-    "serial": "SLUS-21316"
-  },
-  {
-    "title": "Midnight Club 3: DUB Edition Remix Greatest Hits",
-    "year": null,
-    "developer": null,
-    "publisher": null,
-    "genre": null,
-    "serial": "SLUS-21355"
-  },
-  {
-    "title": "Capcom Classics Collection Vol. 2",
-    "year": null,
-    "developer": "Digital Eclipse Software, Inc.",
-    "publisher": "Capcom",
-    "genre": "Arcade",
-    "serial": "SLUS-21473"
-  },
-  {
-    "title": "SNK Arcade Classics Vol. 1",
-    "year": null,
-    "developer": "SNK Playmore",
-    "publisher": "SNK Playmore",
-    "genre": "Other",
-    "serial": "SLUS-21724"
   },
   {
     "title": "Metal Gear Solid 2: Sons of Liberty: Trial Edition",
@@ -4728,22 +3785,6 @@
     "publisher": null,
     "genre": null,
     "serial": "SLUS-29167"
-  },
-  {
-    "title": "Jak and Daxter: The Precursor Legacy: Greatest Hits",
-    "year": null,
-    "developer": "Naughty Dog",
-    "publisher": "Sony Computer Entertainment America",
-    "genre": "Platformer",
-    "serial": "SLUS-97124"
-  },
-  {
-    "title": "Densha de Go! Shinkansen: Sanyou Shinkansen-hen [PlayStation 2 the Best with Controller]",
-    "year": null,
-    "developer": "Taito",
-    "publisher": "Taito",
-    "genre": "Simulation.",
-    "serial": "TCPS-10058"
   },
   {
     "title": "Ice Age 2: The Meltdown (with DVD)",

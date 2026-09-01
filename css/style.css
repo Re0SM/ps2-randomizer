@@ -132,7 +132,6 @@ a {
 
 
 .nav a:hover {
-
   color: white;
 }
 
@@ -142,7 +141,6 @@ a {
 ========================= */
 
 .language-selector {
-
   position: relative;
 }
 
@@ -170,10 +168,6 @@ a {
   font-weight: 800;
 
   cursor: pointer;
-
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease;
 }
 
 
@@ -217,7 +211,6 @@ a {
 
 
 .language-menu.hidden {
-
   display: none;
 }
 
@@ -380,7 +373,6 @@ a {
 
 
 .hero-content {
-
   max-width: 650px;
 }
 
@@ -476,14 +468,6 @@ a {
 }
 
 
-.game-count {
-
-  color: var(--muted);
-
-  font-size: 0.9rem;
-}
-
-
 /* =========================
    PESQUISA / FILTROS
 ========================= */
@@ -494,7 +478,6 @@ a {
 
   grid-template-columns:
     minmax(220px, 1fr)
-    180px
     180px;
 
   gap: 12px;
@@ -552,7 +535,6 @@ a {
 
 
 .search-box input::placeholder {
-
   color: #6e8196;
 }
 
@@ -584,7 +566,6 @@ a {
 
 
 .filter-control select option {
-
   color: #111;
 }
 
@@ -759,7 +740,6 @@ a {
 
 
 .empty-state.hidden {
-
   display: none;
 }
 
@@ -781,46 +761,185 @@ a {
 
 
 /* =========================
-   MINHA LISTA
+   MINHA LISTA / PERFIL
 ========================= */
 
-.stats-grid {
+.profile-lists {
 
   display: grid;
 
-  grid-template-columns:
-    repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
-  gap: 14px;
+  gap: 18px;
 }
 
 
-.stat-card {
+.profile-list-card {
 
-  padding: 22px;
+  min-width: 0;
+
+  padding: 20px;
 
   background: var(--surface);
 
   border:
     1px solid var(--border);
 
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 
-.stat-card strong {
+.profile-list-header {
 
-  display: block;
+  display: flex;
 
-  font-size: 2rem;
+  align-items: flex-start;
 
-  margin-bottom: 8px;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
 }
 
 
-.stat-card span {
+.profile-list-label {
+
+  margin: 0 0 5px;
+
+  color: #7194b3;
+
+  font-size: 0.68rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+
+.profile-list-header h3 {
+
+  margin: 0;
+
+  font-size: 1rem;
 
   color: var(--muted);
+
+  font-weight: 600;
+}
+
+
+.profile-list-header h3 span {
+
+  color: var(--text);
+
+  font-size: 1.4rem;
+
+  font-weight: 900;
+}
+
+
+.profile-list-icon {
+
+  display: grid;
+
+  place-items: center;
+
+  width: 34px;
+
+  height: 34px;
+
+  border-radius: 8px;
+
+  background: #16283a;
+
+  color: var(--accent-light);
+
+  font-weight: 900;
+}
+
+
+.profile-game-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+.profile-game {
+
+  min-width: 0;
+
+  cursor: pointer;
+}
+
+
+.profile-game-cover {
+
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 2 / 3;
+
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1b2a3a,
+      #0c1118
+    );
+}
+
+
+.profile-game-cover img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+.profile-game-title {
+
+  margin: 6px 1px 0;
+
+  overflow: hidden;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
+  font-size: 0.74rem;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+}
+
+
+.profile-empty {
+
+  padding: 25px 8px;
+
+  color: #65798e;
+
+  text-align: center;
+
+  font-size: 0.78rem;
+
+  line-height: 1.5;
 }
 
 
@@ -864,7 +983,6 @@ a {
 
 
 .modal.hidden {
-
   display: none;
 }
 
@@ -946,13 +1064,11 @@ a {
 
 
 .modal-cover .cover-placeholder {
-
   font-size: 1rem;
 }
 
 
 .modal-info {
-
   padding-top: 12px;
 }
 
@@ -1057,7 +1173,6 @@ a {
 
 
 .random-panel {
-
   padding: 34px;
 }
 
@@ -1076,25 +1191,21 @@ a {
 
 
 .random-card {
-
   cursor: pointer;
 }
 
 
 .random-card .cover-wrap {
-
   aspect-ratio: 2 / 3;
 }
 
 
 .full-width {
-
   width: 100%;
 }
 
 
 body.modal-open {
-
   overflow: hidden;
 }
 
@@ -1151,12 +1262,6 @@ body.modal-open {
   font-weight: 700;
 
   cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
 }
 
 
@@ -1216,6 +1321,15 @@ body.modal-open {
    RESPONSIVIDADE
 ========================= */
 
+@media (max-width: 900px) {
+
+  .profile-lists {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
 @media (max-width: 800px) {
 
   .nav a {
@@ -1224,7 +1338,6 @@ body.modal-open {
 
 
   .toolbar {
-
     grid-template-columns: 1fr;
   }
 
@@ -1255,7 +1368,6 @@ body.modal-open {
 @media (max-width: 560px) {
 
   .topbar {
-
     padding: 13px 4vw;
   }
 
@@ -1287,20 +1399,26 @@ body.modal-open {
   }
 
 
-  .stats-grid {
+  .profile-list-card {
+    padding: 16px;
+  }
 
-    grid-template-columns: 1fr;
+
+  .profile-game-grid {
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 10px;
   }
 
 
   .modal {
-
     padding: 12px;
   }
 
 
   .modal-content {
-
     grid-template-columns: 1fr;
   }
 
@@ -1314,28 +1432,21 @@ body.modal-open {
 
 
   .modal-info {
-
     padding-top: 0;
   }
 
 
   .random-panel {
-
     padding: 26px 18px;
   }
 
 
   .language-menu {
-
     right: -5px;
   }
 
 }
 
-
-/* =========================
-   PAGINAÇÃO NO CELULAR
-========================= */
 
 @media (max-width: 600px) {
 

@@ -26,6 +26,8 @@ let currentRandomCount = 5;
 
 let currentRandomRegion = "all";
 
+let currentRandomExcludePlayed = false;
+
 let currentGame = null;
 
 let currentLanguage = "pt";
@@ -93,6 +95,9 @@ const randomSetupInfo =
 
 const startRandomButton =
   document.getElementById("startRandomButton");
+
+const excludePlayed =
+  document.getElementById("excludePlayed");
 
 
 /* MODAL DE RESULTADOS */
@@ -231,6 +236,9 @@ const translations = {
 
     quantity:
       "Quantidade",
+
+    excludePlayed:
+      "Não sortear jogos que já joguei",
 
     startRandom:
       "🎲 Sortear",
@@ -396,6 +404,9 @@ const translations = {
     quantity:
       "Cantidad",
 
+    excludePlayed:
+      "No sortear juegos que ya jugué",
+
     startRandom:
       "🎲 Sortear",
 
@@ -559,6 +570,9 @@ const translations = {
 
     quantity:
       "Quantity",
+
+    excludePlayed:
+      "Do not draw games I have already played",
 
     startRandom:
       "🎲 Randomize",
@@ -1959,6 +1973,19 @@ function randomGames(
   }
 
 
+  if (currentRandomExcludePlayed) {
+
+    const played =
+      new Set(getUserData().played);
+
+    available =
+      available.filter(
+        game => !played.has(gameId(game))
+      );
+
+  }
+
+
   if (!available.length) {
     return [];
   }
@@ -2019,14 +2046,31 @@ function updateRandomSetupInfo() {
     );
 
 
-  const availableCount =
+  let availableGames =
     region === "all"
-      ? games.length
+      ? [...games]
       : games.filter(
           game =>
             getGameRegion(game) ===
             region
-        ).length;
+        );
+
+
+  if (currentRandomExcludePlayed) {
+
+    const played =
+      new Set(getUserData().played);
+
+    availableGames =
+      availableGames.filter(
+        game => !played.has(gameId(game))
+      );
+
+  }
+
+
+  const availableCount =
+    availableGames.length;
 
 
   const regionName =
@@ -2102,6 +2146,14 @@ function openRandomSetup() {
 
   if (randomCount) {
     randomCount.value = "5";
+  }
+
+
+  currentRandomExcludePlayed =
+    Boolean(excludePlayed?.checked);
+
+  if (excludePlayed) {
+    excludePlayed.checked = false;
   }
 
 
@@ -2183,6 +2235,10 @@ function startRandomDraw() {
   const region =
     randomRegion?.value ||
     "all";
+
+
+  currentRandomExcludePlayed =
+    Boolean(excludePlayed?.checked);
 
 
   currentRandomCount =
@@ -2847,6 +2903,21 @@ function setupEvents() {
   randomCount?.addEventListener(
     "change",
     () => {
+
+      updateRandomSetupInfo();
+
+    }
+  );
+
+
+  /* EXCLUIR JOGOS JÁ JOGADOS */
+
+  excludePlayed?.addEventListener(
+    "change",
+    () => {
+
+      currentRandomExcludePlayed =
+        excludePlayed.checked;
 
       updateRandomSetupInfo();
 

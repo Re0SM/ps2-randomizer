@@ -69,8 +69,60 @@ jobs:
           def get_value(game, *names):
               for name in names:
                   value = game.get(name)
+
                   if value is not None and value != "":
                       return value
+
+              return None
+
+          def extract_year(game):
+              """
+              Tenta encontrar o ano de lançamento em vários
+              formatos/campos possíveis da base.
+              """
+
+              possible_fields = [
+                  "year",
+                  "Year",
+                  "release_year",
+                  "releaseYear",
+                  "ReleaseYear",
+                  "release_date",
+                  "releaseDate",
+                  "ReleaseDate",
+                  "release",
+                  "Release",
+                  "date",
+                  "Date",
+                  "published",
+                  "publishedDate",
+                  "publicationDate"
+              ]
+
+              for field in possible_fields:
+
+                  value = game.get(field)
+
+                  if value is None:
+                      continue
+
+                  if isinstance(value, int):
+                      if 1970 <= value <= 2030:
+                          return value
+
+                  if isinstance(value, float):
+                      value = str(value)
+
+                  if isinstance(value, str):
+
+                      match = re.search(
+                          r"\b(19[7-9][0-9]|20[0-2][0-9]|2030)\b",
+                          value
+                      )
+
+                      if match:
+                          return int(match.group(1))
+
               return None
 
           def normalize_title(title):
@@ -99,14 +151,25 @@ jobs:
                   )
 
               value = unicodedata.normalize("NFKD", value)
+
               value = "".join(
                   c for c in value
                   if not unicodedata.combining(c)
               )
 
               value = value.lower()
-              value = re.sub(r"[^a-z0-9]+", " ", value)
-              value = re.sub(r"\s+", " ", value).strip()
+
+              value = re.sub(
+                  r"[^a-z0-9]+",
+                  " ",
+                  value
+              )
+
+              value = re.sub(
+                  r"\s+",
+                  " ",
+                  value
+              ).strip()
 
               return value
 
@@ -114,12 +177,16 @@ jobs:
               normalized = title.lower()
 
               for pattern in remove_patterns:
-                  if re.search(pattern, normalized):
+                  if re.search(
+                      pattern,
+                      normalized
+                  ):
                       return True
 
               return False
 
           for game in entries:
+
               if not isinstance(game, dict):
                   continue
 
@@ -142,28 +209,28 @@ jobs:
 
               record = {
                   "title": title,
-                  "year": get_value(
-                      game,
-                      "year",
-                      "release_year",
-                      "releaseYear"
-                  ),
+
+                  "year": extract_year(game),
+
                   "developer": get_value(
                       game,
                       "developer",
                       "Developer"
                   ),
+
                   "publisher": get_value(
                       game,
                       "publisher",
                       "Publisher"
                   ),
+
                   "genre": get_value(
                       game,
                       "genre",
                       "genres",
                       "Genre"
                   ),
+
                   "serial": serial
               }
 
@@ -181,8 +248,10 @@ jobs:
 
               groups[group_key].append(record)
 
-          # Ordem de preferência das regiões.
-          # Ocidentais primeiro; japonesas depois.
+          # ==========================================
+          # PRIORIDADE DAS REGIÕES
+          # ==========================================
+
           region_priority = [
               "SLUS",
               "SLES",
@@ -195,22 +264,32 @@ jobs:
           ]
 
           def serial_priority(serial):
+
               if not serial:
                   return 999
 
               serial_upper = serial.upper()
 
-              for index, prefix in enumerate(region_priority):
-                  if serial_upper.startswith(prefix):
+              for index, prefix in enumerate(
+                  region_priority
+              ):
+
+                  if serial_upper.startswith(
+                      prefix
+                  ):
                       return index
 
               return 100
 
           def choose_cover_serial(variants):
+
               best = None
 
               for variant in variants:
-                  serial = variant.get("serial")
+
+                  serial = variant.get(
+                      "serial"
+                  )
 
                   if not serial:
                       continue
@@ -219,19 +298,30 @@ jobs:
                       best = serial
                       continue
 
-                  if serial_priority(serial) < serial_priority(best):
+                  if (
+                      serial_priority(serial)
+                      <
+                      serial_priority(best)
+                  ):
                       best = serial
 
               return best
 
-          # Escolhe uma entrada representativa de cada jogo.
+          # ==========================================
+          # ESCOLHER REPRESENTANTE
+          # ==========================================
+
           for group_key, variants in groups.items():
 
               variants.sort(
                   key=lambda game: (
-                      serial_priority(game.get("serial")),
+                      serial_priority(
+                          game.get("serial")
+                      ),
+
                       -sum(
-                          value is not None and value != ""
+                          value is not None
+                          and value != ""
                           for value in [
                               game.get("year"),
                               game.get("developer"),
@@ -240,62 +330,144 @@ jobs:
                               game.get("serial")
                           ]
                       ),
-                      len(game.get("title", ""))
+
+                      len(
+                          game.get(
+                              "title",
+                              ""
+                          )
+                      )
                   )
               )
 
-              representative = dict(variants[0])
+              representative = dict(
+                  variants[0]
+              )
+
+              # ======================================
+              # TENTA RECUPERAR ANO DE OUTRA VARIANTE
+              # ======================================
+
+              if not representative.get("year"):
+
+                  for variant in variants:
+
+                      if variant.get("year"):
+
+                          representative["year"] = (
+                              variant["year"]
+                          )
+
+                          break
 
               serials = []
               titles = []
 
               for variant in variants:
+
                   if variant.get("serial"):
-                      serials.append(variant["serial"])
+                      serials.append(
+                          variant["serial"]
+                      )
 
                   if variant.get("title"):
-                      titles.append(variant["title"])
+                      titles.append(
+                          variant["title"]
+                      )
 
-              representative["serials"] = sorted(set(serials))
-              representative["titles"] = sorted(set(titles))
+              representative["serials"] = sorted(
+                  set(serials)
+              )
 
-              # Escolhe o serial que será usado para a capa.
-              cover_serial = choose_cover_serial(variants)
+              representative["titles"] = sorted(
+                  set(titles)
+              )
+
+              cover_serial = choose_cover_serial(
+                  variants
+              )
 
               if cover_serial:
-                  representative["cover_serial"] = cover_serial
+                  representative[
+                      "cover_serial"
+                  ] = cover_serial
 
-              if len(representative["serials"]) <= 1:
-                  representative.pop("serials", None)
+              if len(
+                  representative["serials"]
+              ) <= 1:
 
-              if len(representative["titles"]) <= 1:
-                  representative.pop("titles", None)
+                  representative.pop(
+                      "serials",
+                      None
+                  )
 
-              games.append(representative)
+              if len(
+                  representative["titles"]
+              ) <= 1:
+
+                  representative.pop(
+                      "titles",
+                      None
+                  )
+
+              games.append(
+                  representative
+              )
+
+          # ==========================================
+          # ORDENAR CATÁLOGO
+          # ==========================================
 
           games.sort(
-              key=lambda game: game["title"].lower()
+              key=lambda game:
+                  game["title"].lower()
           )
 
-          os.makedirs("data", exist_ok=True)
-          os.makedirs("data/covers", exist_ok=True)
+          os.makedirs(
+              "data",
+              exist_ok=True
+          )
 
-          # Caminho local das capas.
+          os.makedirs(
+              "data/covers",
+              exist_ok=True
+          )
+
+          # ==========================================
+          # DEFINIR CAPAS LOCAIS
+          # ==========================================
+
           for game in games:
-              serial = game.get("cover_serial")
+
+              serial = game.get(
+                  "cover_serial"
+              )
 
               if serial:
-                  game["cover"] = f"data/covers/{serial}.jpg"
+
+                  game["cover"] = (
+                      f"data/covers/{serial}.jpg"
+                  )
+
               else:
+
                   game["cover"] = None
 
-              game.pop("cover_serial", None)
+              game.pop(
+                  "cover_serial",
+                  None
+              )
+
+          # ==========================================
+          # SALVAR games.json
+          # ==========================================
 
           with open(
               "data/games.json",
               "w",
               encoding="utf-8"
           ) as f:
+
               json.dump(
                   games,
                   f,
@@ -303,11 +475,16 @@ jobs:
                   indent=2
               )
 
+          # ==========================================
+          # SALVAR GAMES-REVIEW
+          # ==========================================
+
           with open(
               "data/games-review.json",
               "w",
               encoding="utf-8"
           ) as f:
+
               json.dump(
                   review,
                   f,
@@ -315,17 +492,24 @@ jobs:
                   indent=2
               )
 
+          # ==========================================
+          # GRUPOS COM VARIANTES
+          # ==========================================
+
           duplicate_groups = []
 
           for group_key, variants in groups.items():
+
               if len(variants) > 1:
+
                   duplicate_groups.append({
                       "normalized_title": group_key,
                       "variants": variants
                   })
 
           duplicate_groups.sort(
-              key=lambda item: item["normalized_title"]
+              key=lambda item:
+                  item["normalized_title"]
           )
 
           with open(
@@ -333,6 +517,7 @@ jobs:
               "w",
               encoding="utf-8"
           ) as f:
+
               json.dump(
                   duplicate_groups,
                   f,
@@ -340,12 +525,53 @@ jobs:
                   indent=2
               )
 
-          print("================================")
-          print(f"Entradas originais: {len(entries)}")
-          print(f"Entradas removidas: {len(review)}")
-          print(f"Grupos com variantes: {len(duplicate_groups)}")
-          print(f"Jogos no catálogo: {len(games)}")
-          print("================================")
+          # ==========================================
+          # ESTATÍSTICAS
+          # ==========================================
+
+          years_found = sum(
+              1
+              for game in games
+              if game.get("year")
+          )
+
+          years_missing = (
+              len(games)
+              - years_found
+          )
+
+          print(
+              "================================"
+          )
+
+          print(
+              f"Entradas originais: {len(entries)}"
+          )
+
+          print(
+              f"Entradas removidas: {len(review)}"
+          )
+
+          print(
+              f"Grupos com variantes: {len(duplicate_groups)}"
+          )
+
+          print(
+              f"Jogos no catálogo: {len(games)}"
+          )
+
+          print(
+              f"Anos encontrados: {years_found}"
+          )
+
+          print(
+              f"Anos não encontrados: {years_missing}"
+          )
+
+          print(
+              "================================"
+          )
+
           PY
 
       - name: Download game covers
@@ -360,26 +586,50 @@ jobs:
           import subprocess
           from concurrent.futures import ThreadPoolExecutor
 
-          with open("data/games.json", "r", encoding="utf-8") as f:
+          with open(
+              "data/games.json",
+              "r",
+              encoding="utf-8"
+          ) as f:
+
               games = json.load(f)
 
-          BASE_URL = "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default"
+          BASE_URL = (
+              "https://raw.githubusercontent.com/"
+              "xlenore/ps2-covers/main/covers/default"
+          )
 
           downloads = []
 
           for game in games:
-              cover = game.get("cover")
+
+              cover = game.get(
+                  "cover"
+              )
 
               if not cover:
                   continue
 
-              filename = os.path.basename(cover)
-              output = os.path.join("data", "covers", filename)
+              filename = os.path.basename(
+                  cover
+              )
 
-              if os.path.isfile(output) and os.path.getsize(output) > 0:
+              output = os.path.join(
+                  "data",
+                  "covers",
+                  filename
+              )
+
+              if (
+                  os.path.isfile(output)
+                  and
+                  os.path.getsize(output) > 0
+              ):
                   continue
 
-              serial = os.path.splitext(filename)[0]
+              serial = os.path.splitext(
+                  filename
+              )[0]
 
               downloads.append(
                   (
@@ -389,10 +639,18 @@ jobs:
                   )
               )
 
-          print(f"Capas já existentes: {len(games) - len(downloads)}")
-          print(f"Capas novas para baixar: {len(downloads)}")
+          print(
+              f"Capas já existentes: "
+              f"{len(games) - len(downloads)}"
+          )
+
+          print(
+              f"Capas novas para baixar: "
+              f"{len(downloads)}"
+          )
 
           def download(item):
+
               serial, url, output = item
 
               result = subprocess.run(
@@ -412,14 +670,19 @@ jobs:
                       "-o",
                       output
                   ],
+
                   stdout=subprocess.PIPE,
                   stderr=subprocess.PIPE,
                   text=True
               )
 
-              if result.returncode == 0 and os.path.isfile(output):
-                  if os.path.getsize(output) > 0:
-                      return True, serial
+              if (
+                  result.returncode == 0
+                  and os.path.isfile(output)
+                  and os.path.getsize(output) > 0
+              ):
+
+                  return True, serial
 
               if os.path.exists(output):
                   os.remove(output)
@@ -429,31 +692,60 @@ jobs:
           success = 0
           failed = 0
 
-          with ThreadPoolExecutor(max_workers=12) as executor:
-              for ok, serial in executor.map(download, downloads):
+          with ThreadPoolExecutor(
+              max_workers=12
+          ) as executor:
+
+              for ok, serial in executor.map(
+                  download,
+                  downloads
+              ):
 
                   if ok:
+
                       success += 1
+
                   else:
+
                       failed += 1
-                      print(f"Não encontrada: {serial}")
+
+                      print(
+                          f"Não encontrada: {serial}"
+                      )
 
           print("")
-          print("================================")
-          print(f"Capas baixadas: {success}")
-          print(f"Capas não encontradas: {failed}")
-          print("================================")
+          print(
+              "================================"
+          )
+
+          print(
+              f"Capas baixadas: {success}"
+          )
+
+          print(
+              f"Capas não encontradas: {failed}"
+          )
+
+          print(
+              "================================"
+          )
+
           PY
 
       - name: Verify generated catalog
         run: |
-          echo "===== TESTE DE CAPAS ====="
+          echo "===== TESTE DO CATÁLOGO ====="
 
           python3 - <<'PY'
           import json
           import os
 
-          with open("data/games.json", "r", encoding="utf-8") as f:
+          with open(
+              "data/games.json",
+              "r",
+              encoding="utf-8"
+          ) as f:
+
               games = json.load(f)
 
           tests = [
@@ -465,9 +757,16 @@ jobs:
           ]
 
           for game in games:
-              if game["title"].lower() in [x.lower() for x in tests]:
 
-                  cover = game.get("cover")
+              if game["title"].lower() in [
+                  x.lower()
+                  for x in tests
+              ]:
+
+                  cover = game.get(
+                      "cover"
+                  )
+
                   exists = (
                       cover
                       and os.path.isfile(cover)
@@ -476,9 +775,26 @@ jobs:
 
                   print(
                       f'{game["title"]} -> '
+                      f'ano: {game.get("year")} -> '
                       f'{cover} -> '
                       f'{"OK" if exists else "NÃO ENCONTRADA"}'
                   )
+
+          print("")
+          print(
+              "===== JOGOS COM ANO ====="
+          )
+
+          years = sum(
+              1
+              for game in games
+              if game.get("year")
+          )
+
+          print(
+              f"{years} de {len(games)} jogos possuem ano."
+          )
+
           PY
 
       - name: Save catalog

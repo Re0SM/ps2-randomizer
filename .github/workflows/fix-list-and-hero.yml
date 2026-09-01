@@ -1,0 +1,110 @@
+name: Fix list status and add PS2 hero
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-list-and-hero.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply changes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          index_path = Path('index.html')
+          app_path = Path('js/app.js')
+          css_path = Path('css/style.css')
+
+          index = index_path.read_text(encoding='utf-8')
+          app = app_path.read_text(encoding='utf-8')
+          css = css_path.read_text(encoding='utf-8')
+
+          # HERO: add a large PS2 console image beside the text.
+          if 'class="hero-console"' not in index:
+              marker = '''      </div>\n\n    </section>'''
+              replacement = '''      </div>\n\n\n      <div class="hero-console" aria-hidden="true">\n\n        <img\n          src="https://upload.wikimedia.org/wikipedia/commons/3/30/PlayStation_2.png"\n          alt=""\n          loading="eager"\n        >\n\n      </div>\n\n    </section>'''
+              if marker not in index:
+                  raise SystemExit('Não encontrei o fechamento do hero em index.html')
+              index = index.replace(marker, replacement, 1)
+
+          # Add a source/attribution line to the About section if possible.
+          if 'aboutConsoleSource' not in app:
+              app = app.replace(
+                  '    aboutCoverSource:\n      "Capas dos jogos: PS2 Covers — xlenore/ps2-covers",',
+                  '    aboutCoverSource:\n      "Capas dos jogos: PS2 Covers — xlenore/ps2-covers",\n\n    aboutConsoleSource:\n      "Imagem do console: Wikimedia Commons — Java13690 / CC BY-SA 3.0.",',
+                  1
+              )
+              app = app.replace(
+                  '    aboutCoverSource:\n      "Portadas de los juegos: PS2 Covers — xlenore/ps2-covers",',
+                  '    aboutCoverSource:\n      "Portadas de los juegos: PS2 Covers — xlenore/ps2-covers",\n\n    aboutConsoleSource:\n      "Imagen de la consola: Wikimedia Commons — Java13690 / CC BY-SA 3.0.",',
+                  1
+              )
+              app = app.replace(
+                  '    aboutCoverSource:\n      "Game covers: PS2 Covers — xlenore/ps2-covers",',
+                  '    aboutCoverSource:\n      "Game covers: PS2 Covers — xlenore/ps2-covers",\n\n    aboutConsoleSource:\n      "Console image: Wikimedia Commons — Java13690 / CC BY-SA 3.0.",',
+                  1
+              )
+
+          # Never allow a game to be simultaneously Played and Backlog.
+          # Played takes priority when cleaning old data. Clicking either
+          # status then moves the game to that status instead of duplicating it.
+          if 'normalizeListStatuses' not in app:
+              marker = '/* =========================================================\n   IDENTIFICADOR DO JOGO\n========================================================= */'
+              fn = '''function normalizeListStatuses(data) {\n\n  const played =\n    Array.isArray(data.played)\n      ? [...new Set(data.played.map(String))]\n      : [];\n\n  const playedSet = new Set(played);\n\n  const backlog =\n    Array.isArray(data.backlog)\n      ? [...new Set(\n          data.backlog\n            .map(String)\n            .filter(id => !playedSet.has(id))\n        )]\n      : [];\n\n  const favorites =\n    Array.isArray(data.favorites)\n      ? [...new Set(data.favorites.map(String))]\n      : [];\n\n  return {\n    played,\n    backlog,\n    favorites\n  };\n}\n\n\n'''
+              if marker not in app:
+                  raise SystemExit('Não encontrei o bloco do identificador do jogo em app.js')
+              app = app.replace(marker, fn + marker, 1)
+
+              # Normalize data every time it is read.
+              old_return = '''    return {\n\n      played:\n        Array.isArray(data.played)\n          ? data.played\n          : [],\n\n      backlog:\n        Array.isArray(data.backlog)\n          ? data.backlog\n          : [],\n\n      favorites:\n        Array.isArray(data.favorites)\n          ? data.favorites\n          : []\n\n    };'''
+              new_return = '''    return normalizeListStatuses(data);'''
+              if old_return in app:
+                  app = app.replace(old_return, new_return, 1)
+
+          # Capture clicks before the existing toggle handlers. This removes
+          # the opposite status first, so the existing handler can add the
+          # selected status normally.
+          if 'status-exclusivity-fix' not in app:
+              app += '''\n\n\n/* status-exclusivity-fix */\ndocument.addEventListener(\n  "click",\n  event => {\n\n    const button =\n      event.target.closest(\n        "#togglePlayed, #toggleBacklog"\n      );\n\n    if (!button || !currentGame) return;\n\n    const data = getUserData();\n    const id = String(gameId(currentGame));\n\n    if (button.id === "togglePlayed") {\n      data.backlog = data.backlog.filter(\n        value => String(value) !== id\n      );\n    } else {\n      data.played = data.played.filter(\n        value => String(value) !== id\n      );\n    }\n\n    saveUserData(data);\n\n  },\n  true\n);\n'''
+
+          # HERO styling. Keep it large on desktop and stack cleanly on mobile.
+          hero_marker = '/* =========================\n   HERO\n========================= */'
+          hero_css_marker = '/* =========================\n   HERO PS2\n========================= */'
+          if hero_css_marker not in css:
+              hero_css = '''\n\n\n/* =========================\n   HERO PS2\n========================= */\n\n.hero {\n\n  display: grid;\n\n  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);\n\n  align-items: center;\n\n  gap: clamp(30px, 5vw, 90px);\n\n}\n\n\n.hero-content {\n  position: relative;\n  z-index: 2;\n}\n\n\n.hero-console {\n\n  position: relative;\n\n  height: 100%;\n\n  min-height: 430px;\n\n  display: flex;\n\n  align-items: center;\n\n  justify-content: center;\n\n  pointer-events: none;\n\n}\n\n\n.hero-console::before {\n\n  content: "";\n\n  position: absolute;\n\n  width: 300px;\n\n  height: 300px;\n\n  border-radius: 50%;\n\n  background: rgba(35, 134, 209, 0.16);\n\n  filter: blur(60px);\n\n}\n\n\n.hero-console img {\n\n  position: relative;\n\n  z-index: 1;\n\n  width: min(100%, 390px);\n\n  max-height: 500px;\n\n  object-fit: contain;\n\n  object-position: center;\n\n  filter: drop-shadow(0 28px 35px rgba(0, 0, 0, 0.48));\n\n  transform: translateY(12px);\n\n}\n\n\n@media (max-width: 800px) {\n\n  .hero {\n    grid-template-columns: 1fr;\n    gap: 10px;\n    padding-top: 70px;\n  }\n\n  .hero-console {\n    min-height: 300px;\n    height: 330px;\n    order: 2;\n  }\n\n  .hero-console img {\n    width: min(70vw, 300px);\n    max-height: 330px;\n  }\n\n}\n'''
+              css += hero_css
+
+          # Add a subtle attribution entry to the About modal in HTML.
+          if 'data-i18n="aboutConsoleSource"' not in index:
+              marker = '''          <p data-i18n="aboutCoverSource">\n            Capas dos jogos: PS2 Covers — xlenore/ps2-covers\n          </p>'''
+              replacement = marker + '''\n\n          <p data-i18n="aboutConsoleSource">\n            Imagem do console: Wikimedia Commons — Java13690 / CC BY-SA 3.0.\n          </p>'''
+              if marker in index:
+                  index = index.replace(marker, replacement, 1)
+
+          index_path.write_text(index, encoding='utf-8')
+          app_path.write_text(app, encoding='utf-8')
+          css_path.write_text(css, encoding='utf-8')
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html js/app.js css/style.css
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+          git commit -m "Fix overlapping game lists and add PS2 hero"
+          git push

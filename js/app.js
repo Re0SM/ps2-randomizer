@@ -427,7 +427,7 @@ function renderPagination(totalPages) {
 
   const previous =
     createPaginationButton(
-      "⬅️",
+      "<",
       currentPage - 1,
       currentPage === 1,
       "Página anterior"
@@ -497,7 +497,7 @@ function renderPagination(totalPages) {
 
   const next =
     createPaginationButton(
-      "➡️",
+      ">",
       currentPage + 1,
       currentPage === totalPages,
       "Próxima página"

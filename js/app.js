@@ -1,40 +1,452 @@
-const STORAGE_KEY = "ps2-randomizer-user-data";
+const STORAGE_KEY =
+  "ps2-randomizer-user-data";
+
+const LANGUAGE_KEY =
+  "ps2-randomizer-language";
+
 const GAMES_PER_PAGE = 60;
 
+
 let games = [];
+
 let currentGame = null;
+
 let lastRandomCount = 5;
+
 let currentPage = 1;
 
-const userData = loadUserData();
+
+const userData =
+  loadUserData();
+
+
+/* =========================
+   TRADUÇÕES
+========================= */
+
+const translations = {
+
+  pt: {
+
+    navCatalog: "Catálogo",
+    navList: "Minha Lista",
+    randomButton: "🎲 Sortear",
+
+    eyebrow: "PLAYSTATION 2",
+
+    heroTitle:
+      "Encontre seu próximo jogo.",
+
+    heroText:
+      "Explore o catálogo, marque o que você já jogou e deixe a sorte escolher sua próxima aventura.",
+
+    randomFive:
+      "🎲 Sortear 5 jogos",
+
+    viewCatalog:
+      "Ver catálogo",
+
+    catalogEyebrow:
+      "CATÁLOGO",
+
+    catalogTitle:
+      "Jogos de PS2",
+
+    searchPlaceholder:
+      "Pesquisar jogo...",
+
+    genre:
+      "Gênero",
+
+    status:
+      "Status",
+
+    all:
+      "Todos",
+
+    played:
+      "Já joguei",
+
+    backlog:
+      "Pretendo jogar",
+
+    favorite:
+      "Favoritos",
+
+    noGames:
+      "Nenhum jogo encontrado",
+
+    noGamesText:
+      "Tente outro termo de pesquisa ou altere os filtros.",
+
+    myListEyebrow:
+      "MINHA LISTA",
+
+    myListTitle:
+      "Seu progresso",
+
+    drawEyebrow:
+      "SORTEIO",
+
+    drawTitle:
+      "Seus jogos sorteados",
+
+    reroll:
+      "🎲 Sortear novamente",
+
+    footer:
+      "PS2 Randomizer · Projeto em desenvolvimento",
+
+    alreadyPlayed:
+      "✓ Já joguei",
+
+    markPlayed:
+      "☐ Já joguei",
+
+    wantToPlay:
+      "✓ Pretendo jogar",
+
+    markBacklog:
+      "＋ Pretendo jogar",
+
+    isFavorite:
+      "★ Favorito",
+
+    markFavorite:
+      "☆ Favorito",
+
+    noDescription:
+      "Nenhuma descrição disponível.",
+
+    yearUnknown:
+      "Ano não informado",
+
+    ps2:
+      "PS2",
+
+    gamesCount:
+      "jogos",
+
+    gameCount:
+      "jogo",
+
+    previous:
+      "<",
+
+    next:
+      ">"
+
+  },
+
+
+  es: {
+
+    navCatalog: "Catálogo",
+    navList: "Mi lista",
+    randomButton: "🎲 Sortear",
+
+    eyebrow: "PLAYSTATION 2",
+
+    heroTitle:
+      "Encuentra tu próximo juego.",
+
+    heroText:
+      "Explora el catálogo, marca los juegos que ya jugaste y deja que la suerte elija tu próxima aventura.",
+
+    randomFive:
+      "🎲 Sortear 5 juegos",
+
+    viewCatalog:
+      "Ver catálogo",
+
+    catalogEyebrow:
+      "CATÁLOGO",
+
+    catalogTitle:
+      "Juegos de PS2",
+
+    searchPlaceholder:
+      "Buscar juego...",
+
+    genre:
+      "Género",
+
+    status:
+      "Estado",
+
+    all:
+      "Todos",
+
+    played:
+      "Ya jugué",
+
+    backlog:
+      "Quiero jugar",
+
+    favorite:
+      "Favoritos",
+
+    noGames:
+      "No se encontraron juegos",
+
+    noGamesText:
+      "Prueba otro término de búsqueda o cambia los filtros.",
+
+    myListEyebrow:
+      "MI LISTA",
+
+    myListTitle:
+      "Tu progreso",
+
+    drawEyebrow:
+      "SORTEO",
+
+    drawTitle:
+      "Tus juegos sorteados",
+
+    reroll:
+      "🎲 Sortear de nuevo",
+
+    footer:
+      "PS2 Randomizer · Proyecto en desarrollo",
+
+    alreadyPlayed:
+      "✓ Ya jugué",
+
+    markPlayed:
+      "☐ Ya jugué",
+
+    wantToPlay:
+      "✓ Quiero jugar",
+
+    markBacklog:
+      "＋ Quiero jugar",
+
+    isFavorite:
+      "★ Favorito",
+
+    markFavorite:
+      "☆ Favorito",
+
+    yearUnknown:
+      "Año no informado",
+
+    ps2:
+      "PS2",
+
+    gamesCount:
+      "juegos",
+
+    gameCount:
+      "juego",
+
+    previous:
+      "<",
+
+    next:
+      ">"
+
+  },
+
+
+  en: {
+
+    navCatalog: "Catalog",
+    navList: "My List",
+    randomButton: "🎲 Random",
+
+    eyebrow: "PLAYSTATION 2",
+
+    heroTitle:
+      "Find your next game.",
+
+    heroText:
+      "Explore the catalog, mark the games you've played and let luck choose your next adventure.",
+
+    randomFive:
+      "🎲 Random 5 games",
+
+    viewCatalog:
+      "View catalog",
+
+    catalogEyebrow:
+      "CATALOG",
+
+    catalogTitle:
+      "PS2 Games",
+
+    searchPlaceholder:
+      "Search game...",
+
+    genre:
+      "Genre",
+
+    status:
+      "Status",
+
+    all:
+      "All",
+
+    played:
+      "Played",
+
+    backlog:
+      "Want to play",
+
+    favorite:
+      "Favorites",
+
+    noGames:
+      "No games found",
+
+    noGamesText:
+      "Try another search term or change the filters.",
+
+    myListEyebrow:
+      "MY LIST",
+
+    myListTitle:
+      "Your progress",
+
+    drawEyebrow:
+      "RANDOM",
+
+    drawTitle:
+      "Your random games",
+
+    reroll:
+      "🎲 Random again",
+
+    footer:
+      "PS2 Randomizer · Project in development",
+
+    alreadyPlayed:
+      "✓ Played",
+
+    markPlayed:
+      "☐ Played",
+
+    wantToPlay:
+      "✓ Want to play",
+
+    markBacklog:
+      "＋ Want to play",
+
+    isFavorite:
+      "★ Favorite",
+
+    markFavorite:
+      "☆ Favorite",
+
+    yearUnknown:
+      "Year unavailable",
+
+    ps2:
+      "PS2",
+
+    gamesCount:
+      "games",
+
+    gameCount:
+      "game",
+
+    previous:
+      "<",
+
+    next:
+      ">"
+
+  }
+
+};
+
+
+/* =========================
+   IDIOMA ATUAL
+========================= */
+
+let currentLanguage =
+  localStorage.getItem(LANGUAGE_KEY) || "pt";
+
+
+/* =========================
+   ELEMENTOS
+========================= */
 
 const elements = {
-  gameGrid: document.getElementById("gameGrid"),
-  emptyState: document.getElementById("emptyState"),
-  gameCount: document.getElementById("gameCount"),
 
-  searchInput: document.getElementById("searchInput"),
-  genreFilter: document.getElementById("genreFilter"),
-  statusFilter: document.getElementById("statusFilter"),
+  gameGrid:
+    document.getElementById("gameGrid"),
 
-  modal: document.getElementById("gameModal"),
-  modalCover: document.getElementById("modalCover"),
-  modalTitle: document.getElementById("modalTitle"),
-  modalGenre: document.getElementById("modalGenre"),
-  modalMeta: document.getElementById("modalMeta"),
-  modalDescription: document.getElementById("modalDescription"),
+  emptyState:
+    document.getElementById("emptyState"),
 
-  togglePlayed: document.getElementById("togglePlayed"),
-  toggleBacklog: document.getElementById("toggleBacklog"),
-  toggleFavorite: document.getElementById("toggleFavorite"),
+  gameCount:
+    document.getElementById("gameCount"),
 
-  randomModal: document.getElementById("randomModal"),
-  randomResults: document.getElementById("randomResults"),
-  rerollButton: document.getElementById("rerollButton"),
+  pagination:
+    document.getElementById("pagination"),
 
-  playedCount: document.getElementById("playedCount"),
-  backlogCount: document.getElementById("backlogCount"),
-  favoriteCount: document.getElementById("favoriteCount")
+  searchInput:
+    document.getElementById("searchInput"),
+
+  genreFilter:
+    document.getElementById("genreFilter"),
+
+  statusFilter:
+    document.getElementById("statusFilter"),
+
+  modal:
+    document.getElementById("gameModal"),
+
+  modalCover:
+    document.getElementById("modalCover"),
+
+  modalTitle:
+    document.getElementById("modalTitle"),
+
+  modalGenre:
+    document.getElementById("modalGenre"),
+
+  modalMeta:
+    document.getElementById("modalMeta"),
+
+  togglePlayed:
+    document.getElementById("togglePlayed"),
+
+  toggleBacklog:
+    document.getElementById("toggleBacklog"),
+
+  toggleFavorite:
+    document.getElementById("toggleFavorite"),
+
+  randomModal:
+    document.getElementById("randomModal"),
+
+  randomResults:
+    document.getElementById("randomResults"),
+
+  rerollButton:
+    document.getElementById("rerollButton"),
+
+  playedCount:
+    document.getElementById("playedCount"),
+
+  backlogCount:
+    document.getElementById("backlogCount"),
+
+  favoriteCount:
+    document.getElementById("favoriteCount"),
+
+  languageButton:
+    document.getElementById("languageButton"),
+
+  languageMenu:
+    document.getElementById("languageMenu"),
+
+  currentLanguage:
+    document.getElementById("currentLanguage")
+
 };
 
 
@@ -42,20 +454,36 @@ const elements = {
    INICIALIZAÇÃO
 ========================= */
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener(
+  "DOMContentLoaded",
+  init
+);
 
 
 async function init() {
 
+  applyTranslations();
+
+  bindLanguageEvents();
+
   try {
 
-    const response = await fetch("data/games.json");
+    const response =
+      await fetch("data/games.json");
+
 
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+
+      throw new Error(
+        `HTTP ${response.status}`
+      );
+
     }
 
-    games = await response.json();
+
+    games =
+      await response.json();
+
 
     setupGenres();
 
@@ -69,7 +497,9 @@ async function init() {
 
     console.error(error);
 
+
     elements.gameGrid.innerHTML = `
+
       <div class="empty-state">
 
         <div class="empty-icon">
@@ -86,9 +516,172 @@ async function init() {
         </p>
 
       </div>
+
     `;
 
   }
+
+}
+
+
+/* =========================
+   IDIOMAS
+========================= */
+
+function t(key) {
+
+  return (
+    translations[currentLanguage]?.[key] ??
+    translations.pt[key] ??
+    key
+  );
+
+}
+
+
+function applyTranslations() {
+
+  document.documentElement.lang =
+    currentLanguage === "pt"
+      ? "pt-BR"
+      : currentLanguage === "es"
+        ? "es"
+        : "en";
+
+
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach((element) => {
+
+      const key =
+        element.dataset.i18n;
+
+      const translation =
+        t(key);
+
+      if (translation) {
+
+        element.textContent =
+          translation;
+
+      }
+
+    });
+
+
+  document
+    .querySelectorAll("[data-i18n-placeholder]")
+    .forEach((element) => {
+
+      const key =
+        element.dataset.i18nPlaceholder;
+
+      element.placeholder =
+        t(key);
+
+    });
+
+
+  elements.currentLanguage.textContent =
+    currentLanguage.toUpperCase();
+
+
+  document.title =
+    "PS2 Randomizer";
+
+}
+
+
+function setLanguage(language) {
+
+  if (!translations[language]) {
+    return;
+  }
+
+
+  currentLanguage =
+    language;
+
+
+  localStorage.setItem(
+    LANGUAGE_KEY,
+    language
+  );
+
+
+  elements.languageMenu
+    .classList.add("hidden");
+
+
+  applyTranslations();
+
+  setupGenres();
+
+  renderCatalog();
+
+  updateStats();
+
+
+  if (currentGame) {
+
+    updateActionButtons();
+
+  }
+
+}
+
+
+function bindLanguageEvents() {
+
+  elements.languageButton
+    .addEventListener(
+      "click",
+      (event) => {
+
+        event.stopPropagation();
+
+        elements.languageMenu
+          .classList.toggle("hidden");
+
+      }
+    );
+
+
+  elements.languageMenu
+    .querySelectorAll("button")
+    .forEach((button) => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          setLanguage(
+            button.dataset.language
+          );
+
+        }
+      );
+
+    });
+
+
+  document.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        !event.target.closest(
+          ".language-selector"
+        )
+      ) {
+
+        elements.languageMenu
+          .classList.add("hidden");
+
+      }
+
+    }
+  );
 
 }
 
@@ -99,31 +692,43 @@ async function init() {
 
 function bindEvents() {
 
-  elements.searchInput.addEventListener(
-    "input",
-    () => {
-      currentPage = 1;
-      renderCatalog();
-    }
-  );
+  elements.searchInput
+    .addEventListener(
+      "input",
+      () => {
+
+        currentPage = 1;
+
+        renderCatalog();
+
+      }
+    );
 
 
-  elements.genreFilter.addEventListener(
-    "change",
-    () => {
-      currentPage = 1;
-      renderCatalog();
-    }
-  );
+  elements.genreFilter
+    .addEventListener(
+      "change",
+      () => {
+
+        currentPage = 1;
+
+        renderCatalog();
+
+      }
+    );
 
 
-  elements.statusFilter.addEventListener(
-    "change",
-    () => {
-      currentPage = 1;
-      renderCatalog();
-    }
-  );
+  elements.statusFilter
+    .addEventListener(
+      "change",
+      () => {
+
+        currentPage = 1;
+
+        renderCatalog();
+
+      }
+    );
 
 
   document
@@ -142,28 +747,38 @@ function bindEvents() {
     );
 
 
-  elements.rerollButton.addEventListener(
-    "click",
-    () => renderRandomResults(lastRandomCount)
-  );
+  elements.rerollButton
+    .addEventListener(
+      "click",
+      () =>
+        renderRandomResults(
+          lastRandomCount
+        )
+    );
 
 
-  elements.togglePlayed.addEventListener(
-    "click",
-    () => toggleStatus("played")
-  );
+  elements.togglePlayed
+    .addEventListener(
+      "click",
+      () =>
+        toggleStatus("played")
+    );
 
 
-  elements.toggleBacklog.addEventListener(
-    "click",
-    () => toggleStatus("backlog")
-  );
+  elements.toggleBacklog
+    .addEventListener(
+      "click",
+      () =>
+        toggleStatus("backlog")
+    );
 
 
-  elements.toggleFavorite.addEventListener(
-    "click",
-    () => toggleStatus("favorite")
-  );
+  elements.toggleFavorite
+    .addEventListener(
+      "click",
+      () =>
+        toggleStatus("favorite")
+    );
 
 
   document
@@ -215,30 +830,63 @@ function bindEvents() {
 function setupGenres() {
 
   const genres = [
+
     ...new Set(
-      games.flatMap(game => {
 
-        if (Array.isArray(game.genres)) {
-          return game.genres;
+      games.flatMap(
+        game => {
+
+          if (
+            Array.isArray(game.genre)
+          ) {
+
+            return game.genre;
+
+          }
+
+
+          if (
+            Array.isArray(game.genres)
+          ) {
+
+            return game.genres;
+
+          }
+
+
+          if (
+            typeof game.genre === "string"
+          ) {
+
+            return [game.genre];
+
+          }
+
+
+          return [];
+
         }
+      )
 
-        if (typeof game.genre === "string") {
-          return [game.genre];
-        }
-
-        return [];
-
-      })
     )
+
   ].sort(
-    (a, b) => a.localeCompare(b, "pt-BR")
+    (a, b) =>
+      a.localeCompare(
+        b,
+        currentLanguage === "pt"
+          ? "pt-BR"
+          : currentLanguage
+      )
   );
 
 
   elements.genreFilter.innerHTML = `
+
     <option value="all">
-      Todos
+      ${t("all")}
     </option>
+
   `;
 
 
@@ -247,13 +895,17 @@ function setupGenres() {
     const option =
       document.createElement("option");
 
-    option.value = genre;
 
-    option.textContent = genre;
+    option.value =
+      genre;
 
-    elements.genreFilter.appendChild(
-      option
-    );
+
+    option.textContent =
+      genre;
+
+
+    elements.genreFilter
+      .appendChild(option);
 
   }
 
@@ -267,7 +919,9 @@ function setupGenres() {
 function renderCatalog() {
 
   const query =
-    normalize(elements.searchInput.value);
+    normalize(
+      elements.searchInput.value
+    );
 
 
   const genre =
@@ -282,7 +936,9 @@ function renderCatalog() {
     games.filter((game) => {
 
       const matchesSearch =
+
         !query ||
+
         normalize(game.title)
           .includes(query) ||
 
@@ -294,21 +950,29 @@ function renderCatalog() {
 
 
       const gameGenres =
-        Array.isArray(game.genres)
-          ? game.genres
-          : game.genre
-            ? [game.genre]
-            : [];
+        Array.isArray(game.genre)
+          ? game.genre
+          : Array.isArray(game.genres)
+            ? game.genres
+            : typeof game.genre === "string"
+              ? [game.genre]
+              : [];
 
 
       const matchesGenre =
+
         genre === "all" ||
+
         gameGenres.includes(genre);
 
 
       const matchesStatus =
+
         status === "all" ||
-        userData[status]?.includes(game.id);
+
+        userData[status]?.includes(
+          game.id
+        );
 
 
       return (
@@ -324,13 +988,19 @@ function renderCatalog() {
     Math.max(
       1,
       Math.ceil(
-        filtered.length / GAMES_PER_PAGE
+        filtered.length /
+        GAMES_PER_PAGE
       )
     );
 
 
-  if (currentPage > totalPages) {
-    currentPage = totalPages;
+  if (
+    currentPage > totalPages
+  ) {
+
+    currentPage =
+      totalPages;
+
   }
 
 
@@ -339,29 +1009,30 @@ function renderCatalog() {
     GAMES_PER_PAGE;
 
 
-  const end =
-    start + GAMES_PER_PAGE;
-
-
   const pageGames =
-    filtered.slice(start, end);
+    filtered.slice(
+      start,
+      start + GAMES_PER_PAGE
+    );
 
 
-  elements.gameGrid.innerHTML = "";
+  elements.gameGrid.innerHTML =
+    "";
 
 
   elements.gameCount.textContent =
     `${filtered.length} ${
       filtered.length === 1
-        ? "jogo"
-        : "jogos"
+        ? t("gameCount")
+        : t("gamesCount")
     }`;
 
 
-  elements.emptyState.classList.toggle(
-    "hidden",
-    filtered.length > 0
-  );
+  elements.emptyState
+    .classList.toggle(
+      "hidden",
+      filtered.length > 0
+    );
 
 
   for (const game of pageGames) {
@@ -373,270 +1044,10 @@ function renderCatalog() {
   }
 
 
-  renderPagination(totalPages);
-
-}
-
-
-/* =========================
-   PAGINAÇÃO
-========================= */
-
-function renderPagination(totalPages) {
-
-  let pagination =
-    document.getElementById("pagination");
-
-
-  if (!pagination) {
-
-    pagination =
-      document.createElement("nav");
-
-    pagination.id = "pagination";
-
-    pagination.className =
-      "pagination";
-
-    pagination.setAttribute(
-      "aria-label",
-      "Paginação do catálogo"
-    );
-
-
-    elements.gameGrid.after(
-      pagination
-    );
-
-  }
-
-
-  pagination.innerHTML = "";
-
-
-  if (totalPages <= 1) {
-    pagination.style.display = "none";
-    return;
-  }
-
-
-  pagination.style.display = "flex";
-
-
-  /* BOTÃO ANTERIOR */
-
-  const previous =
-    createPaginationButton(
-      "<",
-      currentPage - 1,
-      currentPage === 1,
-      "Página anterior"
-    );
-
-
-  pagination.appendChild(previous);
-
-
-  /* NÚMEROS */
-
-  const pages =
-    getPaginationPages(
-      currentPage,
-      totalPages
-    );
-
-
-  for (const page of pages) {
-
-    if (page === "...") {
-
-      const dots =
-        document.createElement("span");
-
-      dots.className =
-        "pagination-dots";
-
-      dots.textContent = "…";
-
-      pagination.appendChild(dots);
-
-      continue;
-
-    }
-
-
-    const button =
-      createPaginationButton(
-        page,
-        page,
-        false,
-        `Página ${page}`
-      );
-
-
-    if (page === currentPage) {
-
-      button.classList.add(
-        "active"
-      );
-
-      button.setAttribute(
-        "aria-current",
-        "page"
-      );
-
-    }
-
-
-    pagination.appendChild(button);
-
-  }
-
-
-  /* BOTÃO PRÓXIMA */
-
-  const next =
-    createPaginationButton(
-      ">",
-      currentPage + 1,
-      currentPage === totalPages,
-      "Próxima página"
-    );
-
-
-  pagination.appendChild(next);
-
-}
-
-
-/* =========================
-   NÚMEROS DA PAGINAÇÃO
-========================= */
-
-function getPaginationPages(
-  current,
-  total
-) {
-
-  if (total <= 7) {
-
-    return Array.from(
-      { length: total },
-      (_, index) => index + 1
-    );
-
-  }
-
-
-  const pages = [];
-
-
-  pages.push(1);
-
-
-  if (current > 4) {
-    pages.push("...");
-  }
-
-
-  const start =
-    Math.max(
-      2,
-      current - 2
-    );
-
-
-  const end =
-    Math.min(
-      total - 1,
-      current + 2
-    );
-
-
-  for (
-    let page = start;
-    page <= end;
-    page++
-  ) {
-
-    pages.push(page);
-
-  }
-
-
-  if (current < total - 3) {
-    pages.push("...");
-  }
-
-
-  pages.push(total);
-
-
-  return pages;
-
-}
-
-
-/* =========================
-   BOTÃO DE PAGINAÇÃO
-========================= */
-
-function createPaginationButton(
-  text,
-  page,
-  disabled,
-  ariaLabel
-) {
-
-  const button =
-    document.createElement("button");
-
-  button.type = "button";
-
-  button.className =
-    "pagination-button";
-
-  button.textContent = text;
-
-  button.disabled = disabled;
-
-  button.setAttribute(
-    "aria-label",
-    ariaLabel
+  renderPagination(
+    filtered.length,
+    totalPages
   );
-
-
-  if (!disabled) {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        currentPage = page;
-
-        renderCatalog();
-
-        const catalog =
-          document.getElementById(
-            "catalogo"
-          );
-
-        if (catalog) {
-
-          catalog.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }
-
-      }
-    );
-
-  }
-
-
-  return button;
 
 }
 
@@ -650,15 +1061,21 @@ function createGameCard(game) {
   const card =
     document.createElement("article");
 
-  card.className = "game-card";
 
-  card.tabIndex = 0;
+  card.className =
+    "game-card";
+
+
+  card.tabIndex =
+    0;
 
 
   const cover =
     document.createElement("div");
 
-  cover.className = "cover-wrap";
+
+  cover.className =
+    "cover-wrap";
 
 
   if (game.cover) {
@@ -666,23 +1083,32 @@ function createGameCard(game) {
     const img =
       document.createElement("img");
 
-    img.src = game.cover;
+
+    img.src =
+      game.cover;
+
 
     img.alt =
       `Capa de ${game.title}`;
 
-    img.loading = "lazy";
+
+    img.loading =
+      "lazy";
 
 
-    img.onerror = () => {
+    img.onerror =
+      () => {
 
-      img.remove();
+        img.remove();
 
-      cover.appendChild(
-        createPlaceholder(game.title)
-      );
 
-    };
+        cover.appendChild(
+          createPlaceholder(
+            game.title
+          )
+        );
+
+      };
 
 
     cover.appendChild(img);
@@ -690,7 +1116,9 @@ function createGameCard(game) {
   } else {
 
     cover.appendChild(
-      createPlaceholder(game.title)
+      createPlaceholder(
+        game.title
+      )
     );
 
   }
@@ -698,6 +1126,7 @@ function createGameCard(game) {
 
   const badges =
     document.createElement("div");
+
 
   badges.className =
     "status-badges";
@@ -721,7 +1150,13 @@ function createGameCard(game) {
   ) {
 
     badges.appendChild(
-      createBadge("JOGADO")
+      createBadge(
+        currentLanguage === "pt"
+          ? "JOGADO"
+          : currentLanguage === "es"
+            ? "JUGADO"
+            : "PLAYED"
+      )
     );
 
   }
@@ -733,37 +1168,61 @@ function createGameCard(game) {
   ) {
 
     badges.appendChild(
-      createBadge("LISTA")
+      createBadge(
+        currentLanguage === "pt"
+          ? "LISTA"
+          : currentLanguage === "es"
+            ? "LISTA"
+            : "BACKLOG"
+      )
     );
 
   }
 
 
-  cover.appendChild(badges);
+  cover.appendChild(
+    badges
+  );
 
-  card.appendChild(cover);
+
+  card.appendChild(
+    cover
+  );
 
 
   const title =
     document.createElement("h3");
 
-  title.className = "game-title";
 
-  title.textContent = game.title;
+  title.className =
+    "game-title";
 
-  card.appendChild(title);
+
+  title.textContent =
+    game.title;
+
+
+  card.appendChild(
+    title
+  );
 
 
   const year =
     document.createElement("p");
 
-  year.className = "game-year";
+
+  year.className =
+    "game-year";
+
 
   year.textContent =
     game.year ||
-    "Ano não informado";
+    t("yearUnknown");
 
-  card.appendChild(year);
+
+  card.appendChild(
+    year
+  );
 
 
   card.addEventListener(
@@ -807,10 +1266,14 @@ function createPlaceholder(
   const placeholder =
     document.createElement("div");
 
+
   placeholder.className =
     "cover-placeholder";
 
-  placeholder.textContent = title;
+
+  placeholder.textContent =
+    title;
+
 
   return placeholder;
 
@@ -826,9 +1289,14 @@ function createBadge(text) {
   const badge =
     document.createElement("span");
 
-  badge.className = "badge";
 
-  badge.textContent = text;
+  badge.className =
+    "badge";
+
+
+  badge.textContent =
+    text;
+
 
   return badge;
 
@@ -841,42 +1309,49 @@ function createBadge(text) {
 
 function openGameModal(game) {
 
-  currentGame = game;
+  currentGame =
+    game;
 
 
   elements.modalTitle.textContent =
     game.title;
 
 
-  const genres =
-    Array.isArray(game.genres)
-      ? game.genres
-      : game.genre
-        ? [game.genre]
-        : [];
+  const gameGenres =
+    Array.isArray(game.genre)
+      ? game.genre
+      : Array.isArray(game.genres)
+        ? game.genres
+        : typeof game.genre === "string"
+          ? [game.genre]
+          : [];
 
 
   elements.modalGenre.textContent =
-    genres.join(" · ") ||
-    "PS2";
+    gameGenres.join(" · ") ||
+    t("ps2");
+
+
+  const meta = [
+
+    game.year,
+
+    game.developer,
+
+    game.publisher
+
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
 
   elements.modalMeta.textContent =
-    [
-      game.year,
-      game.developer,
-      game.publisher
-    ]
-      .filter(Boolean)
-      .join(" · ");
+    meta ||
+    t("yearUnknown");
 
 
-  elements.modalDescription.textContent =
-    game.description ||
-    "Nenhuma descrição disponível.";
-
-
-  elements.modalCover.innerHTML = "";
+  elements.modalCover.innerHTML =
+    "";
 
 
   if (game.cover) {
@@ -884,30 +1359,42 @@ function openGameModal(game) {
     const img =
       document.createElement("img");
 
-    img.src = game.cover;
+
+    img.src =
+      game.cover;
+
 
     img.alt =
       `Capa de ${game.title}`;
 
 
-    img.onerror = () => {
+    img.onerror =
+      () => {
 
-      img.remove();
-
-      elements.modalCover.appendChild(
-        createPlaceholder(game.title)
-      );
-
-    };
+        img.remove();
 
 
-    elements.modalCover.appendChild(img);
+        elements.modalCover
+          .appendChild(
+            createPlaceholder(
+              game.title
+            )
+          );
+
+      };
+
+
+    elements.modalCover
+      .appendChild(img);
 
   } else {
 
-    elements.modalCover.appendChild(
-      createPlaceholder(game.title)
-    );
+    elements.modalCover
+      .appendChild(
+        createPlaceholder(
+          game.title
+        )
+      );
 
   }
 
@@ -915,14 +1402,16 @@ function openGameModal(game) {
   updateActionButtons();
 
 
-  elements.modal.classList.remove(
-    "hidden"
-  );
+  elements.modal
+    .classList.remove(
+      "hidden"
+    );
 
 
-  document.body.classList.add(
-    "modal-open"
-  );
+  document.body
+    .classList.add(
+      "modal-open"
+    );
 
 }
 
@@ -933,15 +1422,20 @@ function openGameModal(game) {
 
 function closeGameModal() {
 
-  elements.modal.classList.add(
-    "hidden"
-  );
+  elements.modal
+    .classList.add(
+      "hidden"
+    );
 
-  currentGame = null;
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+  currentGame =
+    null;
+
+
+  document.body
+    .classList.remove(
+      "modal-open"
+    );
 
 }
 
@@ -959,17 +1453,23 @@ function updateActionButtons() {
 
   const played =
     userData.played
-      .includes(currentGame.id);
+      .includes(
+        currentGame.id
+      );
 
 
   const backlog =
     userData.backlog
-      .includes(currentGame.id);
+      .includes(
+        currentGame.id
+      );
 
 
   const favorite =
     userData.favorite
-      .includes(currentGame.id);
+      .includes(
+        currentGame.id
+      );
 
 
   elements.togglePlayed
@@ -993,22 +1493,28 @@ function updateActionButtons() {
     );
 
 
-  elements.togglePlayed.textContent =
-    played
-      ? "✓ Já joguei"
-      : "☐ Já joguei";
+  elements.togglePlayed
+    .textContent =
+
+      played
+        ? t("alreadyPlayed")
+        : t("markPlayed");
 
 
-  elements.toggleBacklog.textContent =
-    backlog
-      ? "✓ Pretendo jogar"
-      : "＋ Pretendo jogar";
+  elements.toggleBacklog
+    .textContent =
+
+      backlog
+        ? t("wantToPlay")
+        : t("markBacklog");
 
 
-  elements.toggleFavorite.textContent =
-    favorite
-      ? "★ Favorito"
-      : "☆ Favorito";
+  elements.toggleFavorite
+    .textContent =
+
+      favorite
+        ? t("isFavorite")
+        : t("markFavorite");
 
 }
 
@@ -1036,7 +1542,10 @@ function toggleStatus(type) {
 
   if (index >= 0) {
 
-    list.splice(index, 1);
+    list.splice(
+      index,
+      1
+    );
 
   } else {
 
@@ -1064,40 +1573,49 @@ function toggleStatus(type) {
 
 function openRandomModal(count) {
 
-  lastRandomCount = count;
+  lastRandomCount =
+    count;
 
-  renderRandomResults(count);
 
-
-  elements.randomModal.classList.remove(
-    "hidden"
+  renderRandomResults(
+    count
   );
 
 
-  document.body.classList.add(
-    "modal-open"
-  );
+  elements.randomModal
+    .classList.remove(
+      "hidden"
+    );
+
+
+  document.body
+    .classList.add(
+      "modal-open"
+    );
 
 }
 
 
 function closeRandomModal() {
 
-  elements.randomModal.classList.add(
-    "hidden"
-  );
+  elements.randomModal
+    .classList.add(
+      "hidden"
+    );
 
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+  document.body
+    .classList.remove(
+      "modal-open"
+    );
 
 }
 
 
 function renderRandomResults(count) {
 
-  const pool = [...games];
+  const pool =
+    [...games];
 
 
   if (pool.length === 0) {
@@ -1111,13 +1629,14 @@ function renderRandomResults(count) {
 
 
   const results =
-    shuffle(pool).slice(
-      0,
-      Math.min(
-        count,
-        pool.length
-      )
-    );
+    shuffle(pool)
+      .slice(
+        0,
+        Math.min(
+          count,
+          pool.length
+        )
+      );
 
 
   elements.randomResults.innerHTML =
@@ -1127,7 +1646,10 @@ function renderRandomResults(count) {
   for (const game of results) {
 
     const card =
-      document.createElement("article");
+      document.createElement(
+        "article"
+      );
+
 
     card.className =
       "random-card";
@@ -1147,7 +1669,9 @@ function renderRandomResults(count) {
             "button, a"
           )
         ) {
+
           return;
+
         }
 
 
@@ -1159,11 +1683,240 @@ function renderRandomResults(count) {
     );
 
 
-    elements.randomResults.appendChild(
-      card
+    elements.randomResults
+      .appendChild(card);
+
+  }
+
+}
+
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+
+function renderPagination(
+  totalGames,
+  totalPages
+) {
+
+  elements.pagination.innerHTML =
+    "";
+
+
+  if (
+    totalGames <= GAMES_PER_PAGE
+  ) {
+
+    return;
+
+  }
+
+
+  const createButton =
+    (
+      text,
+      page,
+      disabled = false,
+      active = false
+    ) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "pagination-button";
+
+
+      button.textContent =
+        text;
+
+
+      button.disabled =
+        disabled;
+
+
+      if (active) {
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+
+      if (!disabled) {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            currentPage =
+              page;
+
+            renderCatalog();
+
+
+            document
+              .getElementById(
+                "catalogo"
+              )
+              .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+
+          }
+        );
+
+      }
+
+
+      return button;
+
+    };
+
+
+  elements.pagination
+    .appendChild(
+
+      createButton(
+        t("previous"),
+        currentPage - 1,
+        currentPage === 1
+      )
+
+    );
+
+
+  const pages =
+    getPaginationPages(
+      currentPage,
+      totalPages
+    );
+
+
+  for (const page of pages) {
+
+    if (page === "...") {
+
+      const dots =
+        document.createElement(
+          "span"
+        );
+
+
+      dots.className =
+        "pagination-dots";
+
+
+      dots.textContent =
+        "...";
+
+
+      elements.pagination
+        .appendChild(dots);
+
+
+      continue;
+
+    }
+
+
+    elements.pagination
+      .appendChild(
+
+        createButton(
+          page,
+          page,
+          false,
+          page === currentPage
+        )
+
+      );
+
+  }
+
+
+  elements.pagination
+    .appendChild(
+
+      createButton(
+        t("next"),
+        currentPage + 1,
+        currentPage === totalPages
+      )
+
+    );
+
+}
+
+
+function getPaginationPages(
+  current,
+  total
+) {
+
+  if (total <= 7) {
+
+    return Array.from(
+      { length: total },
+      (_, index) => index + 1
     );
 
   }
+
+
+  if (current <= 4) {
+
+    return [
+      1,
+      2,
+      3,
+      4,
+      5,
+      "...",
+      total
+    ];
+
+  }
+
+
+  if (current >= total - 3) {
+
+    return [
+      1,
+      "...",
+      total - 4,
+      total - 3,
+      total - 2,
+      total - 1,
+      total
+    ];
+
+  }
+
+
+  return [
+
+    1,
+
+    "...",
+
+    current - 1,
+
+    current,
+
+    current + 1,
+
+    "...",
+
+    total
+
+  ];
 
 }
 
@@ -1182,7 +1935,8 @@ function shuffle(array) {
 
     const j =
       Math.floor(
-        Math.random() * (i + 1)
+        Math.random() *
+        (i + 1)
       );
 
 
@@ -1270,8 +2024,13 @@ function loadUserData() {
 function saveUserData() {
 
   localStorage.setItem(
+
     STORAGE_KEY,
-    JSON.stringify(userData)
+
+    JSON.stringify(
+      userData
+    )
+
   );
 
 }
@@ -1303,13 +2062,19 @@ function updateStats() {
 
 function normalize(value) {
 
-  return String(value ?? "")
+  return String(
+    value ?? ""
+  )
+
     .normalize("NFD")
+
     .replace(
       /[\u0300-\u036f]/g,
       ""
     )
+
     .toLowerCase()
+
     .trim();
 
 }

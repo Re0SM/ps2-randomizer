@@ -1,1116 +1,664 @@
-const STORAGE_KEY =
-  "ps2-randomizer-user-data";
+const GAMES_URL = "data/games.json";
 
-const LANGUAGE_KEY =
-  "ps2-randomizer-language";
+const GAMES_PER_PAGE = 48;
 
-const GAMES_PER_PAGE = 60;
-
+const STORAGE_KEY = "ps2-randomizer-profile";
 
 let games = [];
-
-let currentGame = null;
-
-let lastRandomCount = 5;
+let filteredGames = [];
 
 let currentPage = 1;
+let currentGame = null;
 
 
-const userData =
-  loadUserData();
+/* =========================================================
+   PERFIL LOCAL
+========================================================= */
 
+let profile = loadProfile();
 
-/* =========================
-   TRADUÇÕES
-========================= */
 
-const translations = {
+function loadProfile() {
 
-  pt: {
+  try {
 
-    navCatalog: "Catálogo",
-    navList: "Minha Lista",
-    randomButton: "🎲 Sortear",
+    const saved = localStorage.getItem(STORAGE_KEY);
 
-    eyebrow: "PLAYSTATION 2",
+    if (!saved) {
+      return {
+        played: [],
+        backlog: [],
+        favorites: []
+      };
+    }
 
-    heroTitle:
-      "Encontre seu próximo jogo.",
+    const data = JSON.parse(saved);
 
-    heroText:
-      "Explore o catálogo, marque o que você já jogou e deixe a sorte escolher sua próxima aventura.",
+    return {
+      played: Array.isArray(data.played)
+        ? data.played
+        : [],
 
-    randomFive:
-      "🎲 Sortear 5 jogos",
+      backlog: Array.isArray(data.backlog)
+        ? data.backlog
+        : [],
 
-    viewCatalog:
-      "Ver catálogo",
+      favorites: Array.isArray(data.favorites)
+        ? data.favorites
+        : []
+    };
 
-    catalogEyebrow:
-      "CATÁLOGO",
+  } catch (error) {
 
-    catalogTitle:
-      "Jogos de PS2",
+    console.error(
+      "Erro ao carregar perfil:",
+      error
+    );
 
-    searchPlaceholder:
-      "Pesquisar jogo...",
+    return {
+      played: [],
+      backlog: [],
+      favorites: []
+    };
+  }
+}
 
-    genre:
-      "Gênero",
 
-    status:
-      "Status",
+function saveProfile() {
 
-    all:
-      "Todos",
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(profile)
+  );
+}
 
-    played:
-      "Já joguei",
 
-    backlog:
-      "Pretendo jogar",
+/* =========================================================
+   NORMALIZAÇÃO DE GÊNEROS
+========================================================= */
 
-    favorite:
-      "Favoritos",
+function normalizeGenre(genre) {
 
-    noGames:
-      "Nenhum jogo encontrado",
-
-    noGamesText:
-      "Tente outro termo de pesquisa ou altere os filtros.",
-
-    myListEyebrow:
-      "MINHA LISTA",
-
-    myListTitle:
-      "Seu progresso",
-
-    drawEyebrow:
-      "SORTEIO",
-
-    drawTitle:
-      "Seus jogos sorteados",
-
-    reroll:
-      "🎲 Sortear novamente",
-
-    footer:
-      "PS2 Randomizer · Projeto em desenvolvimento",
-
-    alreadyPlayed:
-      "✓ Já joguei",
-
-    markPlayed:
-      "☐ Já joguei",
-
-    wantToPlay:
-      "✓ Pretendo jogar",
-
-    markBacklog:
-      "＋ Pretendo jogar",
-
-    isFavorite:
-      "★ Favorito",
-
-    markFavorite:
-      "☆ Favorito",
-
-    noDescription:
-      "Nenhuma descrição disponível.",
-
-    yearUnknown:
-      "Ano não informado",
-
-    ps2:
-      "PS2",
-
-    gamesCount:
-      "jogos",
-
-    gameCount:
-      "jogo",
-
-    previous:
-      "<",
-
-    next:
-      ">"
-
-  },
-
-
-  es: {
-
-    navCatalog: "Catálogo",
-    navList: "Mi lista",
-    randomButton: "🎲 Sortear",
-
-    eyebrow: "PLAYSTATION 2",
-
-    heroTitle:
-      "Encuentra tu próximo juego.",
-
-    heroText:
-      "Explora el catálogo, marca los juegos que ya jugaste y deja que la suerte elija tu próxima aventura.",
-
-    randomFive:
-      "🎲 Sortear 5 juegos",
-
-    viewCatalog:
-      "Ver catálogo",
-
-    catalogEyebrow:
-      "CATÁLOGO",
-
-    catalogTitle:
-      "Juegos de PS2",
-
-    searchPlaceholder:
-      "Buscar juego...",
-
-    genre:
-      "Género",
-
-    status:
-      "Estado",
-
-    all:
-      "Todos",
-
-    played:
-      "Ya jugué",
-
-    backlog:
-      "Quiero jugar",
-
-    favorite:
-      "Favoritos",
-
-    noGames:
-      "No se encontraron juegos",
-
-    noGamesText:
-      "Prueba otro término de búsqueda o cambia los filtros.",
-
-    myListEyebrow:
-      "MI LISTA",
-
-    myListTitle:
-      "Tu progreso",
-
-    drawEyebrow:
-      "SORTEO",
-
-    drawTitle:
-      "Tus juegos sorteados",
-
-    reroll:
-      "🎲 Sortear de nuevo",
-
-    footer:
-      "PS2 Randomizer · Proyecto en desarrollo",
-
-    alreadyPlayed:
-      "✓ Ya jugué",
-
-    markPlayed:
-      "☐ Ya jugué",
-
-    wantToPlay:
-      "✓ Quiero jugar",
-
-    markBacklog:
-      "＋ Quiero jugar",
-
-    isFavorite:
-      "★ Favorito",
-
-    markFavorite:
-      "☆ Favorito",
-
-    yearUnknown:
-      "Año no informado",
-
-    ps2:
-      "PS2",
-
-    gamesCount:
-      "juegos",
-
-    gameCount:
-      "juego",
-
-    previous:
-      "<",
-
-    next:
-      ">"
-
-  },
-
-
-  en: {
-
-    navCatalog: "Catalog",
-    navList: "My List",
-    randomButton: "🎲 Random",
-
-    eyebrow: "PLAYSTATION 2",
-
-    heroTitle:
-      "Find your next game.",
-
-    heroText:
-      "Explore the catalog, mark the games you've played and let luck choose your next adventure.",
-
-    randomFive:
-      "🎲 Random 5 games",
-
-    viewCatalog:
-      "View catalog",
-
-    catalogEyebrow:
-      "CATALOG",
-
-    catalogTitle:
-      "PS2 Games",
-
-    searchPlaceholder:
-      "Search game...",
-
-    genre:
-      "Genre",
-
-    status:
-      "Status",
-
-    all:
-      "All",
-
-    played:
-      "Played",
-
-    backlog:
-      "Want to play",
-
-    favorite:
-      "Favorites",
-
-    noGames:
-      "No games found",
-
-    noGamesText:
-      "Try another search term or change the filters.",
-
-    myListEyebrow:
-      "MY LIST",
-
-    myListTitle:
-      "Your progress",
-
-    drawEyebrow:
-      "RANDOM",
-
-    drawTitle:
-      "Your random games",
-
-    reroll:
-      "🎲 Random again",
-
-    footer:
-      "PS2 Randomizer · Project in development",
-
-    alreadyPlayed:
-      "✓ Played",
-
-    markPlayed:
-      "☐ Played",
-
-    wantToPlay:
-      "✓ Want to play",
-
-    markBacklog:
-      "＋ Want to play",
-
-    isFavorite:
-      "★ Favorite",
-
-    markFavorite:
-      "☆ Favorite",
-
-    yearUnknown:
-      "Year unavailable",
-
-    ps2:
-      "PS2",
-
-    gamesCount:
-      "games",
-
-    gameCount:
-      "game",
-
-    previous:
-      "<",
-
-    next:
-      ">"
-
+  if (!genre) {
+    return "Other";
   }
 
-};
+  let value = String(genre)
+    .trim()
+    .toLowerCase();
+
+  /*
+   * Remove pontos, espaços duplicados
+   * e pequenas diferenças de escrita.
+   */
+  value = value
+    .replace(/\.+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 
 
-/* =========================
-   IDIOMA ATUAL
-========================= */
+  /*
+   * Acentos.
+   */
+  value = value.normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
 
-let currentLanguage =
-  localStorage.getItem(LANGUAGE_KEY) || "pt";
+
+  /*
+   * Gêneros equivalentes.
+   */
+
+  const aliases = {
+
+    "action": "Action",
+
+    "action rpg": "Action RPG",
+
+    "action-adventure": "Action-Adventure",
+    "action adventure": "Action-Adventure",
+
+    "adventure": "Adventure",
+
+    "arcade": "Arcade",
+
+    "baseball": "Baseball",
+
+    "baseball simulation": "Baseball Simulation",
+
+    "basketball": "Basketball",
+
+    "beach volleyball": "Beach Volleyball",
+
+    "beat em up": "Beat 'Em Up",
+    "beat'em up": "Beat 'Em Up",
+    "beat 'em up": "Beat 'Em Up",
+    "beat emup": "Beat 'Em Up",
+
+    "board": "Board",
+
+    "bowling": "Bowling",
+
+    "boxing": "Boxing",
+
+    "breakout": "Breakout",
+
+    "breeding": "Breeding",
+
+    "building": "Building",
+
+    "card": "Card",
+
+    "card battle": "Card Battle",
+
+    "casino": "Casino",
+
+    "chess": "Chess",
+
+    "classic": "Classic",
+
+    "constructing": "Constructing",
+
+    "cycling": "Cycling",
+
+    "dancing": "Dancing",
+
+    "data": "Data",
+
+    "dating": "Dating",
+
+    "dating simulation": "Dating Simulation",
+
+    "educational": "Educational",
+
+    "edutainment": "Edutainment",
+
+    "exercise": "Exercise",
+
+    "fighting": "Fighting",
+
+    "first person shooter": "First Person Shooter",
+    "first-person shooter": "First Person Shooter",
+
+    "fishing": "Fishing",
+
+    "flight simulator": "Flight Simulator",
+
+    "football": "Football",
+
+    "gambling": "Gambling",
+
+    "golf": "Golf",
+
+    "gun": "Gun",
+
+    "hanafuda": "Hanafuda",
+
+    "horse racing": "Horse Racing",
+
+    "hunting": "Hunting",
+
+    "igo": "Igo",
+
+    "interactive movie": "Interactive Movie",
+
+    "jigsaw puzzle": "Jigsaw Puzzle",
+
+    "light gun shooter": "Light Gun Shooter",
+
+    "mahjong": "Mahjong",
+
+    "mini games": "Mini Games",
+    "mini-game": "Mini Games",
+    "mini game": "Mini Games",
+
+    "mmorpg": "MMORPG",
+
+    "music": "Music",
+
+    "other": "Other",
+
+    "party": "Party",
+
+    "pictures": "Pictures",
+
+    "pinball": "Pinball",
+
+    "plataformer": "Platformer",
+    "platformer": "Platformer",
+
+    "poker": "Poker",
+
+    "puzzle": "Puzzle",
+
+    "quiz": "Quiz",
+
+    "racing": "Racing",
+
+    "rhythm": "Rhythm",
+
+    "rpg": "RPG",
+
+    "rugby": "Rugby",
+
+    "shogi": "Shogi",
+
+    "shoot em up": "Shoot 'Em Up",
+    "shoot'em up": "Shoot 'Em Up",
+    "shoot 'em up": "Shoot 'Em Up",
+
+    "shooter": "Shooter",
+
+    "simulation": "Simulation",
+
+    "sing": "Sing",
+
+    "skateboard": "Skateboarding",
+    "skateboarding": "Skateboarding",
+
+    "ski": "Skiing",
+    "skiing": "Skiing",
+
+    "snowboard": "Snowboarding",
+    "snowboarding": "Snowboarding",
+
+    "soccer": "Soccer",
+
+    "soccer management": "Soccer Management",
+    "soccer manager": "Soccer Management",
+
+    "sports": "Sports",
+
+    "strategy": "Strategy",
+
+    "surfing": "Surfing",
+
+    "survival horror": "Survival Horror",
+
+    "tactical rpg": "Tactical RPG",
+
+    "tennis": "Tennis",
+
+    "third person shooter": "Third-person Shooter",
+    "third-person shooter": "Third-person Shooter",
+
+    "trivia": "Trivia",
+
+    "typing": "Typing",
+
+    "visual novel": "Visual Novel",
+
+    "wrestling": "Wrestling"
+  };
 
 
-/* =========================
+  return aliases[value] || capitalizeGenre(value);
+}
+
+
+function capitalizeGenre(value) {
+
+  return value
+    .split(" ")
+    .map(word => {
+
+      if (!word) {
+        return word;
+      }
+
+      return word.charAt(0).toUpperCase()
+        + word.slice(1);
+
+    })
+    .join(" ");
+}
+
+
+/* =========================================================
+   NORMALIZAÇÃO DOS JOGOS
+========================================================= */
+
+function normalizeGame(game, index) {
+
+  const normalized = {
+    ...game
+  };
+
+
+  normalized.id =
+    game.serial ||
+    (
+      normalizeTitleForId(game.title)
+      + "-"
+      + index
+    );
+
+
+  normalized.title =
+    game.title ||
+    "Jogo desconhecido";
+
+
+  normalized.genre =
+    normalizeGenre(game.genre);
+
+
+  normalized.year =
+    game.year || null;
+
+
+  normalized.cover =
+    game.cover || null;
+
+
+  return normalized;
+}
+
+
+function normalizeTitleForId(title) {
+
+  return String(title || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+function isPlayed(game) {
+
+  return profile.played.includes(game.id);
+}
+
+
+function isBacklog(game) {
+
+  return profile.backlog.includes(game.id);
+}
+
+
+function isFavorite(game) {
+
+  return profile.favorites.includes(game.id);
+}
+
+
+/*
+ * Já jogado e favorito podem coexistir.
+ *
+ * Já jogado e pretendo jogar NÃO podem coexistir.
+ */
+
+function togglePlayed(game) {
+
+  if (isPlayed(game)) {
+
+    profile.played =
+      profile.played.filter(
+        id => id !== game.id
+      );
+
+  } else {
+
+    profile.played.push(game.id);
+
+    /*
+     * Se marcou como já jogado,
+     * remove automaticamente do backlog.
+     */
+
+    profile.backlog =
+      profile.backlog.filter(
+        id => id !== game.id
+      );
+  }
+
+
+  saveProfile();
+
+  refreshEverything();
+}
+
+
+function toggleBacklog(game) {
+
+  if (isBacklog(game)) {
+
+    profile.backlog =
+      profile.backlog.filter(
+        id => id !== game.id
+      );
+
+  } else {
+
+    /*
+     * Se marcou como pretendo jogar,
+     * remove automaticamente de já jogados.
+     */
+
+    profile.played =
+      profile.played.filter(
+        id => id !== game.id
+      );
+
+
+    profile.backlog.push(game.id);
+  }
+
+
+  saveProfile();
+
+  refreshEverything();
+}
+
+
+function toggleFavorite(game) {
+
+  if (isFavorite(game)) {
+
+    profile.favorites =
+      profile.favorites.filter(
+        id => id !== game.id
+      );
+
+  } else {
+
+    /*
+     * Favorito é independente.
+     *
+     * Portanto:
+     * Já jogado + favorito = permitido.
+     * Pretendo jogar + favorito = permitido.
+     */
+
+    profile.favorites.push(game.id);
+  }
+
+
+  saveProfile();
+
+  refreshEverything();
+}
+
+
+/* =========================================================
    ELEMENTOS
-========================= */
+========================================================= */
 
-const elements = {
+const gameGrid =
+  document.getElementById("gameGrid");
 
-  gameGrid:
-    document.getElementById("gameGrid"),
+const emptyState =
+  document.getElementById("emptyState");
 
-  emptyState:
-    document.getElementById("emptyState"),
+const pagination =
+  document.getElementById("pagination");
 
-  pagination:
-    document.getElementById("pagination"),
+const searchInput =
+  document.getElementById("searchInput");
 
-  searchInput:
-    document.getElementById("searchInput"),
-
-  genreFilter:
-    document.getElementById("genreFilter"),
-
-  statusFilter:
-    document.getElementById("statusFilter"),
-
-  modal:
-    document.getElementById("gameModal"),
-
-  modalCover:
-    document.getElementById("modalCover"),
-
-  modalTitle:
-    document.getElementById("modalTitle"),
-
-  modalGenre:
-    document.getElementById("modalGenre"),
-
-  modalMeta:
-    document.getElementById("modalMeta"),
-
-  togglePlayed:
-    document.getElementById("togglePlayed"),
-
-  toggleBacklog:
-    document.getElementById("toggleBacklog"),
-
-  toggleFavorite:
-    document.getElementById("toggleFavorite"),
-
-  randomModal:
-    document.getElementById("randomModal"),
-
-  randomResults:
-    document.getElementById("randomResults"),
-
-  rerollButton:
-    document.getElementById("rerollButton"),
-
-  playedCount:
-    document.getElementById("playedCount"),
-
-  backlogCount:
-    document.getElementById("backlogCount"),
-
-  favoriteCount:
-    document.getElementById("favoriteCount"),
-
-  languageButton:
-    document.getElementById("languageButton"),
-
-  languageMenu:
-    document.getElementById("languageMenu"),
-
-  currentLanguage:
-    document.getElementById("currentLanguage")
-
-};
+const genreFilter =
+  document.getElementById("genreFilter");
 
 
-/* =========================
-   INICIALIZAÇÃO
-========================= */
+/* =========================================================
+   CARREGAR CATÁLOGO
+========================================================= */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  init
-);
-
-
-async function init() {
-
-  applyTranslations();
-
-  bindLanguageEvents();
+async function loadGames() {
 
   try {
 
     const response =
-      await fetch("data/games.json");
+      await fetch(GAMES_URL);
 
 
     if (!response.ok) {
-
       throw new Error(
         `HTTP ${response.status}`
       );
-
     }
 
 
-    games =
+    const data =
       await response.json();
 
 
-    setupGenres();
+    games =
+      data.map(normalizeGame);
 
-    renderCatalog();
 
-    updateStats();
+    buildGenreFilter();
 
-    bindEvents();
+    applyFilters();
 
-    bindListCards();
+    renderProfile();
+
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      "Erro ao carregar jogos:",
+      error
+    );
 
 
-    elements.gameGrid.innerHTML = `
-
+    gameGrid.innerHTML = `
       <div class="empty-state">
-
-        <div class="empty-icon">
-          ⚠️
-        </div>
-
-        <h3>
-          Não foi possível carregar o catálogo
-        </h3>
-
-        <p>
-          Abra o projeto através de um servidor local
-          ou pela hospedagem do GitHub Pages.
-        </p>
-
+        <div class="empty-icon">⚠️</div>
+        <h3>Não foi possível carregar o catálogo</h3>
+        <p>Verifique o arquivo data/games.json.</p>
       </div>
-
     `;
-
   }
-
 }
 
 
-/* =========================
-   IDIOMAS
-========================= */
-
-function t(key) {
-
-  return (
-    translations[currentLanguage]?.[key] ??
-    translations.pt[key] ??
-    key
-  );
-
-}
-
-
-function applyTranslations() {
-
-  document.documentElement.lang =
-    currentLanguage === "pt"
-      ? "pt-BR"
-      : currentLanguage === "es"
-        ? "es"
-        : "en";
-
-
-  document
-    .querySelectorAll("[data-i18n]")
-    .forEach((element) => {
-
-      const key =
-        element.dataset.i18n;
-
-      const translation =
-        t(key);
-
-      if (translation) {
-
-        element.textContent =
-          translation;
-
-      }
-
-    });
-
-
-  document
-    .querySelectorAll("[data-i18n-placeholder]")
-    .forEach((element) => {
-
-      const key =
-        element.dataset.i18nPlaceholder;
-
-      element.placeholder =
-        t(key);
-
-    });
-
-
-  elements.currentLanguage.textContent =
-    currentLanguage.toUpperCase();
-
-
-  document.title =
-    "PS2 Randomizer";
-
-}
-
-
-function setLanguage(language) {
-
-  if (!translations[language]) {
-    return;
-  }
-
-
-  currentLanguage =
-    language;
-
-
-  localStorage.setItem(
-    LANGUAGE_KEY,
-    language
-  );
-
-
-  elements.languageMenu
-    .classList.add("hidden");
-
-
-  applyTranslations();
-
-  setupGenres();
-
-  renderCatalog();
-
-  updateStats();
-
-
-  if (currentGame) {
-
-    updateActionButtons();
-
-  }
-
-}
-
-
-function bindLanguageEvents() {
-
-  elements.languageButton
-    .addEventListener(
-      "click",
-      (event) => {
-
-        event.stopPropagation();
-
-        elements.languageMenu
-          .classList.toggle("hidden");
-
-      }
-    );
-
-
-  elements.languageMenu
-    .querySelectorAll("button")
-    .forEach((button) => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          setLanguage(
-            button.dataset.language
-          );
-
-        }
-      );
-
-    });
-
-
-  document.addEventListener(
-    "click",
-    (event) => {
-
-      if (
-        !event.target.closest(
-          ".language-selector"
-        )
-      ) {
-
-        elements.languageMenu
-          .classList.add("hidden");
-
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================
-   EVENTOS
-========================= */
-
-function bindEvents() {
-
-  elements.searchInput
-    .addEventListener(
-      "input",
-      () => {
-
-        currentPage = 1;
-
-        renderCatalog();
-
-      }
-    );
-
-
-  elements.genreFilter
-    .addEventListener(
-      "change",
-      () => {
-
-        currentPage = 1;
-
-        renderCatalog();
-
-      }
-    );
-
-
-  elements.statusFilter
-    .addEventListener(
-      "change",
-      () => {
-
-        currentPage = 1;
-
-        renderCatalog();
-
-      }
-    );
-
-
-  document
-    .getElementById("randomOneTop")
-    .addEventListener(
-      "click",
-      () => openRandomModal(1)
-    );
-
-
-  document
-    .getElementById("randomFiveHero")
-    .addEventListener(
-      "click",
-      () => openRandomModal(5)
-    );
-
-
-  elements.rerollButton
-    .addEventListener(
-      "click",
-      () =>
-        renderRandomResults(
-          lastRandomCount
-        )
-    );
-
-
-  elements.togglePlayed
-    .addEventListener(
-      "click",
-      () =>
-        toggleStatus("played")
-    );
-
-
-  elements.toggleBacklog
-    .addEventListener(
-      "click",
-      () =>
-        toggleStatus("backlog")
-    );
-
-
-  elements.toggleFavorite
-    .addEventListener(
-      "click",
-      () =>
-        toggleStatus("favorite")
-    );
-
-
-  document
-    .querySelectorAll("[data-close-modal]")
-    .forEach((element) => {
-
-      element.addEventListener(
-        "click",
-        closeGameModal
-      );
-
-    });
-
-
-  document
-    .querySelectorAll("[data-close-random]")
-    .forEach((element) => {
-
-      element.addEventListener(
-        "click",
-        closeRandomModal
-      );
-
-    });
-
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (event.key === "Escape") {
-
-        closeGameModal();
-
-        closeRandomModal();
-
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================
-   CARDS DA MINHA LISTA
-========================= */
-
-function bindListCards() {
-
-  const statCards =
-    document.querySelectorAll(
-      ".stat-card"
-    );
-
-
-  if (statCards.length < 3) {
-    return;
-  }
-
-
-  const listTypes = [
-    "played",
-    "backlog",
-    "favorite"
-  ];
-
-
-  statCards.forEach(
-    (card, index) => {
-
-      const type =
-        listTypes[index];
-
-
-      if (!type) {
-        return;
-      }
-
-
-      card.style.cursor =
-        "pointer";
-
-
-      card.setAttribute(
-        "role",
-        "button"
-      );
-
-
-      card.setAttribute(
-        "tabindex",
-        "0"
-      );
-
-
-      const openList =
-        () => {
-
-          elements.statusFilter.value =
-            type;
-
-          currentPage = 1;
-
-          renderCatalog();
-
-
-          const catalog =
-            document.getElementById(
-              "catalogo"
-            );
-
-
-          if (catalog) {
-
-            catalog.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
-
-          }
-
-        };
-
-
-      card.addEventListener(
-        "click",
-        openList
-      );
-
-
-      card.addEventListener(
-        "keydown",
-        (event) => {
-
-          if (
-            event.key === "Enter" ||
-            event.key === " "
-          ) {
-
-            event.preventDefault();
-
-            openList();
-
-          }
-
-        }
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================
-   GÊNEROS
-========================= */
-
-function setupGenres() {
-
-  const genres = [
-
-    ...new Set(
-
-      games.flatMap(
-        game => {
-
-          if (
-            Array.isArray(game.genre)
-          ) {
-
-            return game.genre;
-
-          }
-
-
-          if (
-            Array.isArray(game.genres)
-          ) {
-
-            return game.genres;
-
-          }
-
-
-          if (
-            typeof game.genre === "string"
-          ) {
-
-            return [game.genre];
-
-          }
-
-
-          return [];
-
-        }
-      )
-
-    )
-
-  ].sort(
-    (a, b) =>
+/* =========================================================
+   FILTRO DE GÊNEROS
+========================================================= */
+
+function buildGenreFilter() {
+
+  const genres =
+    [...new Set(
+      games.map(game => game.genre)
+    )]
+    .filter(Boolean)
+    .sort((a, b) =>
       a.localeCompare(
         b,
-        currentLanguage === "pt"
-          ? "pt-BR"
-          : currentLanguage
+        "pt-BR",
+        { sensitivity: "base" }
       )
-  );
+    );
 
 
-  elements.genreFilter.innerHTML = `
-
+  genreFilter.innerHTML = `
     <option value="all">
-      ${t("all")}
+      Todos
     </option>
-
   `;
 
 
-  for (const genre of genres) {
+  genres.forEach(genre => {
 
     const option =
       document.createElement("option");
 
+    option.value = genre;
 
-    option.value =
-      genre;
+    option.textContent = genre;
 
-
-    option.textContent =
-      genre;
-
-
-    elements.genreFilter
-      .appendChild(option);
-
-  }
-
+    genreFilter.appendChild(option);
+  });
 }
 
 
-/* =========================
-   CATÁLOGO
-========================= */
+/* =========================================================
+   FILTROS
+========================================================= */
 
-function renderCatalog() {
+function applyFilters() {
 
-  const query =
-    normalize(
-      elements.searchInput.value
-    );
-
-
-  const genre =
-    elements.genreFilter.value;
+  const search =
+    searchInput.value
+      .trim()
+      .toLowerCase();
 
 
-  const status =
-    elements.statusFilter.value;
+  const selectedGenre =
+    genreFilter.value;
 
 
-  const filtered =
-    games.filter((game) => {
+  filteredGames =
+    games.filter(game => {
 
       const matchesSearch =
-
-        !query ||
-
-        normalize(game.title)
-          .includes(query) ||
-
-        normalize(game.developer)
-          .includes(query) ||
-
-        normalize(game.publisher)
-          .includes(query);
-
-
-      const gameGenres =
-        Array.isArray(game.genre)
-          ? game.genre
-          : Array.isArray(game.genres)
-            ? game.genres
-            : typeof game.genre === "string"
-              ? [game.genre]
-              : [];
+        !search ||
+        game.title
+          .toLowerCase()
+          .includes(search);
 
 
       const matchesGenre =
-
-        genre === "all" ||
-
-        gameGenres.includes(genre);
+        selectedGenre === "all" ||
+        game.genre === selectedGenre;
 
 
-      const matchesStatus =
-
-        status === "all" ||
-
-        userData[status]?.includes(
-          game.id
-        );
-
-
-      return (
-        matchesSearch &&
-        matchesGenre &&
-        matchesStatus
-      );
-
+      return matchesSearch &&
+             matchesGenre;
     });
 
+
+  currentPage = 1;
+
+  renderCatalog();
+}
+
+
+/* =========================================================
+   CATÁLOGO
+========================================================= */
+
+function renderCatalog() {
 
   const totalPages =
     Math.max(
       1,
       Math.ceil(
-        filtered.length /
+        filteredGames.length /
         GAMES_PER_PAGE
       )
     );
 
 
-  if (
-    currentPage > totalPages
-  ) {
-
-    currentPage =
-      totalPages;
-
+  if (currentPage > totalPages) {
+    currentPage = totalPages;
   }
 
 
@@ -1119,44 +667,52 @@ function renderCatalog() {
     GAMES_PER_PAGE;
 
 
+  const end =
+    start + GAMES_PER_PAGE;
+
+
   const pageGames =
-    filtered.slice(
+    filteredGames.slice(
       start,
-      start + GAMES_PER_PAGE
+      end
     );
 
 
-  elements.gameGrid.innerHTML =
-    "";
+  gameGrid.innerHTML = "";
 
 
-  elements.emptyState
-    .classList.toggle(
-      "hidden",
-      filtered.length > 0
-    );
+  if (pageGames.length === 0) {
 
+    emptyState.classList.remove("hidden");
 
-  for (const game of pageGames) {
+    pagination.innerHTML = "";
 
-    elements.gameGrid.appendChild(
-      createGameCard(game)
-    );
+    return;
 
   }
 
 
+  emptyState.classList.add("hidden");
+
+
+  pageGames.forEach(game => {
+
+    gameGrid.appendChild(
+      createGameCard(game)
+    );
+
+  });
+
+
   renderPagination(
-    filtered.length,
     totalPages
   );
-
 }
 
 
-/* =========================
-   CARD DO JOGO
-========================= */
+/* =========================================================
+   CARD DO CATÁLOGO
+========================================================= */
 
 function createGameCard(game) {
 
@@ -1168,163 +724,62 @@ function createGameCard(game) {
     "game-card";
 
 
-  card.tabIndex =
-    0;
+  const badges = [];
 
 
-  const cover =
-    document.createElement("div");
-
-
-  cover.className =
-    "cover-wrap";
-
-
-  if (game.cover) {
-
-    const img =
-      document.createElement("img");
-
-
-    img.src =
-      game.cover;
-
-
-    img.alt =
-      `Capa de ${game.title}`;
-
-
-    img.loading =
-      "lazy";
-
-
-    img.onerror =
-      () => {
-
-        img.remove();
-
-
-        cover.appendChild(
-          createPlaceholder(
-            game.title
-          )
-        );
-
-      };
-
-
-    cover.appendChild(img);
-
-  } else {
-
-    cover.appendChild(
-      createPlaceholder(
-        game.title
-      )
-    );
-
+  if (isPlayed(game)) {
+    badges.push("✓ Já joguei");
   }
 
 
-  const badges =
-    document.createElement("div");
-
-
-  badges.className =
-    "status-badges";
-
-
-  if (
-    userData.favorite
-      .includes(game.id)
-  ) {
-
-    badges.appendChild(
-      createBadge("★")
-    );
-
+  if (isBacklog(game)) {
+    badges.push("+ Pretendo jogar");
   }
 
 
-  if (
-    userData.played
-      .includes(game.id)
-  ) {
-
-    badges.appendChild(
-      createBadge(
-        currentLanguage === "pt"
-          ? "JOGADO"
-          : currentLanguage === "es"
-            ? "JUGADO"
-            : "PLAYED"
-      )
-    );
-
+  if (isFavorite(game)) {
+    badges.push("★ Favorito");
   }
 
 
-  if (
-    userData.backlog
-      .includes(game.id)
-  ) {
+  card.innerHTML = `
 
-    badges.appendChild(
-      createBadge(
-        currentLanguage === "pt"
-          ? "LISTA"
-          : currentLanguage === "es"
-            ? "LISTA"
-            : "BACKLOG"
-      )
-    );
+    <div class="cover-wrap">
 
-  }
+      ${createCoverHTML(game)}
 
+      ${
+        badges.length
+          ? `
+            <div class="status-badges">
+              ${badges.map(
+                badge =>
+                  `<span class="badge">${escapeHTML(badge)}</span>`
+              ).join("")}
+            </div>
+          `
+          : ""
+      }
 
-  cover.appendChild(
-    badges
-  );
-
-
-  card.appendChild(
-    cover
-  );
+    </div>
 
 
-  const title =
-    document.createElement("h3");
+    <div class="game-title">
+      ${escapeHTML(game.title)}
+    </div>
 
 
-  title.className =
-    "game-title";
+    ${
+      game.year
+        ? `
+          <div class="game-year">
+            ${escapeHTML(String(game.year))}
+          </div>
+        `
+        : ""
+    }
 
-
-  title.textContent =
-    game.title;
-
-
-  card.appendChild(
-    title
-  );
-
-
-  const year =
-    document.createElement("p");
-
-
-  year.className =
-    "game-year";
-
-
-  year.textContent =
-    game.year ||
-    t("yearUnknown");
-
-
-  card.appendChild(
-    year
-  );
+  `;
 
 
   card.addEventListener(
@@ -1333,671 +788,67 @@ function createGameCard(game) {
   );
 
 
-  card.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-        openGameModal(game);
-
-      }
-
-    }
-  );
-
-
   return card;
-
 }
 
 
-/* =========================
-   PLACEHOLDER
-========================= */
+/* =========================================================
+   CAPA
+========================================================= */
 
-function createPlaceholder(
-  title = "CAPA"
-) {
+function createCoverHTML(game) {
 
-  const placeholder =
-    document.createElement("div");
+  if (!game.cover) {
 
-
-  placeholder.className =
-    "cover-placeholder";
-
-
-  placeholder.textContent =
-    title;
-
-
-  return placeholder;
-
-}
-
-
-/* =========================
-   BADGE
-========================= */
-
-function createBadge(text) {
-
-  const badge =
-    document.createElement("span");
-
-
-  badge.className =
-    "badge";
-
-
-  badge.textContent =
-    text;
-
-
-  return badge;
-
-}
-
-
-/* =========================
-   MODAL DO JOGO
-========================= */
-
-function openGameModal(game) {
-
-  currentGame =
-    game;
-
-
-  elements.modalTitle.textContent =
-    game.title;
-
-
-  const gameGenres =
-    Array.isArray(game.genre)
-      ? game.genre
-      : Array.isArray(game.genres)
-        ? game.genres
-        : typeof game.genre === "string"
-          ? [game.genre]
-          : [];
-
-
-  elements.modalGenre.textContent =
-    gameGenres.join(" · ") ||
-    t("ps2");
-
-
-  const meta = [
-
-    game.year,
-
-    game.developer,
-
-    game.publisher
-
-  ]
-    .filter(Boolean)
-    .join(" · ");
-
-
-  elements.modalMeta.textContent =
-    meta ||
-    t("yearUnknown");
-
-
-  elements.modalCover.innerHTML =
-    "";
-
-
-  if (game.cover) {
-
-    const img =
-      document.createElement("img");
-
-
-    img.src =
-      game.cover;
-
-
-    img.alt =
-      `Capa de ${game.title}`;
-
-
-    img.onerror =
-      () => {
-
-        img.remove();
-
-
-        elements.modalCover
-          .appendChild(
-            createPlaceholder(
-              game.title
-            )
-          );
-
-      };
-
-
-    elements.modalCover
-      .appendChild(img);
-
-  } else {
-
-    elements.modalCover
-      .appendChild(
-        createPlaceholder(
-          game.title
-        )
-      );
-
+    return `
+      <div class="cover-placeholder">
+        ${escapeHTML(game.title)}
+      </div>
+    `;
   }
 
 
-  updateActionButtons();
+  return `
+    <img
+      src="${escapeAttribute(game.cover)}"
+      alt="${escapeAttribute(game.title)}"
+      loading="lazy"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+    >
 
-
-  elements.modal
-    .classList.remove(
-      "hidden"
-    );
-
-
-  document.body
-    .classList.add(
-      "modal-open"
-    );
-
+    <div
+      class="cover-placeholder"
+      style="display:none;"
+    >
+      ${escapeHTML(game.title)}
+    </div>
+  `;
 }
 
 
-/* =========================
-   FECHAR MODAL
-========================= */
-
-function closeGameModal() {
-
-  elements.modal
-    .classList.add(
-      "hidden"
-    );
-
-
-  currentGame =
-    null;
-
-
-  document.body
-    .classList.remove(
-      "modal-open"
-    );
-
-}
-
-
-/* =========================
-   BOTÕES DO MODAL
-========================= */
-
-function updateActionButtons() {
-
-  if (!currentGame) {
-    return;
-  }
-
-
-  const played =
-    userData.played
-      .includes(
-        currentGame.id
-      );
-
-
-  const backlog =
-    userData.backlog
-      .includes(
-        currentGame.id
-      );
-
-
-  const favorite =
-    userData.favorite
-      .includes(
-        currentGame.id
-      );
-
-
-  elements.togglePlayed
-    .classList.toggle(
-      "active",
-      played
-    );
-
-
-  elements.toggleBacklog
-    .classList.toggle(
-      "active",
-      backlog
-    );
-
-
-  elements.toggleFavorite
-    .classList.toggle(
-      "active",
-      favorite
-    );
-
-
-  elements.togglePlayed
-    .textContent =
-
-      played
-        ? t("alreadyPlayed")
-        : t("markPlayed");
-
-
-  elements.toggleBacklog
-    .textContent =
-
-      backlog
-        ? t("wantToPlay")
-        : t("markBacklog");
-
-
-  elements.toggleFavorite
-    .textContent =
-
-      favorite
-        ? t("isFavorite")
-        : t("markFavorite");
-
-
-  /*
-    Se o jogo já foi jogado,
-    ele não pode ficar em
-    "Pretendo jogar" nem
-    em "Favoritos".
-  */
-
-  elements.toggleBacklog.disabled =
-    played;
-
-
-  elements.toggleFavorite.disabled =
-    played;
-
-
-  elements.toggleBacklog.style.opacity =
-    played ? "0.45" : "";
-
-
-  elements.toggleFavorite.style.opacity =
-    played ? "0.45" : "";
-
-
-  elements.toggleBacklog.style.cursor =
-    played ? "not-allowed" : "";
-
-
-  elements.toggleFavorite.style.cursor =
-    played ? "not-allowed" : "";
-
-}
-
-
-/* =========================
-   ALTERAR STATUS
-========================= */
-
-function toggleStatus(type) {
-
-  if (!currentGame) {
-    return;
-  }
-
-
-  /*
-    Se o jogo já foi jogado,
-    não permite adicionar
-    backlog/favorito.
-  */
-
-  if (
-    currentGame &&
-    userData.played.includes(
-      currentGame.id
-    ) &&
-    (
-      type === "backlog" ||
-      type === "favorite"
-    )
-  ) {
-
-    return;
-
-  }
-
-
-  const list =
-    userData[type];
-
-
-  const index =
-    list.indexOf(
-      currentGame.id
-    );
-
-
-  if (index >= 0) {
-
-    /*
-      Remover o status atual.
-    */
-
-    list.splice(
-      index,
-      1
-    );
-
-  } else {
-
-    /*
-      Adicionar o status.
-
-      Se marcar como "Já joguei",
-      remove automaticamente
-      dos outros dois grupos.
-    */
-
-    list.push(
-      currentGame.id
-    );
-
-
-    if (type === "played") {
-
-      removeFromList(
-        userData.backlog,
-        currentGame.id
-      );
-
-
-      removeFromList(
-        userData.favorite,
-        currentGame.id
-      );
-
-    }
-
-  }
-
-
-  saveUserData();
-
-  updateActionButtons();
-
-  updateStats();
-
-  renderCatalog();
-
-}
-
-
-/* =========================
-   REMOVER DA LISTA
-========================= */
-
-function removeFromList(
-  list,
-  id
-) {
-
-  const index =
-    list.indexOf(id);
-
-
-  if (index >= 0) {
-
-    list.splice(
-      index,
-      1
-    );
-
-  }
-
-}
-
-
-/* =========================
-   SORTEIO
-========================= */
-
-function openRandomModal(count) {
-
-  lastRandomCount =
-    count;
-
-
-  renderRandomResults(
-    count
-  );
-
-
-  elements.randomModal
-    .classList.remove(
-      "hidden"
-    );
-
-
-  document.body
-    .classList.add(
-      "modal-open"
-    );
-
-}
-
-
-function closeRandomModal() {
-
-  elements.randomModal
-    .classList.add(
-      "hidden"
-    );
-
-
-  document.body
-    .classList.remove(
-      "modal-open"
-    );
-
-}
-
-
-function renderRandomResults(count) {
-
-  const pool =
-    [...games];
-
-
-  if (pool.length === 0) {
-
-    elements.randomResults.innerHTML =
-      "<p>O catálogo está vazio.</p>";
-
-    return;
-
-  }
-
-
-  const results =
-    shuffle(pool)
-      .slice(
-        0,
-        Math.min(
-          count,
-          pool.length
-        )
-      );
-
-
-  elements.randomResults.innerHTML =
-    "";
-
-
-  for (const game of results) {
-
-    const card =
-      document.createElement(
-        "article"
-      );
-
-
-    card.className =
-      "random-card";
-
-
-    card.appendChild(
-      createGameCard(game)
-    );
-
-
-    card.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          event.target.closest(
-            "button, a"
-          )
-        ) {
-
-          return;
-
-        }
-
-
-        closeRandomModal();
-
-        openGameModal(game);
-
-      }
-    );
-
-
-    elements.randomResults
-      .appendChild(card);
-
-  }
-
-}
-
-
-/* =========================
+/* =========================================================
    PAGINAÇÃO
-========================= */
+========================================================= */
 
-function renderPagination(
-  totalGames,
-  totalPages
-) {
+function renderPagination(totalPages) {
 
-  elements.pagination.innerHTML =
-    "";
+  pagination.innerHTML = "";
 
 
-  if (
-    totalGames <= GAMES_PER_PAGE
-  ) {
-
+  if (totalPages <= 1) {
     return;
-
   }
 
 
-  const createButton =
-    (
-      text,
-      page,
-      disabled = false,
-      active = false
-    ) => {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      button.className =
-        "pagination-button";
-
-
-      button.textContent =
-        text;
-
-
-      button.disabled =
-        disabled;
-
-
-      if (active) {
-
-        button.classList.add(
-          "active"
-        );
-
-      }
-
-
-      if (!disabled) {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            currentPage =
-              page;
-
-            renderCatalog();
-
-
-            document
-              .getElementById(
-                "catalogo"
-              )
-              .scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-              });
-
-          }
-        );
-
-      }
-
-
-      return button;
-
-    };
-
-
-  elements.pagination
-    .appendChild(
-
-      createButton(
-        t("previous"),
-        currentPage - 1,
-        currentPage === 1
-      )
-
+  const previous =
+    createPaginationButton(
+      "‹",
+      currentPage - 1,
+      currentPage === 1
     );
+
+
+  pagination.appendChild(previous);
 
 
   const pages =
@@ -2007,59 +858,94 @@ function renderPagination(
     );
 
 
-  for (const page of pages) {
+  pages.forEach(page => {
 
     if (page === "...") {
 
       const dots =
-        document.createElement(
-          "span"
-        );
-
+        document.createElement("span");
 
       dots.className =
         "pagination-dots";
 
+      dots.textContent = "...";
 
-      dots.textContent =
-        "...";
+      pagination.appendChild(dots);
 
-
-      elements.pagination
-        .appendChild(dots);
-
-
-      continue;
-
+      return;
     }
 
 
-    elements.pagination
-      .appendChild(
-
-        createButton(
-          page,
-          page,
-          false,
-          page === currentPage
-        )
-
+    const button =
+      createPaginationButton(
+        String(page),
+        page,
+        false,
+        page === currentPage
       );
 
+
+    pagination.appendChild(button);
+
+  });
+
+
+  const next =
+    createPaginationButton(
+      "›",
+      currentPage + 1,
+      currentPage === totalPages
+    );
+
+
+  pagination.appendChild(next);
+}
+
+
+function createPaginationButton(
+  text,
+  page,
+  disabled = false,
+  active = false
+) {
+
+  const button =
+    document.createElement("button");
+
+
+  button.className =
+    "pagination-button";
+
+
+  if (active) {
+    button.classList.add("active");
   }
 
 
-  elements.pagination
-    .appendChild(
+  button.textContent = text;
 
-      createButton(
-        t("next"),
-        currentPage + 1,
-        currentPage === totalPages
-      )
+  button.disabled = disabled;
 
-    );
 
+  button.addEventListener(
+    "click",
+    () => {
+
+      currentPage = page;
+
+      renderCatalog();
+
+      document
+        .getElementById("catalogo")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+    }
+  );
+
+
+  return button;
 }
 
 
@@ -2074,215 +960,928 @@ function getPaginationPages(
       { length: total },
       (_, index) => index + 1
     );
-
   }
 
 
-  if (current <= 4) {
+  const pages = [1];
 
-    return [
-      1,
+
+  if (current > 4) {
+    pages.push("...");
+  }
+
+
+  const start =
+    Math.max(
       2,
-      3,
-      4,
-      5,
-      "...",
-      total
-    ];
-
-  }
+      current - 1
+    );
 
 
-  if (current >= total - 3) {
-
-    return [
-      1,
-      "...",
-      total - 4,
-      total - 3,
-      total - 2,
+  const end =
+    Math.min(
       total - 1,
-      total
-    ];
+      current + 1
+    );
 
-  }
-
-
-  return [
-
-    1,
-
-    "...",
-
-    current - 1,
-
-    current,
-
-    current + 1,
-
-    "...",
-
-    total
-
-  ];
-
-}
-
-
-/* =========================
-   EMBARALHAR
-========================= */
-
-function shuffle(array) {
 
   for (
-    let i = array.length - 1;
-    i > 0;
-    i--
+    let i = start;
+    i <= end;
+    i++
   ) {
 
-    const j =
-      Math.floor(
-        Math.random() *
-        (i + 1)
-      );
-
-
-    [
-      array[i],
-      array[j]
-    ] = [
-      array[j],
-      array[i]
-    ];
+    pages.push(i);
 
   }
 
 
-  return array;
+  if (current < total - 3) {
+    pages.push("...");
+  }
 
+
+  pages.push(total);
+
+
+  return pages;
 }
 
 
-/* =========================
-   LOCAL STORAGE
-========================= */
+/* =========================================================
+   MODAL DO JOGO
+========================================================= */
 
-function loadUserData() {
+const gameModal =
+  document.getElementById("gameModal");
 
-  const fallback = {
+const modalCover =
+  document.getElementById("modalCover");
 
-    played: [],
+const modalGenre =
+  document.getElementById("modalGenre");
 
-    backlog: [],
+const modalTitle =
+  document.getElementById("modalTitle");
 
-    favorite: []
+const modalMeta =
+  document.getElementById("modalMeta");
 
-  };
+const togglePlayedButton =
+  document.getElementById("togglePlayed");
+
+const toggleBacklogButton =
+  document.getElementById("toggleBacklog");
+
+const toggleFavoriteButton =
+  document.getElementById("toggleFavorite");
 
 
-  try {
+function openGameModal(game) {
 
-    const saved =
-      JSON.parse(
-        localStorage.getItem(
-          STORAGE_KEY
-        )
-      );
+  currentGame = game;
 
+
+  modalTitle.textContent =
+    game.title;
+
+
+  modalGenre.textContent =
+    game.genre;
+
+
+  const meta = [];
+
+
+  if (game.year) {
+    meta.push(String(game.year));
+  }
+
+
+  if (game.developer) {
+    meta.push(game.developer);
+  }
+
+
+  if (game.publisher) {
+    meta.push(game.publisher);
+  }
+
+
+  modalMeta.textContent =
+    meta.join(" · ");
+
+
+  modalCover.innerHTML =
+    createCoverHTML(game);
+
+
+  updateModalButtons();
+
+
+  gameModal.classList.remove(
+    "hidden"
+  );
+
+
+  document.body.classList.add(
+    "modal-open"
+  );
+}
+
+
+function closeGameModal() {
+
+  gameModal.classList.add(
+    "hidden"
+  );
+
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
+
+  currentGame = null;
+}
+
+
+function updateModalButtons() {
+
+  if (!currentGame) {
+    return;
+  }
+
+
+  const played =
+    isPlayed(currentGame);
+
+
+  const backlog =
+    isBacklog(currentGame);
+
+
+  const favorite =
+    isFavorite(currentGame);
+
+
+  togglePlayedButton.classList.toggle(
+    "active",
+    played
+  );
+
+
+  toggleBacklogButton.classList.toggle(
+    "active",
+    backlog
+  );
+
+
+  toggleFavoriteButton.classList.toggle(
+    "active",
+    favorite
+  );
+
+
+  togglePlayedButton.textContent =
+    played
+      ? "☑ Já joguei"
+      : "☐ Já joguei";
+
+
+  toggleBacklogButton.textContent =
+    backlog
+      ? "✓ Pretendo jogar"
+      : "＋ Pretendo jogar";
+
+
+  toggleFavoriteButton.textContent =
+    favorite
+      ? "★ Favorito"
+      : "☆ Favorito";
+}
+
+
+/* =========================================================
+   EVENTOS DO MODAL
+========================================================= */
+
+togglePlayedButton.addEventListener(
+  "click",
+  () => {
+
+    if (!currentGame) {
+      return;
+    }
+
+    togglePlayed(currentGame);
+
+    updateModalButtons();
+  }
+);
+
+
+toggleBacklogButton.addEventListener(
+  "click",
+  () => {
+
+    if (!currentGame) {
+      return;
+    }
+
+    toggleBacklog(currentGame);
+
+    updateModalButtons();
+  }
+);
+
+
+toggleFavoriteButton.addEventListener(
+  "click",
+  () => {
+
+    if (!currentGame) {
+      return;
+    }
+
+    toggleFavorite(currentGame);
+
+    updateModalButtons();
+  }
+);
+
+
+document
+  .querySelectorAll("[data-close-modal]")
+  .forEach(element => {
+
+    element.addEventListener(
+      "click",
+      closeGameModal
+    );
+
+  });
+
+
+document.addEventListener(
+  "keydown",
+  event => {
 
     if (
-      !saved ||
-      typeof saved !== "object"
+      event.key === "Escape" &&
+      !gameModal.classList.contains("hidden")
     ) {
 
-      return fallback;
+      closeGameModal();
 
     }
 
-
-    return {
-
-      played:
-        Array.isArray(saved.played)
-          ? saved.played
-          : [],
-
-      backlog:
-        Array.isArray(saved.backlog)
-          ? saved.backlog
-          : [],
-
-      favorite:
-        Array.isArray(saved.favorite)
-          ? saved.favorite
-          : []
-
-    };
-
-  } catch {
-
-    return fallback;
-
   }
+);
 
-}
+
+/* =========================================================
+   MINHA LISTA
+========================================================= */
+
+function renderProfile() {
+
+  const playedGames =
+    getProfileGames(
+      profile.played
+    );
 
 
-function saveUserData() {
+  const backlogGames =
+    getProfileGames(
+      profile.backlog
+    );
 
-  localStorage.setItem(
 
-    STORAGE_KEY,
+  const favoriteGames =
+    getProfileGames(
+      profile.favorites
+    );
 
-    JSON.stringify(
-      userData
-    )
 
+  renderProfileList(
+    "playedList",
+    "playedEmpty",
+    playedGames
   );
 
+
+  renderProfileList(
+    "backlogList",
+    "backlogEmpty",
+    backlogGames
+  );
+
+
+  renderProfileList(
+    "favoriteList",
+    "favoriteEmpty",
+    favoriteGames
+  );
+
+
+  document.getElementById(
+    "playedCount"
+  ).textContent =
+    playedGames.length;
+
+
+  document.getElementById(
+    "backlogCount"
+  ).textContent =
+    backlogGames.length;
+
+
+  document.getElementById(
+    "favoriteCount"
+  ).textContent =
+    favoriteGames.length;
 }
 
 
-/* =========================
-   ESTATÍSTICAS
-========================= */
+function getProfileGames(ids) {
 
-function updateStats() {
-
-  elements.playedCount.textContent =
-    userData.played.length;
-
-
-  elements.backlogCount.textContent =
-    userData.backlog.length;
-
-
-  elements.favoriteCount.textContent =
-    userData.favorite.length;
-
-}
-
-
-/* =========================
-   NORMALIZAÇÃO
-========================= */
-
-function normalize(value) {
-
-  return String(
-    value ?? ""
-  )
-
-    .normalize("NFD")
-
-    .replace(
-      /[\u0300-\u036f]/g,
-      ""
+  return ids
+    .map(id =>
+      games.find(
+        game => game.id === id
+      )
     )
-
-    .toLowerCase()
-
-    .trim();
-
+    .filter(Boolean);
 }
+
+
+function renderProfileList(
+  listId,
+  emptyId,
+  list
+) {
+
+  const container =
+    document.getElementById(
+      listId
+    );
+
+
+  const empty =
+    document.getElementById(
+      emptyId
+    );
+
+
+  container.innerHTML = "";
+
+
+  if (list.length === 0) {
+
+    empty.style.display =
+      "block";
+
+    return;
+  }
+
+
+  empty.style.display =
+    "none";
+
+
+  list.forEach(game => {
+
+    const card =
+      document.createElement(
+        "article"
+      );
+
+
+    card.className =
+      "profile-game";
+
+
+    card.innerHTML = `
+
+      <div class="profile-game-cover">
+
+        ${createCoverHTML(game)}
+
+      </div>
+
+      <div class="profile-game-title">
+        ${escapeHTML(game.title)}
+      </div>
+
+    `;
+
+
+    card.addEventListener(
+      "click",
+      () => openGameModal(game)
+    );
+
+
+    container.appendChild(card);
+
+  });
+}
+
+
+/* =========================================================
+   ATUALIZAÇÃO GERAL
+========================================================= */
+
+function refreshEverything() {
+
+  renderCatalog();
+
+  renderProfile();
+
+  if (currentGame) {
+    updateModalButtons();
+  }
+}
+
+
+/* =========================================================
+   SORTEIO
+========================================================= */
+
+const randomModal =
+  document.getElementById("randomModal");
+
+const randomResults =
+  document.getElementById("randomResults");
+
+const rerollButton =
+  document.getElementById("rerollButton");
+
+
+function getRandomGames(amount) {
+
+  if (games.length <= amount) {
+    return [...games];
+  }
+
+
+  const selected = [];
+
+  const used = new Set();
+
+
+  while (
+    selected.length < amount
+  ) {
+
+    const index =
+      Math.floor(
+        Math.random() *
+        games.length
+      );
+
+
+    if (used.has(index)) {
+      continue;
+    }
+
+
+    used.add(index);
+
+    selected.push(
+      games[index]
+    );
+  }
+
+
+  return selected;
+}
+
+
+function openRandomModal(amount = 5) {
+
+  const selected =
+    getRandomGames(amount);
+
+
+  renderRandomResults(
+    selected
+  );
+
+
+  randomModal.classList.remove(
+    "hidden"
+  );
+
+
+  document.body.classList.add(
+    "modal-open"
+  );
+}
+
+
+function renderRandomResults(
+  selected
+) {
+
+  randomResults.innerHTML = "";
+
+
+  selected.forEach(game => {
+
+    const card =
+      document.createElement("article");
+
+
+    card.className =
+      "random-card";
+
+
+    card.innerHTML = `
+
+      <div class="cover-wrap">
+
+        ${createCoverHTML(game)}
+
+      </div>
+
+      <div class="game-title">
+        ${escapeHTML(game.title)}
+      </div>
+
+    `;
+
+
+    card.addEventListener(
+      "click",
+      () => {
+
+        closeRandomModal();
+
+        openGameModal(game);
+
+      }
+    );
+
+
+    randomResults.appendChild(
+      card
+    );
+
+  });
+}
+
+
+function closeRandomModal() {
+
+  randomModal.classList.add(
+    "hidden"
+  );
+
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+}
+
+
+document
+  .querySelectorAll("[data-close-random]")
+  .forEach(element => {
+
+    element.addEventListener(
+      "click",
+      closeRandomModal
+    );
+
+  });
+
+
+rerollButton.addEventListener(
+  "click",
+  () => {
+
+    openRandomModal(5);
+
+  }
+);
+
+
+document
+  .getElementById("randomFiveHero")
+  .addEventListener(
+    "click",
+    () => openRandomModal(5)
+  );
+
+
+document
+  .getElementById("randomOneTop")
+  .addEventListener(
+    "click",
+    () => openRandomModal(5)
+  );
+
+
+/* =========================================================
+   PESQUISA
+========================================================= */
+
+searchInput.addEventListener(
+  "input",
+  applyFilters
+);
+
+
+genreFilter.addEventListener(
+  "change",
+  applyFilters
+);
+
+
+/* =========================================================
+   IDIOMA
+========================================================= */
+
+const languageButton =
+  document.getElementById(
+    "languageButton"
+  );
+
+const languageMenu =
+  document.getElementById(
+    "languageMenu"
+  );
+
+const currentLanguage =
+  document.getElementById(
+    "currentLanguage"
+  );
+
+
+const translations = {
+
+  pt: {
+
+    navCatalog: "Catálogo",
+    navList: "Minha Lista",
+    randomButton: "🎲 Sortear",
+    eyebrow: "PLAYSTATION 2",
+    heroTitle: "Encontre seu próximo jogo.",
+    heroText:
+      "Explore o catálogo, marque o que você já jogou e deixe a sorte escolher sua próxima aventura.",
+    randomFive: "🎲 Sortear 5 jogos",
+    viewCatalog: "Ver catálogo",
+    catalogEyebrow: "CATÁLOGO",
+    catalogTitle: "Jogos de PS2",
+    genre: "Gênero",
+    all: "Todos",
+    searchPlaceholder: "Pesquisar jogo...",
+    noGames: "Nenhum jogo encontrado",
+    noGamesText:
+      "Tente outro termo de pesquisa ou altere os filtros.",
+    myListEyebrow: "MEU PERFIL",
+    myListTitle: "Minha Lista",
+    drawEyebrow: "SORTEIO",
+    drawTitle: "Seus jogos sorteados",
+    reroll: "🎲 Sortear novamente",
+    footer:
+      "PS2 Randomizer · Projeto em desenvolvimento"
+  },
+
+
+  es: {
+
+    navCatalog: "Catálogo",
+    navList: "Mi Lista",
+    randomButton: "🎲 Sortear",
+    eyebrow: "PLAYSTATION 2",
+    heroTitle: "Encuentra tu próximo juego.",
+    heroText:
+      "Explora el catálogo, marca lo que ya jugaste y deja que la suerte elija tu próxima aventura.",
+    randomFive: "🎲 Sortear 5 juegos",
+    viewCatalog: "Ver catálogo",
+    catalogEyebrow: "CATÁLOGO",
+    catalogTitle: "Juegos de PS2",
+    genre: "Género",
+    all: "Todos",
+    searchPlaceholder: "Buscar juego...",
+    noGames: "No se encontraron juegos",
+    noGamesText:
+      "Prueba otro término de búsqueda o cambia los filtros.",
+    myListEyebrow: "MI PERFIL",
+    myListTitle: "Mi Lista",
+    drawEyebrow: "SORTEO",
+    drawTitle: "Tus juegos sorteados",
+    reroll: "🎲 Sortear de nuevo",
+    footer:
+      "PS2 Randomizer · Proyecto en desarrollo"
+  },
+
+
+  en: {
+
+    navCatalog: "Catalog",
+    navList: "My List",
+    randomButton: "🎲 Random",
+    eyebrow: "PLAYSTATION 2",
+    heroTitle: "Find your next game.",
+    heroText:
+      "Explore the catalog, mark what you've played and let luck choose your next adventure.",
+    randomFive: "🎲 Pick 5 games",
+    viewCatalog: "View catalog",
+    catalogEyebrow: "CATALOG",
+    catalogTitle: "PS2 Games",
+    genre: "Genre",
+    all: "All",
+    searchPlaceholder: "Search game...",
+    noGames: "No games found",
+    noGamesText:
+      "Try another search term or change the filters.",
+    myListEyebrow: "MY PROFILE",
+    myListTitle: "My List",
+    drawEyebrow: "RANDOM",
+    drawTitle: "Your random games",
+    reroll: "🎲 Pick again",
+    footer:
+      "PS2 Randomizer · Project in development"
+  }
+
+};
+
+
+function applyLanguage(language) {
+
+  const translation =
+    translations[language] ||
+    translations.pt;
+
+
+  document
+    .querySelectorAll(
+      "[data-i18n]"
+    )
+    .forEach(element => {
+
+      const key =
+        element.dataset.i18n;
+
+
+      if (
+        translation[key] !== undefined
+      ) {
+
+        element.textContent =
+          translation[key];
+
+      }
+
+    });
+
+
+  document
+    .querySelectorAll(
+      "[data-i18n-placeholder]"
+    )
+    .forEach(element => {
+
+      const key =
+        element.dataset
+          .i18nPlaceholder;
+
+
+      if (
+        translation[key] !== undefined
+      ) {
+
+        element.placeholder =
+          translation[key];
+
+      }
+
+    });
+
+
+  currentLanguage.textContent =
+    language.toUpperCase();
+
+
+  localStorage.setItem(
+    "ps2-randomizer-language",
+    language
+  );
+}
+
+
+languageButton.addEventListener(
+  "click",
+  event => {
+
+    event.stopPropagation();
+
+    languageMenu.classList.toggle(
+      "hidden"
+    );
+
+  }
+);
+
+
+languageMenu
+  .querySelectorAll(
+    "[data-language]"
+  )
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const language =
+          button.dataset.language;
+
+        applyLanguage(language);
+
+        languageMenu.classList.add(
+          "hidden"
+        );
+
+      }
+    );
+
+  });
+
+
+document.addEventListener(
+  "click",
+  event => {
+
+    if (
+      !event.target.closest(
+        ".language-selector"
+      )
+    ) {
+
+      languageMenu.classList.add(
+        "hidden"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SEGURANÇA / TEXTO
+========================================================= */
+
+function escapeHTML(value) {
+
+  return String(value ?? "")
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+}
+
+
+function escapeAttribute(value) {
+
+  return escapeHTML(value);
+}
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+
+const savedLanguage =
+  localStorage.getItem(
+    "ps2-randomizer-language"
+  ) || "pt";
+
+
+applyLanguage(
+  savedLanguage
+);
+
+
+loadGames();

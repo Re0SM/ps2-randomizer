@@ -874,6 +874,70 @@ a {
 
   border-top:
     1px solid var(--border);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+
+.about-button {
+
+  width: 22px;
+
+  height: 22px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(120, 180, 230, 0.25);
+
+  border-radius: 50%;
+
+  background:
+    rgba(13, 20, 32, 0.8);
+
+  color: #8da9c2;
+
+  font-size: 0.72rem;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.about-button:hover {
+
+  background:
+    rgba(35, 134, 209, 0.2);
+
+  border-color:
+    rgba(88, 180, 255, 0.45);
+
+  color: white;
+
+  transform:
+    translateY(-1px);
 }
 
 
@@ -918,7 +982,8 @@ a {
 
 .modal-panel,
 .random-panel,
-.random-setup-panel {
+.random-setup-panel,
+.about-panel {
 
   position: relative;
 
@@ -1305,6 +1370,85 @@ body.modal-open {
 
 
 /* =========================
+   SOBRE / AVISOS / CRÉDITOS
+========================= */
+
+.about-panel {
+
+  width: min(680px, 100%);
+
+  padding: 34px;
+}
+
+
+.about-panel h2 {
+
+  margin: 0 0 28px;
+
+  font-size:
+    clamp(1.9rem, 4vw, 2.7rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+}
+
+
+.about-content {
+
+  display: grid;
+
+  gap: 24px;
+}
+
+
+.about-content section {
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid var(--border);
+}
+
+
+.about-content section:first-child {
+
+  padding-top: 0;
+
+  border-top: 0;
+}
+
+
+.about-content h3 {
+
+  margin: 0 0 8px;
+
+  color: #dcecff;
+
+  font-size: 0.95rem;
+
+  font-weight: 800;
+}
+
+
+.about-content p {
+
+  margin: 0 0 10px;
+
+  color: var(--muted);
+
+  font-size: 0.88rem;
+
+  line-height: 1.65;
+}
+
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================
    PAGINAÇÃO
 ========================= */
 
@@ -1367,7 +1511,8 @@ body.modal-open {
   border-color:
     rgba(70, 165, 255, 0.55);
 
-  color: #ffffff;
+  color:
+    #ffffff;
 
   transform:
     translateY(-1px);
@@ -1572,7 +1717,8 @@ body.modal-open {
 
 
   .random-panel,
-  .random-setup-panel {
+  .random-setup-panel,
+  .about-panel {
     padding: 26px 18px;
   }
 

@@ -561,8 +561,12 @@ function applyTranslations() {
     });
 
 
-  elements.currentLanguage.textContent =
-    currentLanguage.toUpperCase();
+  if (elements.currentLanguage) {
+
+    elements.currentLanguage.textContent =
+      currentLanguage.toUpperCase();
+
+  }
 
 
   document.title =
@@ -611,6 +615,16 @@ function setLanguage(language) {
 
 
 function bindLanguageEvents() {
+
+  if (
+    !elements.languageButton ||
+    !elements.languageMenu
+  ) {
+
+    return;
+
+  }
+
 
   elements.languageButton
     .addEventListener(
@@ -999,6 +1013,17 @@ function renderCatalog() {
     "";
 
 
+  /*
+   * O contador de jogos foi removido.
+   * Antes existia aqui:
+   *
+   * elements.gameCount.textContent = ...
+   *
+   * Agora não há mais "7000 jogos"
+   * aparecendo no catálogo.
+   */
+
+
   elements.emptyState
     .classList.toggle(
       "hidden",
@@ -1177,6 +1202,20 @@ function createGameCard(game) {
     title
   );
 
+
+  /*
+   * ANO
+   *
+   * Se o games.json tiver:
+   *
+   * "year": 2005
+   *
+   * aparecerá 2005.
+   *
+   * Se estiver null:
+   *
+   * "Ano não informado"
+   */
 
   const year =
     document.createElement("p");
@@ -1751,6 +1790,10 @@ function renderPagination(
     };
 
 
+  /*
+   * BOTÃO ANTERIOR
+   */
+
   elements.pagination
     .appendChild(
 
@@ -1811,6 +1854,10 @@ function renderPagination(
 
   }
 
+
+  /*
+   * BOTÃO PRÓXIMO
+   */
 
   elements.pagination
     .appendChild(

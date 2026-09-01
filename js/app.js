@@ -107,6 +107,15 @@ const rerollButton =
   document.getElementById("rerollButton");
 
 
+/* MODAL SOBRE */
+
+const aboutModal =
+  document.getElementById("aboutModal");
+
+const aboutButton =
+  document.getElementById("aboutButton");
+
+
 /* BOTÃO DO HERO */
 
 const randomFiveHero =
@@ -133,6 +142,9 @@ const translations = {
 
   pt: {
 
+    siteName:
+      "Minha Lista de Jogos",
+
     navCatalog:
       "Catálogo",
 
@@ -140,7 +152,7 @@ const translations = {
       "Minha Lista",
 
     randomFive:
-      "🎲 Sortear 5 jogos",
+      "🎲 Sortear jogos",
 
     eyebrow:
       "PLAYSTATION 2",
@@ -168,9 +180,6 @@ const translations = {
 
     searchPlaceholder:
       "Pesquisar jogo...",
-
-    myListEyebrow:
-      "MINHA LISTA",
 
     myListTitle:
       "Minha Lista",
@@ -236,7 +245,7 @@ const translations = {
       "🎲 Sortear novamente",
 
     footer:
-      "PS2 Randomizer · Projeto em desenvolvimento",
+      "Minha Lista de Jogos · Projeto independente",
 
     noList:
       "Você ainda não adicionou nenhum jogo a esta lista.",
@@ -257,12 +266,48 @@ const translations = {
       "☆ Favorito",
 
     markedFavorite:
-      "★ Favorito"
+      "★ Favorito",
+
+    aboutEyebrow:
+      "SOBRE",
+
+    aboutTitle:
+      "Minha Lista de Jogos",
+
+    aboutProjectTitle:
+      "Sobre o projeto",
+
+    aboutProjectText:
+      "Minha Lista de Jogos é um projeto independente criado para organizar, explorar e descobrir jogos de PlayStation 2.",
+
+    aboutWarningTitle:
+      "Avisos",
+
+    aboutWarningText:
+      "Este site não possui vínculo oficial com a Sony Interactive Entertainment, PlayStation ou suas subsidiárias.",
+
+    aboutCopyrightText:
+      "PlayStation 2, seus logotipos e demais marcas relacionadas pertencem aos seus respectivos proprietários.",
+
+    aboutRomText:
+      "Este site não hospeda, fornece ou distribui ROMs, ISOs ou cópias de jogos.",
+
+    aboutCreditsTitle:
+      "Créditos",
+
+    aboutCreditsText:
+      "Projeto e desenvolvimento: Leonardo / Mateador.",
+
+    aboutDataText:
+      "Dados, imagens e outros materiais utilizados no catálogo pertencem aos seus respectivos autores e proprietários."
 
   },
 
 
   es: {
+
+    siteName:
+      "Mi Lista de Juegos",
 
     navCatalog:
       "Catálogo",
@@ -271,7 +316,7 @@ const translations = {
       "Mi Lista",
 
     randomFive:
-      "🎲 Sortear 5 juegos",
+      "🎲 Sortear juegos",
 
     eyebrow:
       "PLAYSTATION 2",
@@ -299,9 +344,6 @@ const translations = {
 
     searchPlaceholder:
       "Buscar juego...",
-
-    myListEyebrow:
-      "MI LISTA",
 
     myListTitle:
       "Mi Lista",
@@ -367,7 +409,7 @@ const translations = {
       "🎲 Sortear nuevamente",
 
     footer:
-      "PS2 Randomizer · Proyecto en desarrollo",
+      "Mi Lista de Juegos · Proyecto independiente",
 
     noList:
       "Todavía no has añadido ningún juego a esta lista.",
@@ -388,12 +430,48 @@ const translations = {
       "☆ Favorito",
 
     markedFavorite:
-      "★ Favorito"
+      "★ Favorito",
+
+    aboutEyebrow:
+      "SOBRE",
+
+    aboutTitle:
+      "Mi Lista de Juegos",
+
+    aboutProjectTitle:
+      "Sobre el proyecto",
+
+    aboutProjectText:
+      "Mi Lista de Juegos es un proyecto independiente creado para organizar, explorar y descubrir juegos de PlayStation 2.",
+
+    aboutWarningTitle:
+      "Avisos",
+
+    aboutWarningText:
+      "Este sitio no tiene ningún vínculo oficial con Sony Interactive Entertainment, PlayStation o sus subsidiarias.",
+
+    aboutCopyrightText:
+      "PlayStation 2, sus logotipos y demás marcas relacionadas pertenecen a sus respectivos propietarios.",
+
+    aboutRomText:
+      "Este sitio no aloja, proporciona ni distribuye ROMs, ISOs o copias de juegos.",
+
+    aboutCreditsTitle:
+      "Créditos",
+
+    aboutCreditsText:
+      "Proyecto y desarrollo: Leonardo / Mateador.",
+
+    aboutDataText:
+      "Los datos, imágenes y demás materiales utilizados en el catálogo pertenecen a sus respectivos autores y propietarios."
 
   },
 
 
   en: {
+
+    siteName:
+      "My Game List",
 
     navCatalog:
       "Catalog",
@@ -402,7 +480,7 @@ const translations = {
       "My List",
 
     randomFive:
-      "🎲 Randomize 5 games",
+      "🎲 Randomize games",
 
     eyebrow:
       "PLAYSTATION 2",
@@ -430,9 +508,6 @@ const translations = {
 
     searchPlaceholder:
       "Search game...",
-
-    myListEyebrow:
-      "MY LIST",
 
     myListTitle:
       "My List",
@@ -498,7 +573,7 @@ const translations = {
       "🎲 Randomize again",
 
     footer:
-      "PS2 Randomizer · Project in development",
+      "My Game List · Independent project",
 
     noList:
       "You haven't added any games to this list yet.",
@@ -519,7 +594,40 @@ const translations = {
       "☆ Favorite",
 
     markedFavorite:
-      "★ Favorite"
+      "★ Favorite",
+
+    aboutEyebrow:
+      "ABOUT",
+
+    aboutTitle:
+      "My Game List",
+
+    aboutProjectTitle:
+      "About the project",
+
+    aboutProjectText:
+      "My Game List is an independent project created to organize, explore and discover PlayStation 2 games.",
+
+    aboutWarningTitle:
+      "Notices",
+
+    aboutWarningText:
+      "This website is not officially affiliated with Sony Interactive Entertainment, PlayStation or any of its subsidiaries.",
+
+    aboutCopyrightText:
+      "PlayStation 2, its logos and other related trademarks belong to their respective owners.",
+
+    aboutRomText:
+      "This website does not host, provide or distribute ROMs, ISOs or game copies.",
+
+    aboutCreditsTitle:
+      "Credits",
+
+    aboutCreditsText:
+      "Project and development: Leonardo / Mateador.",
+
+    aboutDataText:
+      "Data, images and other materials used in the catalog belong to their respective authors and owners."
 
   }
 
@@ -641,20 +749,6 @@ function normalizeSearch(value) {
    REGIÃO PELO SERIAL
 ========================================================= */
 
-/*
- * A região não precisa existir no games.json.
- *
- * Ela é identificada pelo prefixo do serial:
- *
- * SLUS / SCUS -> América
- * SLES / SCES / SLED -> Europa
- * SLPS / SLPM / SCPS -> Japão
- * SLKA / SCKA -> Coreia
- *
- * Alguns jogos podem usar códigos diferentes.
- * Nesses casos eles entram em "Outros".
- */
-
 function getGameRegion(game) {
 
   const serial =
@@ -680,8 +774,6 @@ function getGameRegion(game) {
     )?.[0] || "";
 
 
-  /* AMÉRICA */
-
   if (
     prefix === "SLUS" ||
     prefix === "SCUS"
@@ -691,8 +783,6 @@ function getGameRegion(game) {
 
   }
 
-
-  /* EUROPA */
 
   if (
     prefix === "SLES" ||
@@ -705,8 +795,6 @@ function getGameRegion(game) {
   }
 
 
-  /* JAPÃO */
-
   if (
     prefix === "SLPS" ||
     prefix === "SLPM" ||
@@ -718,8 +806,6 @@ function getGameRegion(game) {
   }
 
 
-  /* COREIA */
-
   if (
     prefix === "SLKA" ||
     prefix === "SCKA"
@@ -729,8 +815,6 @@ function getGameRegion(game) {
 
   }
 
-
-  /* OUTROS */
 
   return "other";
 
@@ -1107,6 +1191,7 @@ function toggleStatus(
 
 
   renderMyList();
+
 
 }
 
@@ -1680,38 +1765,22 @@ function openGameModal(game) {
 
 
   if (game.year) {
-
-    meta.push(
-      String(game.year)
-    );
-
+    meta.push(String(game.year));
   }
 
 
   if (game.developer) {
-
-    meta.push(
-      String(game.developer)
-    );
-
+    meta.push(String(game.developer));
   }
 
 
   if (game.publisher) {
-
-    meta.push(
-      String(game.publisher)
-    );
-
+    meta.push(String(game.publisher));
   }
 
 
   if (game.serial) {
-
-    meta.push(
-      String(game.serial)
-    );
-
+    meta.push(String(game.serial));
   }
 
 
@@ -1850,8 +1919,6 @@ function randomGames(
     [...games];
 
 
-  /* FILTRO DE REGIÃO */
-
   if (region !== "all") {
 
     available =
@@ -1863,8 +1930,6 @@ function randomGames(
 
   }
 
-
-  /* NÃO HÁ JOGOS SUFICIENTES */
 
   if (!available.length) {
     return [];
@@ -1949,9 +2014,11 @@ function updateRandomSetupInfo() {
           ? `No se encontraron juegos para ${regionName}.`
           : `No games found for ${regionName}.`;
 
+
     if (startRandomButton) {
       startRandomButton.disabled = true;
     }
+
 
     return;
 
@@ -2005,24 +2072,13 @@ function openRandomSetup() {
   }
 
 
-  /*
-   * Sempre que o botão principal for clicado,
-   * começamos com 5 jogos.
-   */
-
   if (randomCount) {
-
-    randomCount.value =
-      "5";
-
+    randomCount.value = "5";
   }
 
 
   if (randomRegion) {
-
-    randomRegion.value =
-      "all";
-
+    randomRegion.value = "all";
   }
 
 
@@ -2057,16 +2113,14 @@ function closeRandomSetup() {
   );
 
 
-  /*
-   * Só remove o bloqueio do body se
-   * o modal de resultados também estiver fechado.
-   */
-
   if (
     randomModal?.classList.contains(
       "hidden"
     ) &&
     gameModal?.classList.contains(
+      "hidden"
+    ) &&
+    aboutModal?.classList.contains(
       "hidden"
     )
   ) {
@@ -2234,6 +2288,65 @@ function closeRandomModal() {
       "hidden"
     ) &&
     randomSetupModal?.classList.contains(
+      "hidden"
+    ) &&
+    aboutModal?.classList.contains(
+      "hidden"
+    )
+  ) {
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SOBRE / AVISOS / CRÉDITOS
+========================================================= */
+
+function openAboutModal() {
+
+  if (!aboutModal) {
+    return;
+  }
+
+
+  aboutModal.classList.remove(
+    "hidden"
+  );
+
+
+  document.body.classList.add(
+    "modal-open"
+  );
+
+}
+
+
+function closeAboutModal() {
+
+  if (!aboutModal) {
+    return;
+  }
+
+
+  aboutModal.classList.add(
+    "hidden"
+  );
+
+
+  if (
+    randomModal?.classList.contains(
+      "hidden"
+    ) &&
+    randomSetupModal?.classList.contains(
+      "hidden"
+    ) &&
+    gameModal?.classList.contains(
       "hidden"
     )
   ) {
@@ -2801,6 +2914,36 @@ function setupEvents() {
     );
 
 
+  /* ABRIR SOBRE */
+
+  aboutButton?.addEventListener(
+    "click",
+    () => {
+
+      openAboutModal();
+
+    }
+  );
+
+
+  /* FECHAR SOBRE */
+
+  document
+    .querySelectorAll(
+      "[data-close-about]"
+    )
+    .forEach(
+      element => {
+
+        element.addEventListener(
+          "click",
+          closeAboutModal
+        );
+
+      }
+    );
+
+
   /* IDIOMA */
 
   languageButton?.addEventListener(
@@ -3075,6 +3218,17 @@ function setupEvents() {
       ) {
 
         closeGameModal();
+
+      }
+
+
+      if (
+        !aboutModal?.classList.contains(
+          "hidden"
+        )
+      ) {
+
+        closeAboutModal();
 
       }
 

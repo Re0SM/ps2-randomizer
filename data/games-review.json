@@ -244,9 +244,7 @@
     "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": [
-      "RPG"
-    ],
+    "genre": "RPG",
     "serial": "SCAJ-20188"
   },
   {
@@ -2830,9 +2828,7 @@
     "year": null,
     "developer": "Level-5",
     "publisher": "Sony Computer Entertainment Europe",
-    "genre": [
-      "RPG"
-    ],
+    "genre": "RPG",
     "serial": "SCES-50296"
   },
   {
@@ -2848,9 +2844,7 @@
     "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": [
-      "RPG"
-    ],
+    "genre": "RPG",
     "serial": "SCKA-20138"
   },
   {
@@ -2866,9 +2860,7 @@
     "year": null,
     "developer": "Sony",
     "publisher": "Sony",
-    "genre": [
-      "Adventure"
-    ],
+    "genre": "Adventure",
     "serial": "SCPS-15067"
   },
   {
@@ -3268,9 +3260,7 @@
     "year": null,
     "developer": "Square PDD 3",
     "publisher": "Sony Computer Entertainment",
-    "genre": [
-      "MMORPG"
-    ],
+    "genre": "MMORPG",
     "serial": "SCUS-97395"
   },
   {
@@ -3662,9 +3652,7 @@
     "year": null,
     "developer": "Swingin' Ape Studios",
     "publisher": "Sierra Entertainment",
-    "genre": [
-      "Third-Person Shooter"
-    ],
+    "genre": "Ação em terceira pessoa",
     "serial": "SLES-51758"
   },
   {
@@ -3672,9 +3660,7 @@
     "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": [
-      "RPG"
-    ],
+    "genre": "RPG",
     "serial": "SLPM-55210"
   },
   {
@@ -3714,9 +3700,7 @@
     "year": null,
     "developer": null,
     "publisher": "Sega",
-    "genre": [
-      "Action"
-    ],
+    "genre": "Ação",
     "serial": "SLPM-62692"
   },
   {
@@ -3724,10 +3708,7 @@
     "year": null,
     "developer": "Capcom",
     "publisher": "Capcom",
-    "genre": [
-      "Action",
-      "Survival Horror"
-    ],
+    "genre": "Ação, Terror de Sobrevivência",
     "serial": "SLPM-65023"
   },
   {
@@ -3735,9 +3716,7 @@
     "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": [
-      "RPG"
-    ],
+    "genre": "RPG",
     "serial": "SLPM-66750"
   },
   {
@@ -3745,9 +3724,7 @@
     "year": null,
     "developer": "Namco",
     "publisher": "Namco",
-    "genre": [
-      "Sports"
-    ],
+    "genre": "Esportes",
     "serial": "SLPS-20374"
   },
   {
@@ -3755,9 +3732,7 @@
     "year": null,
     "developer": "Swingin' Ape Studios",
     "publisher": "Sierra",
-    "genre": [
-      "Third-Person Shooter"
-    ],
+    "genre": "Ação em terceira pessoa",
     "serial": "SLUS-20786"
   },
   {
@@ -3813,10 +3788,7 @@
     "year": null,
     "developer": "Eurocom Entertainment Software",
     "publisher": "Vivendi Games",
-    "genre": [
-      "Action",
-      "Platform"
-    ],
+    "genre": "Ação, Platform",
     "serial": "VUGJ-10001"
   }
 ]

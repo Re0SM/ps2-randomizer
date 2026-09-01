@@ -64,7 +64,7 @@ jobs:
 
           games = []
           review = []
-          groups = []
+          groups = {}
 
           def get_value(game, *names):
               for name in names:
@@ -177,72 +177,53 @@ jobs:
                   continue
 
               if group_key not in groups:
-                  groups.append(group_key)
-                  globals()[f"group_{len(groups)-1}"] = []
+                  groups[group_key] = []
 
-          # Reconstrói os grupos sem depender de nomes dinâmicos.
-          grouped = {}
+              groups[group_key].append(record)
 
-          for game in entries:
-              if not isinstance(game, dict):
-                  continue
+          # Ordem de preferência para escolher a capa.
+          # Priorizamos versões ocidentais antes das japonesas.
+          region_priority = [
+              "SLUS",
+              "SLES",
+              "SCUS",
+              "SCES",
+              "SLKA",
+              "SCAJ",
+              "SLPM",
+              "SLPS"
+          ]
 
-              title = get_value(
-                  game,
-                  "title",
-                  "name",
-                  "Title",
-                  "Name"
+          def serial_priority(serial):
+              if not serial:
+                  return 999
+
+              serial_upper = serial.upper()
+
+              for index, prefix in enumerate(region_priority):
+                  if serial_upper.startswith(prefix):
+                      return index
+
+              return 100
+
+          def cover_url(serial):
+              if not serial:
+                  return None
+
+              return (
+                  "https://raw.githubusercontent.com/xlenore/"
+                  "ps2-covers/main/covers/default/"
+                  + serial
+                  + ".jpg"
               )
 
-              serial = get_value(
-                  game,
-                  "serial",
-                  "Serial"
-              )
-
-              if not title or should_remove(title):
-                  continue
-
-              group_key = normalize_title(title)
-
-              if not group_key:
-                  continue
-
-              record = {
-                  "title": title,
-                  "year": get_value(
-                      game,
-                      "year",
-                      "release_year",
-                      "releaseYear"
-                  ),
-                  "developer": get_value(
-                      game,
-                      "developer",
-                      "Developer"
-                  ),
-                  "publisher": get_value(
-                      game,
-                      "publisher",
-                      "Publisher"
-                  ),
-                  "genre": get_value(
-                      game,
-                      "genre",
-                      "genres",
-                      "Genre"
-                  ),
-                  "serial": serial
-              }
-
-              grouped.setdefault(group_key, []).append(record)
-
-          for group_key, variants in grouped.items():
+          # Escolhe uma única entrada representativa de cada grupo.
+          for group_key, variants in groups.items():
 
               variants.sort(
                   key=lambda game: (
-                      sum(
+                      serial_priority(game.get("serial")),
+                      -sum(
                           value is not None and value != ""
                           for value in [
                               game.get("year"),
@@ -253,12 +234,12 @@ jobs:
                           ]
                       ),
                       len(game.get("title", ""))
-                  ),
-                  reverse=True
+                  )
               )
 
               representative = dict(variants[0])
 
+              # Guarda todos os seriais encontrados.
               serials = []
               titles = []
 
@@ -269,23 +250,33 @@ jobs:
                   if variant.get("title"):
                       titles.append(variant["title"])
 
-              serials = sorted(set(serials))
-              titles = sorted(set(titles))
+              representative["serials"] = sorted(set(serials))
+              representative["titles"] = sorted(set(titles))
 
-              # URL da capa baseada no serial.
-              if serials:
-                  representative["cover"] = (
-                      "https://raw.githubusercontent.com/"
-                      "xlenore/ps2-covers/main/covers/default/"
-                      + serials[0]
-                      + ".jpg"
-                  )
+              # Escolhe o melhor serial especificamente para a capa.
+              cover_serial = None
 
-              if len(serials) > 1:
-                  representative["serials"] = serials
+              for variant in variants:
+                  serial = variant.get("serial")
 
-              if len(titles) > 1:
-                  representative["titles"] = titles
+                  if not serial:
+                      continue
+
+                  if cover_serial is None:
+                      cover_serial = serial
+                      continue
+
+                  if serial_priority(serial) < serial_priority(cover_serial):
+                      cover_serial = serial
+
+              if cover_serial:
+                  representative["cover"] = cover_url(cover_serial)
+
+              if len(representative["serials"]) <= 1:
+                  representative.pop("serials", None)
+
+              if len(representative["titles"]) <= 1:
+                  representative.pop("titles", None)
 
               games.append(representative)
 
@@ -321,7 +312,7 @@ jobs:
 
           duplicate_groups = []
 
-          for group_key, variants in grouped.items():
+          for group_key, variants in groups.items():
               if len(variants) > 1:
                   duplicate_groups.append({
                       "normalized_title": group_key,
@@ -350,6 +341,24 @@ jobs:
           print(f"Grupos com variantes: {len(duplicate_groups)}")
           print(f"Jogos no catálogo: {len(games)}")
           print("================================")
+
+          # Testes rápidos de capas.
+          print("")
+          print("===== TESTE DE CAPAS =====")
+
+          for game in games:
+              if game["title"].lower() in [
+                  "resident evil 4",
+                  "final fantasy x",
+                  "god of war",
+                  "grand theft auto: san andreas",
+                  "grand theft auto san andreas"
+              ]:
+                  print(
+                      game["title"],
+                      "->",
+                      game.get("cover")
+                  )
           PY
 
       - name: Save catalog

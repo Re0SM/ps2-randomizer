@@ -75,6 +75,280 @@ jobs:
 
               return None
 
+          def normalize_text(value):
+              if value is None:
+                  return ""
+
+              value = str(value).strip()
+
+              value = unicodedata.normalize(
+                  "NFKD",
+                  value
+              )
+
+              value = "".join(
+                  c for c in value
+                  if not unicodedata.combining(c)
+              )
+
+              value = value.lower()
+
+              value = re.sub(
+                  r"[^a-z0-9]+",
+                  " ",
+                  value
+              )
+
+              value = re.sub(
+                  r"\s+",
+                  " ",
+                  value
+              ).strip()
+
+              return value
+
+          # ============================================================
+          # NORMALIZAÇÃO DE GÊNEROS
+          # ============================================================
+
+          genre_aliases = {
+
+              # Action
+              "action": "Action",
+              "acao": "Action",
+
+              # Adventure
+              "adventure": "Adventure",
+              "aventura": "Adventure",
+
+              # RPG
+              "rpg": "RPG",
+              "role playing": "RPG",
+              "role playing game": "RPG",
+
+              # Action RPG
+              "action rpg": "Action RPG",
+              "action role playing": "Action RPG",
+              "acao rpg": "Action RPG",
+
+              # Sports
+              "sports": "Sports",
+              "sport": "Sports",
+              "esportes": "Sports",
+              "esporte": "Sports",
+
+              # Racing
+              "racing": "Racing",
+              "race": "Racing",
+              "corrida": "Racing",
+
+              # Fighting
+              "fighting": "Fighting",
+              "fight": "Fighting",
+              "luta": "Fighting",
+
+              # Shooter
+              "shooter": "Shooter",
+              "shooting": "Shooter",
+              "tiro": "Shooter",
+
+              # Platform
+              "platform": "Platformer",
+              "platformer": "Platformer",
+              "plataforma": "Platformer",
+
+              # Puzzle
+              "puzzle": "Puzzle",
+              "puzzles": "Puzzle",
+              "quebra cabeca": "Puzzle",
+
+              # Strategy
+              "strategy": "Strategy",
+              "estrategia": "Strategy",
+
+              # Simulation
+              "simulation": "Simulation",
+              "simulator": "Simulation",
+              "simulacao": "Simulation",
+
+              # Racing / Driving
+              "driving": "Racing",
+              "direcao": "Racing",
+
+              # Music
+              "music": "Music",
+              "musical": "Music",
+              "musica": "Music",
+
+              # Rhythm
+              "rhythm": "Rhythm",
+              "ritmo": "Rhythm",
+
+              # Horror
+              "horror": "Horror",
+              "survival horror": "Survival Horror",
+              "terror": "Horror",
+
+              # Stealth
+              "stealth": "Stealth",
+              "furtivo": "Stealth",
+
+              # Arcade
+              "arcade": "Arcade",
+
+              # Card
+              "card": "Card",
+              "cards": "Card",
+              "card game": "Card",
+              "jogo de cartas": "Card",
+
+              # Board
+              "board": "Board",
+              "board game": "Board",
+              "jogo de tabuleiro": "Board",
+
+              # Educational
+              "educational": "Educational",
+              "education": "Educational",
+              "educativo": "Educational",
+              "educacional": "Educational",
+
+              # Party
+              "party": "Party",
+              "festa": "Party",
+
+              # Trivia
+              "trivia": "Trivia",
+
+              # Casino
+              "casino": "Casino",
+              "cassino": "Casino",
+
+              # Compilation
+              "compilation": "Compilation",
+              "coletanea": "Compilation",
+
+              # Sandbox
+              "sandbox": "Sandbox",
+
+              # MMO
+              "mmo": "MMO",
+              "mmorpg": "MMORPG"
+
+          }
+
+          def normalize_genre(value):
+              """
+              Normaliza um gênero individual.
+
+              Se conhecemos a tradução/variação,
+              usamos o nome padrão.
+
+              Se não conhecemos,
+              preservamos o gênero original,
+              apenas corrigindo capitalização básica.
+              """
+
+              if value is None:
+                  return None
+
+              if not isinstance(value, str):
+                  return value
+
+              original = value.strip()
+
+              if not original:
+                  return None
+
+              normalized = normalize_text(
+                  original
+              )
+
+              if normalized in genre_aliases:
+                  return genre_aliases[
+                      normalized
+                  ]
+
+              # Mantém gêneros desconhecidos,
+              # mas remove diferenças absurdas
+              # de capitalização.
+
+              return original
+
+          def normalize_genres(value):
+              """
+              Aceita:
+              - string
+              - lista
+              - valor nulo
+
+              Retorna:
+              - string quando havia uma string
+              - lista quando havia uma lista
+              """
+
+              if value is None:
+                  return None
+
+              if isinstance(value, list):
+
+                  result = []
+
+                  for genre in value:
+
+                      normalized = normalize_genre(
+                          genre
+                      )
+
+                      if (
+                          normalized
+                          and normalized not in result
+                      ):
+
+                          result.append(
+                              normalized
+                          )
+
+                  return result or None
+
+              if isinstance(value, str):
+
+                  # Algumas bases podem trazer
+                  # vários gêneros separados por vírgula.
+
+                  parts = [
+                      part.strip()
+                      for part in value.split(",")
+                      if part.strip()
+                  ]
+
+                  normalized_parts = []
+
+                  for part in parts:
+
+                      normalized = normalize_genre(
+                          part
+                      )
+
+                      if (
+                          normalized
+                          and normalized not in normalized_parts
+                      ):
+
+                          normalized_parts.append(
+                              normalized
+                          )
+
+                  if not normalized_parts:
+                      return None
+
+                  if len(normalized_parts) == 1:
+                      return normalized_parts[0]
+
+                  return normalized_parts
+
+              return value
+
           def normalize_title(title):
               value = title.strip()
 
@@ -100,62 +374,36 @@ jobs:
                       flags=re.IGNORECASE
                   )
 
-              value = unicodedata.normalize("NFKD", value)
-
-              value = "".join(
-                  c for c in value
-                  if not unicodedata.combining(c)
-              )
-
-              value = value.lower()
-
-              value = re.sub(
-                  r"[^a-z0-9]+",
-                  " ",
-                  value
-              )
-
-              value = re.sub(
-                  r"\s+",
-                  " ",
-                  value
-              ).strip()
-
-              return value
+              return normalize_text(value)
 
           def should_remove(title):
               normalized = title.lower()
 
               for pattern in remove_patterns:
-                  if re.search(pattern, normalized):
+                  if re.search(
+                      pattern,
+                      normalized
+                  ):
                       return True
 
               return False
 
           def extract_year(value):
-              """
-              Tenta extrair um ano de vários formatos possíveis.
-
-              Exemplos aceitos:
-              2004
-              "2004"
-              "2004-09-22"
-              "22/09/2004"
-              "09/22/2004"
-              "2004/09/22"
-              """
 
               if value is None:
                   return None
 
               if isinstance(value, int):
+
                   if 1900 <= value <= 2100:
                       return value
 
                   return None
 
               if isinstance(value, float):
+
                   if value.is_integer():
+
                       value = int(value)
 
                       if 1900 <= value <= 2100:
@@ -203,10 +451,6 @@ jobs:
               return None
 
           def find_year(game):
-              """
-              Procura a data/ano em todos os campos conhecidos
-              do GameDB-PS2.
-              """
 
               possible_fields = [
 
@@ -222,6 +466,7 @@ jobs:
 
                   "released",
                   "ReleaseDate",
+
                   "release_date_us",
                   "release_date_eu",
                   "release_date_jp"
@@ -244,8 +489,7 @@ jobs:
 
           def find_first_value(
               variants,
-              field_names,
-              prefer_non_empty=True
+              field_names
           ):
 
               for variant in variants:
@@ -262,6 +506,10 @@ jobs:
                           return value
 
               return None
+
+          # ============================================================
+          # LÊ A BASE
+          # ============================================================
 
           for game in entries:
 
@@ -285,10 +533,20 @@ jobs:
               if not title:
                   continue
 
+              raw_genre = get_value(
+                  game,
+                  "genre",
+                  "genres",
+                  "Genre"
+              )
+
               record = {
+
                   "title": title,
 
-                  "year": find_year(game),
+                  "year": find_year(
+                      game
+                  ),
 
                   "developer": get_value(
                       game,
@@ -302,23 +560,25 @@ jobs:
                       "Publisher"
                   ),
 
-                  "genre": get_value(
-                      game,
-                      "genre",
-                      "genres",
-                      "Genre"
+                  "genre": normalize_genres(
+                      raw_genre
                   ),
 
                   "serial": serial
+
               }
 
               if should_remove(title):
 
-                  review.append(record)
+                  review.append(
+                      record
+                  )
 
                   continue
 
-              group_key = normalize_title(title)
+              group_key = normalize_title(
+                  title
+              )
 
               if not group_key:
                   continue
@@ -326,10 +586,12 @@ jobs:
               if group_key not in groups:
                   groups[group_key] = []
 
-              groups[group_key].append(record)
+              groups[group_key].append(
+                  record
+              )
 
           # ============================================================
-          # ORDEM DE PREFERÊNCIA DAS REGIÕES
+          # REGIÕES
           # ============================================================
 
           region_priority = [
@@ -358,12 +620,17 @@ jobs:
                   region_priority
               ):
 
-                  if serial_upper.startswith(prefix):
+                  if serial_upper.startswith(
+                      prefix
+                  ):
+
                       return index
 
               return 100
 
-          def choose_cover_serial(variants):
+          def choose_cover_serial(
+              variants
+          ):
 
               best = None
 
@@ -400,19 +667,32 @@ jobs:
 
               variants.sort(
                   key=lambda game: (
+
                       serial_priority(
-                          game.get("serial")
+                          game.get(
+                              "serial"
+                          )
                       ),
 
                       -sum(
                           value is not None
                           and value != ""
                           for value in [
-                              game.get("year"),
-                              game.get("developer"),
-                              game.get("publisher"),
-                              game.get("genre"),
-                              game.get("serial")
+                              game.get(
+                                  "year"
+                              ),
+                              game.get(
+                                  "developer"
+                              ),
+                              game.get(
+                                  "publisher"
+                              ),
+                              game.get(
+                                  "genre"
+                              ),
+                              game.get(
+                                  "serial"
+                              )
                           ]
                       ),
 
@@ -422,6 +702,7 @@ jobs:
                               ""
                           )
                       )
+
                   )
               )
 
@@ -430,11 +711,12 @@ jobs:
               )
 
               # ========================================================
-              # RECUPERA INFORMAÇÕES QUE ESTIVEREM FALTANDO
-              # EM OUTRAS VARIANTES
+              # RECUPERA ANO DE OUTRA VARIANTE
               # ========================================================
 
-              if not representative.get("year"):
+              if not representative.get(
+                  "year"
+              ):
 
                   for variant in variants:
 
@@ -444,9 +726,15 @@ jobs:
 
                       if year:
 
-                          representative["year"] = year
+                          representative[
+                              "year"
+                          ] = year
 
                           break
+
+              # ========================================================
+              # RECUPERA DESENVOLVEDOR
+              # ========================================================
 
               if not representative.get(
                   "developer"
@@ -461,9 +749,14 @@ jobs:
                   )
 
                   if value:
+
                       representative[
                           "developer"
                       ] = value
+
+              # ========================================================
+              # RECUPERA PUBLISHER
+              # ========================================================
 
               if not representative.get(
                   "publisher"
@@ -478,27 +771,68 @@ jobs:
                   )
 
                   if value:
+
                       representative[
                           "publisher"
                       ] = value
+
+              # ========================================================
+              # RECUPERA GÊNERO
+              # ========================================================
 
               if not representative.get(
                   "genre"
               ):
 
-                  value = find_first_value(
-                      variants,
-                      [
-                          "genre",
-                          "genres",
-                          "Genre"
-                      ]
-                  )
+                  genres_found = []
 
-                  if value:
-                      representative[
+                  for variant in variants:
+
+                      variant_genre = variant.get(
                           "genre"
-                      ] = value
+                      )
+
+                      if isinstance(
+                          variant_genre,
+                          list
+                      ):
+
+                          for genre in variant_genre:
+
+                              if (
+                                  genre
+                                  and
+                                  genre not in genres_found
+                              ):
+
+                                  genres_found.append(
+                                      genre
+                                  )
+
+                      elif variant_genre:
+
+                          if (
+                              variant_genre
+                              not in genres_found
+                          ):
+
+                              genres_found.append(
+                                  variant_genre
+                              )
+
+                  if genres_found:
+
+                      if len(genres_found) == 1:
+
+                          representative[
+                              "genre"
+                          ] = genres_found[0]
+
+                      else:
+
+                          representative[
+                              "genre"
+                          ] = genres_found
 
               # ========================================================
               # SERIALS
@@ -509,26 +843,40 @@ jobs:
 
               for variant in variants:
 
-                  if variant.get("serial"):
+                  if variant.get(
+                      "serial"
+                  ):
+
                       serials.append(
-                          variant["serial"]
+                          variant[
+                              "serial"
+                          ]
                       )
 
-                  if variant.get("title"):
+                  if variant.get(
+                      "title"
+                  ):
+
                       titles.append(
-                          variant["title"]
+                          variant[
+                              "title"
+                          ]
                       )
 
-              representative["serials"] = sorted(
+              representative[
+                  "serials"
+              ] = sorted(
                   set(serials)
               )
 
-              representative["titles"] = sorted(
+              representative[
+                  "titles"
+              ] = sorted(
                   set(titles)
               )
 
               # ========================================================
-              # SERIAL DA CAPA
+              # CAPA
               # ========================================================
 
               cover_serial = choose_cover_serial(
@@ -542,7 +890,9 @@ jobs:
                   ] = cover_serial
 
               if len(
-                  representative["serials"]
+                  representative[
+                      "serials"
+                  ]
               ) <= 1:
 
                   representative.pop(
@@ -551,7 +901,9 @@ jobs:
                   )
 
               if len(
-                  representative["titles"]
+                  representative[
+                      "titles"
+                  ]
               ) <= 1:
 
                   representative.pop(
@@ -564,12 +916,14 @@ jobs:
               )
 
           # ============================================================
-          # ORDENAÇÃO
+          # ORDENA
           # ============================================================
 
           games.sort(
               key=lambda game:
-                  game["title"].lower()
+                  game[
+                      "title"
+                  ].lower()
           )
 
           # ============================================================
@@ -587,7 +941,7 @@ jobs:
           )
 
           # ============================================================
-          # CAPAS LOCAIS
+          # CAMINHO LOCAL DAS CAPAS
           # ============================================================
 
           for game in games:
@@ -629,7 +983,7 @@ jobs:
               )
 
           # ============================================================
-          # GAMES-REVIEW.JSON
+          # REVIEW
           # ============================================================
 
           with open(
@@ -646,7 +1000,7 @@ jobs:
               )
 
           # ============================================================
-          # GRUPOS DE DUPLICATAS
+          # GRUPOS
           # ============================================================
 
           duplicate_groups = []
@@ -690,9 +1044,13 @@ jobs:
           # ============================================================
 
           games_with_year = sum(
+
               1
+
               for game in games
+
               if game.get("year")
+
           )
 
           games_without_year = (
@@ -740,7 +1098,7 @@ jobs:
           )
 
           # ============================================================
-          # TESTE DE ALGUNS JOGOS
+          # TESTE DE JOGOS
           # ============================================================
 
           tests = [
@@ -754,11 +1112,15 @@ jobs:
           ]
 
           print("")
-          print("===== TESTE DE ANOS =====")
+          print(
+              "===== TESTE DE ANOS ====="
+          )
 
           for game in games:
 
-              if game["title"].lower() in [
+              if game[
+                  "title"
+              ].lower() in [
                   x.lower()
                   for x in tests
               ]:
@@ -768,6 +1130,61 @@ jobs:
                       f'-> ano: '
                       f'{game.get("year")}'
                   )
+
+          # ============================================================
+          # TESTE DE GÊNEROS
+          # ============================================================
+
+          genre_counter = {}
+
+          for game in games:
+
+              genre = game.get(
+                  "genre"
+              )
+
+              if isinstance(
+                  genre,
+                  list
+              ):
+
+                  genres = genre
+
+              elif genre:
+
+                  genres = [genre]
+
+              else:
+
+                  genres = []
+
+              for item in genres:
+
+                  if item:
+
+                      genre_counter[
+                          item
+                      ] = (
+                          genre_counter.get(
+                              item,
+                              0
+                          ) + 1
+                      )
+
+          print("")
+          print(
+              "===== GÊNEROS ====="
+          )
+
+          for genre, count in sorted(
+              genre_counter.items(),
+              key=lambda item:
+                  item[0].lower()
+          ):
+
+              print(
+                  f"{genre}: {count}"
+              )
 
           print(
               "================================"
@@ -889,9 +1306,13 @@ jobs:
 
                       return True, serial
 
-              if os.path.exists(output):
+              if os.path.exists(
+                  output
+              ):
 
-                  os.remove(output)
+                  os.remove(
+                      output
+                  )
 
               return False, serial
 
@@ -927,11 +1348,13 @@ jobs:
           )
 
           print(
-              f"Capas baixadas: {success}"
+              f"Capas baixadas: "
+              f"{success}"
           )
 
           print(
-              f"Capas não encontradas: {failed}"
+              f"Capas não encontradas: "
+              f"{failed}"
           )
 
           print(
@@ -968,7 +1391,9 @@ jobs:
 
           for game in games:
 
-              if game["title"].lower() in [
+              if game[
+                  "title"
+              ].lower() in [
                   x.lower()
                   for x in tests
               ]:
@@ -981,9 +1406,13 @@ jobs:
 
                       cover
                       and
-                      os.path.isfile(cover)
+                      os.path.isfile(
+                          cover
+                      )
                       and
-                      os.path.getsize(cover) > 0
+                      os.path.getsize(
+                          cover
+                      ) > 0
 
                   )
 
@@ -1000,9 +1429,13 @@ jobs:
           )
 
           with_year = sum(
+
               1
+
               for game in games
+
               if game.get("year")
+
           )
 
           without_year = (
@@ -1020,6 +1453,57 @@ jobs:
               f"Jogos sem ano: "
               f"{without_year}"
           )
+
+          print("")
+          print(
+              "===== TESTE DE GÊNEROS ====="
+          )
+
+          genre_counter = {}
+
+          for game in games:
+
+              genre = game.get(
+                  "genre"
+              )
+
+              if isinstance(
+                  genre,
+                  list
+              ):
+
+                  genres = genre
+
+              elif genre:
+
+                  genres = [genre]
+
+              else:
+
+                  genres = []
+
+              for item in genres:
+
+                  if item:
+
+                      genre_counter[
+                          item
+                      ] = (
+                          genre_counter.get(
+                              item,
+                              0
+                          ) + 1
+                      )
+
+          for genre, count in sorted(
+              genre_counter.items(),
+              key=lambda item:
+                  item[0].lower()
+          ):
+
+              print(
+                  f"{genre}: {count}"
+              )
 
           PY
 

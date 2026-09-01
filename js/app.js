@@ -296,7 +296,7 @@ const translations = {
       "Créditos",
 
     aboutCreditsText:
-      "Projeto e desenvolvimento: Leonardo / Mateador.",
+      "Proyecto independiente.",
 
     aboutDataText:
       "Dados, imagens e outros materiais utilizados no catálogo pertencem aos seus respectivos autores e proprietários."
@@ -624,7 +624,7 @@ const translations = {
       "Credits",
 
     aboutCreditsText:
-      "Project and development: Leonardo / Mateador.",
+      "Independent project.",
 
     aboutDataText:
       "Data, images and other materials used in the catalog belong to their respective authors and owners."
@@ -1123,6 +1123,34 @@ function normalizeGenre(value) {
     clean
   );
 
+}
+
+
+function getGameYear(game) {
+
+  if (game?.year !== undefined && game?.year !== null && String(game.year).trim()) {
+    const direct = String(game.year).match(/\b(19\d{2}|20\d{2})\b/);
+    if (direct) return direct[1];
+  }
+
+  const values = [
+    game?.releaseYear,
+    game?.release_year,
+    game?.releaseDate,
+    game?.release_date,
+    game?.released,
+    game?.release,
+    game?.date,
+    game?.dates
+  ];
+
+  for (const value of values) {
+    if (value === undefined || value === null) continue;
+    const match = String(value).match(/\b(19\d{2}|20\d{2})\b/);
+    if (match) return match[1];
+  }
+
+  return '';
 }
 
 

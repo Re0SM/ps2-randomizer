@@ -15,7 +15,7 @@
     content="Catálogo e sorteador de jogos de PlayStation 2."
   >
 
-  <title>PS2 Randomizer</title>
+  <title>Minha Lista de Jogos</title>
 
   <link
     rel="stylesheet"
@@ -36,8 +36,9 @@
     <a
       class="brand"
       href="#"
+      data-i18n="siteName"
     >
-      PS2<span>RANDOMIZER</span>
+      Minha Lista de Jogos
     </a>
 
 
@@ -298,9 +299,6 @@
 
           <div>
 
-          
-
-
             <h2 data-i18n="myListTitle">
               Minha Lista
             </h2>
@@ -542,8 +540,6 @@
 
       <div class="random-options">
 
-        <!-- REGIÃO -->
-
         <label class="random-option">
 
           <span
@@ -602,8 +598,6 @@
 
         </label>
 
-
-        <!-- QUANTIDADE -->
 
         <label class="random-option">
 
@@ -719,14 +713,137 @@
 
 
   <!-- =========================
+       MODAL SOBRE / AVISOS
+       E CRÉDITOS
+  ========================= -->
+
+  <div
+    id="aboutModal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="aboutTitle"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-close-about
+    ></div>
+
+
+    <div class="about-panel">
+
+      <button
+        class="close-button"
+        data-close-about
+        aria-label="Fechar"
+      >
+        ✕
+      </button>
+
+
+      <p
+        class="eyebrow"
+        data-i18n="aboutEyebrow"
+      >
+        SOBRE
+      </p>
+
+
+      <h2
+        id="aboutTitle"
+        data-i18n="aboutTitle"
+      >
+        Minha Lista de Jogos
+      </h2>
+
+
+      <div class="about-content">
+
+        <section>
+
+          <h3 data-i18n="aboutProjectTitle">
+            Sobre o projeto
+          </h3>
+
+          <p data-i18n="aboutProjectText">
+            Minha Lista de Jogos é um projeto independente
+            criado para organizar, explorar e descobrir
+            jogos de PlayStation 2.
+          </p>
+
+        </section>
+
+
+        <section>
+
+          <h3 data-i18n="aboutWarningTitle">
+            Avisos
+          </h3>
+
+          <p data-i18n="aboutWarningText">
+            Este site não possui vínculo oficial com a
+            Sony Interactive Entertainment, PlayStation
+            ou suas subsidiárias.
+          </p>
+
+          <p data-i18n="aboutCopyrightText">
+            PlayStation 2, seus logotipos e demais marcas
+            relacionadas pertencem aos seus respectivos
+            proprietários.
+          </p>
+
+          <p data-i18n="aboutRomText">
+            Este site não hospeda, fornece ou distribui
+            ROMs, ISOs ou cópias de jogos.
+          </p>
+
+        </section>
+
+
+        <section>
+
+          <h3 data-i18n="aboutCreditsTitle">
+            Créditos
+          </h3>
+
+          <p data-i18n="aboutCreditsText">
+            Projeto e desenvolvimento: Leonardo / Mateador.
+          </p>
+
+          <p data-i18n="aboutDataText">
+            Dados, imagens e outros materiais utilizados
+            no catálogo pertencem aos seus respectivos
+            autores e proprietários.
+          </p>
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
        RODAPÉ
   ========================= -->
 
   <footer class="footer">
 
-    <p data-i18n="footer">
-      PS2 Randomizer · Projeto em desenvolvimento
-    </p>
+    <span data-i18n="footer">
+      Minha Lista de Jogos · Projeto independente
+    </span>
+
+    <button
+      id="aboutButton"
+      class="about-button"
+      type="button"
+      aria-label="Sobre o site"
+    >
+      ?
+    </button>
 
   </footer>
 

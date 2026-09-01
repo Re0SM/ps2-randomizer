@@ -124,12 +124,6 @@ const translations = {
     ps2:
       "PS2",
 
-    gamesCount:
-      "jogos",
-
-    gameCount:
-      "jogo",
-
     previous:
       "<",
 
@@ -233,12 +227,6 @@ const translations = {
 
     ps2:
       "PS2",
-
-    gamesCount:
-      "juegos",
-
-    gameCount:
-      "juego",
 
     previous:
       "<",
@@ -344,12 +332,6 @@ const translations = {
     ps2:
       "PS2",
 
-    gamesCount:
-      "games",
-
-    gameCount:
-      "game",
-
     previous:
       "<",
 
@@ -380,9 +362,6 @@ const elements = {
 
   emptyState:
     document.getElementById("emptyState"),
-
-  gameCount:
-    document.getElementById("gameCount"),
 
   pagination:
     document.getElementById("pagination"),
@@ -1018,14 +997,6 @@ function renderCatalog() {
 
   elements.gameGrid.innerHTML =
     "";
-
-
-  elements.gameCount.textContent =
-    `${filtered.length} ${
-      filtered.length === 1
-        ? t("gameCount")
-        : t("gamesCount")
-    }`;
 
 
   elements.emptyState

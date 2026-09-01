@@ -241,10 +241,12 @@
   },
   {
     "title": "Final Fantasy XII International: Zodiac Job System",
-    "year": 2007,
+    "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": "RPG",
+    "genre": [
+      "RPG"
+    ],
     "serial": "SCAJ-20188"
   },
   {
@@ -2825,10 +2827,12 @@
   },
   {
     "title": "Dark Cloud (Promo)",
-    "year": 2001,
+    "year": null,
     "developer": "Level-5",
     "publisher": "Sony Computer Entertainment Europe",
-    "genre": "RPG",
+    "genre": [
+      "RPG"
+    ],
     "serial": "SCES-50296"
   },
   {
@@ -2841,10 +2845,12 @@
   },
   {
     "title": "Final Fantasy XII International: Zodiac Job System [Ultimate Hits]",
-    "year": 2009,
+    "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": "RPG",
+    "genre": [
+      "RPG"
+    ],
     "serial": "SCKA-20138"
   },
   {
@@ -2857,10 +2863,12 @@
   },
   {
     "title": "Doko Demo Issho: Toro to Nagare-boshi",
-    "year": 2004,
+    "year": null,
     "developer": "Sony",
     "publisher": "Sony",
-    "genre": "Adventure",
+    "genre": [
+      "Adventure"
+    ],
     "serial": "SCPS-15067"
   },
   {
@@ -3257,10 +3265,12 @@
   },
   {
     "title": "HDD Utility Disc",
-    "year": 2006,
+    "year": null,
     "developer": "Square PDD 3",
     "publisher": "Sony Computer Entertainment",
-    "genre": "MMORPG",
+    "genre": [
+      "MMORPG"
+    ],
     "serial": "SCUS-97395"
   },
   {
@@ -3297,7 +3307,7 @@
   },
   {
     "title": "Jampack Demo Disc Volume 12",
-    "year": 2005,
+    "year": null,
     "developer": "Sony Computer Entertainment America",
     "publisher": "Sony Computer Entertainment America",
     "genre": null,
@@ -3305,7 +3315,7 @@
   },
   {
     "title": "Jampack Demo Disc Volume 12",
-    "year": 2005,
+    "year": null,
     "developer": "Sony Computer Entertainment America",
     "publisher": "Sony Computer Entertainment America",
     "genre": null,
@@ -3649,18 +3659,22 @@
   },
   {
     "title": "Metal Arms: Glitch in the System",
-    "year": 2003,
+    "year": null,
     "developer": "Swingin' Ape Studios",
     "publisher": "Sierra Entertainment",
-    "genre": "Third-person Shooter",
+    "genre": [
+      "Third-Person Shooter"
+    ],
     "serial": "SLES-51758"
   },
   {
     "title": "Final Fantasy XII International: Zodiac Job System",
-    "year": 2009,
+    "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": "RPG",
+    "genre": [
+      "RPG"
+    ],
     "serial": "SLPM-55210"
   },
   {
@@ -3700,12 +3714,14 @@
     "year": null,
     "developer": null,
     "publisher": "Sega",
-    "genre": "Action",
+    "genre": [
+      "Action"
+    ],
     "serial": "SLPM-62692"
   },
   {
     "title": "Devil May Cry: Trial Edition",
-    "year": 2001,
+    "year": null,
     "developer": "Capcom",
     "publisher": "Capcom",
     "genre": [
@@ -3716,26 +3732,32 @@
   },
   {
     "title": "Final Fantasy XII International: Zodiac Job System",
-    "year": 2007,
+    "year": null,
     "developer": "S-Force",
     "publisher": "Square Enix",
-    "genre": "RPG",
+    "genre": [
+      "RPG"
+    ],
     "serial": "SLPM-66750"
   },
   {
     "title": "Football Kingdom: Trial Edition",
-    "year": 2004,
+    "year": null,
     "developer": "Namco",
     "publisher": "Namco",
-    "genre": "Sports",
+    "genre": [
+      "Sports"
+    ],
     "serial": "SLPS-20374"
   },
   {
     "title": "Metal Arms: Glitch in the System",
-    "year": 2003,
+    "year": null,
     "developer": "Swingin' Ape Studios",
     "publisher": "Sierra",
-    "genre": "Third-person Shooter",
+    "genre": [
+      "Third-Person Shooter"
+    ],
     "serial": "SLUS-20786"
   },
   {
@@ -3788,12 +3810,12 @@
   },
   {
     "title": "Ice Age 2: The Meltdown (with DVD)",
-    "year": 2006,
+    "year": null,
     "developer": "Eurocom Entertainment Software",
     "publisher": "Vivendi Games",
     "genre": [
       "Action",
-      "Platformer"
+      "Platform"
     ],
     "serial": "VUGJ-10001"
   }

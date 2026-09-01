@@ -181,8 +181,8 @@ jobs:
 
               groups[group_key].append(record)
 
-          # Ordem de preferência para escolher a capa.
-          # Priorizamos versões ocidentais antes das japonesas.
+          # Ordem de preferência das regiões.
+          # Ocidentais primeiro; japonesas depois.
           region_priority = [
               "SLUS",
               "SLES",
@@ -206,18 +206,25 @@ jobs:
 
               return 100
 
-          def cover_url(serial):
-              if not serial:
-                  return None
+          def choose_cover_serial(variants):
+              best = None
 
-              return (
-                  "https://raw.githubusercontent.com/xlenore/"
-                  "ps2-covers/main/covers/default/"
-                  + serial
-                  + ".jpg"
-              )
+              for variant in variants:
+                  serial = variant.get("serial")
 
-          # Escolhe uma única entrada representativa de cada grupo.
+                  if not serial:
+                      continue
+
+                  if best is None:
+                      best = serial
+                      continue
+
+                  if serial_priority(serial) < serial_priority(best):
+                      best = serial
+
+              return best
+
+          # Escolhe uma entrada representativa de cada jogo.
           for group_key, variants in groups.items():
 
               variants.sort(
@@ -239,7 +246,6 @@ jobs:
 
               representative = dict(variants[0])
 
-              # Guarda todos os seriais encontrados.
               serials = []
               titles = []
 
@@ -253,24 +259,11 @@ jobs:
               representative["serials"] = sorted(set(serials))
               representative["titles"] = sorted(set(titles))
 
-              # Escolhe o melhor serial especificamente para a capa.
-              cover_serial = None
-
-              for variant in variants:
-                  serial = variant.get("serial")
-
-                  if not serial:
-                      continue
-
-                  if cover_serial is None:
-                      cover_serial = serial
-                      continue
-
-                  if serial_priority(serial) < serial_priority(cover_serial):
-                      cover_serial = serial
+              # Escolhe o serial que será usado para a capa.
+              cover_serial = choose_cover_serial(variants)
 
               if cover_serial:
-                  representative["cover"] = cover_url(cover_serial)
+                  representative["cover_serial"] = cover_serial
 
               if len(representative["serials"]) <= 1:
                   representative.pop("serials", None)
@@ -285,6 +278,18 @@ jobs:
           )
 
           os.makedirs("data", exist_ok=True)
+          os.makedirs("data/covers", exist_ok=True)
+
+          # Caminho local das capas.
+          for game in games:
+              serial = game.get("cover_serial")
+
+              if serial:
+                  game["cover"] = f"data/covers/{serial}.jpg"
+              else:
+                  game["cover"] = None
+
+              game.pop("cover_serial", None)
 
           with open(
               "data/games.json",
@@ -341,23 +346,138 @@ jobs:
           print(f"Grupos com variantes: {len(duplicate_groups)}")
           print(f"Jogos no catálogo: {len(games)}")
           print("================================")
+          PY
 
-          # Testes rápidos de capas.
-          print("")
-          print("===== TESTE DE CAPAS =====")
+      - name: Download game covers
+        run: |
+          mkdir -p data/covers
+
+          echo "Baixando capas que ainda não existem..."
+
+          python3 - <<'PY'
+          import json
+          import os
+          import subprocess
+          from concurrent.futures import ThreadPoolExecutor
+
+          with open("data/games.json", "r", encoding="utf-8") as f:
+              games = json.load(f)
+
+          BASE_URL = "https://raw.githubusercontent.com/xlenore/ps2-covers/main/covers/default"
+
+          downloads = []
 
           for game in games:
-              if game["title"].lower() in [
-                  "resident evil 4",
-                  "final fantasy x",
-                  "god of war",
-                  "grand theft auto: san andreas",
-                  "grand theft auto san andreas"
-              ]:
+              cover = game.get("cover")
+
+              if not cover:
+                  continue
+
+              filename = os.path.basename(cover)
+              output = os.path.join("data", "covers", filename)
+
+              if os.path.isfile(output) and os.path.getsize(output) > 0:
+                  continue
+
+              serial = os.path.splitext(filename)[0]
+
+              downloads.append(
+                  (
+                      serial,
+                      f"{BASE_URL}/{serial}.jpg",
+                      output
+                  )
+              )
+
+          print(f"Capas já existentes: {len(games) - len(downloads)}")
+          print(f"Capas novas para baixar: {len(downloads)}")
+
+          def download(item):
+              serial, url, output = item
+
+              result = subprocess.run(
+                  [
+                      "curl",
+                      "-L",
+                      "--fail",
+                      "--silent",
+                      "--show-error",
+                      "--retry",
+                      "2",
+                      "--connect-timeout",
+                      "10",
+                      "--max-time",
+                      "30",
+                      url,
+                      "-o",
+                      output
+                  ],
+                  stdout=subprocess.PIPE,
+                  stderr=subprocess.PIPE,
+                  text=True
+              )
+
+              if result.returncode == 0 and os.path.isfile(output):
+                  if os.path.getsize(output) > 0:
+                      return True, serial
+
+              if os.path.exists(output):
+                  os.remove(output)
+
+              return False, serial
+
+          success = 0
+          failed = 0
+
+          with ThreadPoolExecutor(max_workers=12) as executor:
+              for ok, serial in executor.map(download, downloads):
+
+                  if ok:
+                      success += 1
+                  else:
+                      failed += 1
+                      print(f"Não encontrada: {serial}")
+
+          print("")
+          print("================================")
+          print(f"Capas baixadas: {success}")
+          print(f"Capas não encontradas: {failed}")
+          print("================================")
+          PY
+
+      - name: Verify generated catalog
+        run: |
+          echo "===== TESTE DE CAPAS ====="
+
+          python3 - <<'PY'
+          import json
+          import os
+
+          with open("data/games.json", "r", encoding="utf-8") as f:
+              games = json.load(f)
+
+          tests = [
+              "Resident Evil 4",
+              "Final Fantasy X",
+              "God of War",
+              "Grand Theft Auto: San Andreas",
+              "Grand Theft Auto San Andreas"
+          ]
+
+          for game in games:
+              if game["title"].lower() in [x.lower() for x in tests]:
+
+                  cover = game.get("cover")
+                  exists = (
+                      cover
+                      and os.path.isfile(cover)
+                      and os.path.getsize(cover) > 0
+                  )
+
                   print(
-                      game["title"],
-                      "->",
-                      game.get("cover")
+                      f'{game["title"]} -> '
+                      f'{cover} -> '
+                      f'{"OK" if exists else "NÃO ENCONTRADA"}'
                   )
           PY
 
@@ -369,6 +489,7 @@ jobs:
           git add data/games.json
           git add data/games-review.json
           git add data/games-groups-review.json
+          git add data/covers/
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração no catálogo."

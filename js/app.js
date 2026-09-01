@@ -674,24 +674,7 @@ function getUserData() {
     const data =
       JSON.parse(saved);
 
-    return {
-
-      played:
-        Array.isArray(data.played)
-          ? data.played
-          : [],
-
-      backlog:
-        Array.isArray(data.backlog)
-          ? data.backlog
-          : [],
-
-      favorites:
-        Array.isArray(data.favorites)
-          ? data.favorites
-          : []
-
-    };
+    return normalizeListStatuses(data);
 
   } catch {
 
@@ -713,6 +696,37 @@ function saveUserData(data) {
     JSON.stringify(data)
   );
 
+}
+
+
+function normalizeListStatuses(data) {
+
+  const played =
+    Array.isArray(data.played)
+      ? [...new Set(data.played.map(String))]
+      : [];
+
+  const playedSet = new Set(played);
+
+  const backlog =
+    Array.isArray(data.backlog)
+      ? [...new Set(
+          data.backlog
+            .map(String)
+            .filter(id => !playedSet.has(id))
+        )]
+      : [];
+
+  const favorites =
+    Array.isArray(data.favorites)
+      ? [...new Set(data.favorites.map(String))]
+      : [];
+
+  return {
+    played,
+    backlog,
+    favorites
+  };
 }
 
 
@@ -3459,3 +3473,36 @@ function init() {
 
 
 init();
+
+
+
+/* status-exclusivity-fix */
+document.addEventListener(
+  "click",
+  event => {
+
+    const button =
+      event.target.closest(
+        "#togglePlayed, #toggleBacklog"
+      );
+
+    if (!button || !currentGame) return;
+
+    const data = getUserData();
+    const id = String(gameId(currentGame));
+
+    if (button.id === "togglePlayed") {
+      data.backlog = data.backlog.filter(
+        value => String(value) !== id
+      );
+    } else {
+      data.played = data.played.filter(
+        value => String(value) !== id
+      );
+    }
+
+    saveUserData(data);
+
+  },
+  true
+);

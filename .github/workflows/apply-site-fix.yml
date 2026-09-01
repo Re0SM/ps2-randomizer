@@ -13,80 +13,66 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update site files
+      - name: Apply fixes
         shell: python
         run: |
           from pathlib import Path
           import re
 
-          app = Path('js/app.js')
-          index = Path('index.html')
+          app = Path("js/app.js")
+          index = Path("index.html")
 
-          a = app.read_text(encoding='utf-8')
-          h = index.read_text(encoding='utf-8')
+          a = app.read_text(encoding="utf-8")
+          h = index.read_text(encoding="utf-8")
 
-          # Remove the personal identification from the credits.
-          a = a.replace(
-              'aboutCreditsText:\n      "Projeto e desenvolvimento: Leonardo / Mateador.",',
-              'aboutCreditsText:\n      "Projeto independente.",'
-          )
-          a = a.replace(
-              'aboutCreditsText:\n      "Proyecto y desarrollo: Leonardo / Mateador.",',
-              'aboutCreditsText:\n      "Proyecto independiente.",'
-          )
-          a = a.replace(
-              'aboutCreditsText:\n      "Project and development: Leonardo / Mateador.",',
-              'aboutCreditsText:\n      "Independent project.",'
-          )
+          # Remove personal identification from the credits.
+          a = re.sub(r'aboutCreditsText:\s*"[^"]*"', 'aboutCreditsText:\n      "Projeto independente."', a, count=1)
+          a = a.replace('"Proyecto independiente."', '"Proyecto independiente."')
+          a = re.sub(r'aboutCreditsText:\s*"[^"]*"', 'aboutCreditsText:\n      "Proyecto independiente."', a, count=1) if '  es: {' in a else a
 
-          # Add the requested localized texts once.
-          if 'aboutSourcesTitle:' not in a:
-              a = a.replace(
-                  'aboutDataText:\n      "Dados, imagens e outros materiais utilizados no catálogo pertencem aos seus respectivos autores e proprietários."',
-                  'aboutDataText:\n      "Dados, imagens e outros materiais utilizados no catálogo pertencem aos seus respectivos autores e proprietários.",\n\n    aboutSourcesTitle:\n      "Fontes dos dados",\n\n    aboutGameDataSource:\n      "Informações dos jogos: GameDB-PS2 — niemasd/GameDB-PS2",\n\n    aboutCoverSource:\n      "Capas dos jogos: PS2 Covers — xlenore/ps2-covers",\n\n    aboutStorageTitle:\n      "Dados salvos no navegador",\n\n    aboutStorageText:\n      "Sua lista, favoritos e demais marcações são salvos somente no armazenamento local deste navegador. Se você trocar de navegador, usar outro dispositivo ou excluir os dados do navegador, essas informações serão perdidas."'
-              )
-              a = a.replace(
-                  'aboutDataText:\n      "Los datos, imágenes y demás materiales utilizados en el catálogo pertenecen a sus respectivos autores y propietarios."',
-                  'aboutDataText:\n      "Los datos, imágenes y demás materiales utilizados en el catálogo pertenecen a sus respectivos autores y propietarios.",\n\n    aboutSourcesTitle:\n      "Fuentes de los datos",\n\n    aboutGameDataSource:\n      "Información de los juegos: GameDB-PS2 — niemasd/GameDB-PS2",\n\n    aboutCoverSource:\n      "Portadas de los juegos: PS2 Covers — xlenore/ps2-covers",\n\n    aboutStorageTitle:\n      "Datos guardados en el navegador",\n\n    aboutStorageText:\n      "Tu lista, favoritos y demás marcas se guardan solamente en el almacenamiento local de este navegador. Si cambias de navegador, usas otro dispositivo o eliminas los datos del navegador, esta información se perderá."'
-              )
-              a = a.replace(
-                  'aboutDataText:\n      "Data, images and other materials used in the catalog belong to their respective authors and owners."',
-                  'aboutDataText:\n      "Data, images and other materials used in the catalog belong to their respective authors and owners.",\n\n    aboutSourcesTitle:\n      "Data sources",\n\n    aboutGameDataSource:\n      "Game information: GameDB-PS2 — niemasd/GameDB-PS2",\n\n    aboutCoverSource:\n      "Game covers: PS2 Covers — xlenore/ps2-covers",\n\n    aboutStorageTitle:\n      "Data stored in your browser",\n\n    aboutStorageText:\n      "Your list, favorites and other marks are saved only in this browser's local storage. If you switch browsers, use another device or delete your browser data, this information will be lost."'
-              )
+          # Replace the English credit separately.
+          en_pos = a.find('  en: {')
+          if en_pos >= 0:
+              before = a[:en_pos]
+              after = a[en_pos:]
+              after = re.sub(r'aboutCreditsText:\s*"[^"]*"', 'aboutCreditsText:\n      "Independent project."', after, count=1)
+              a = before + after
 
-          # Keep years working even if the source uses a release-date field.
-          if 'function normalizeYear(' not in a:
+          # Add a reliable year normalizer. GameDB-PS2 has release-date data,
+          # while older generated games.json files may use different field names.
+          if 'function getGameYear(' not in a:
               marker = '/* =========================================================\n   STATUS\n========================================================= */'
-              fn = '''function normalizeYear(game) {\n\n  if (game?.year !== undefined && game?.year !== null && String(game.year).trim()) {\n    return String(game.year);\n  }\n\n  const candidates = [\n    game?.releaseYear,\n    game?.release_year,\n    game?.releaseDate,\n    game?.release_date,\n    game?.released,\n    game?.release,\n    game?.date\n  ];\n\n  for (const value of candidates) {\n    if (value === undefined || value === null) continue;\n    const match = String(value).match(/\\b(19\\d{2}|20\\d{2})\\b/);\n    if (match) return match[1];\n  }\n\n  return '';\n}\n\n\n'''
-              a = a.replace(marker, fn + marker)
+              fn = '''function getGameYear(game) {\n\n  if (game?.year !== undefined && game?.year !== null && String(game.year).trim()) {\n    const direct = String(game.year).match(/\\b(19\\d{2}|20\\d{2})\\b/);\n    if (direct) return direct[1];\n  }\n\n  const values = [\n    game?.releaseYear,\n    game?.release_year,\n    game?.releaseDate,\n    game?.release_date,\n    game?.released,\n    game?.release,\n    game?.date,\n    game?.dates\n  ];\n\n  for (const value of values) {\n    if (value === undefined || value === null) continue;\n    const match = String(value).match(/\\b(19\\d{2}|20\\d{2})\\b/);\n    if (match) return match[1];\n  }\n\n  return '';\n}\n\n\n'''
+              if marker in a:
+                  a = a.replace(marker, fn + marker, 1)
 
-          a = a.replace(
-              'genre:\n            normalizeGenre(\n              game.genre\n            )\n        })',
-              'genre:\n            normalizeGenre(\n              game.genre\n            ),\n\n          year:\n            normalizeYear(game)\n        })'
-          )
+          # Ensure every loaded game gets a normalized year property.
+          target = '''          genre:\n            normalizeGenre(\n              game.genre\n            )\n        })'''
+          replacement = '''          genre:\n            normalizeGenre(\n              game.genre\n            ),\n\n          year:\n            getGameYear(game)\n        })'''
+          if target in a:
+              a = a.replace(target, replacement, 1)
 
-          app.write_text(a, encoding='utf-8')
-
-          # Add the storage/source sections inside the existing about-content.
-          if 'data-i18n="aboutSourcesTitle"' not in h:
-              insertion = '''\n\n        <section>\n\n          <h3 data-i18n="aboutSourcesTitle">\n            Fontes dos dados\n          </h3>\n\n          <p data-i18n="aboutGameDataSource">\n            Informações dos jogos: GameDB-PS2 — niemasd/GameDB-PS2\n          </p>\n\n          <p data-i18n="aboutCoverSource">\n            Capas dos jogos: PS2 Covers — xlenore/ps2-covers\n          </p>\n\n        </section>\n\n\n        <section>\n\n          <h3 data-i18n="aboutStorageTitle">\n            Dados salvos no navegador\n          </h3>\n\n          <p data-i18n="aboutStorageText">\n            Sua lista, favoritos e demais marcações são salvos somente no armazenamento local deste navegador. Se você trocar de navegador, usar outro dispositivo ou excluir os dados do navegador, essas informações serão perdidas.\n          </p>\n\n        </section>\n'''
-              h = h.replace('      <div class="about-content">', '      <div class="about-content">' + insertion, 1)
-
-          # Remove the personal credit from HTML if present.
+          # Remove the old personal footer credit if it exists in HTML.
           h = h.replace('Projeto e desenvolvimento: Leonardo / Mateador.', 'Projeto independente.')
           h = h.replace('Proyecto y desarrollo: Leonardo / Mateador.', 'Proyecto independiente.')
           h = h.replace('Project and development: Leonardo / Mateador.', 'Independent project.')
 
-          index.write_text(h, encoding='utf-8')
-      
-      - name: Commit changes and remove temporary workflow
+          # Add data-source and browser-storage information to the About modal.
+          if 'data-i18n="aboutSourcesTitle"' not in h:
+              block = '''\n\n        <section>\n\n          <h3 data-i18n="aboutSourcesTitle">\n            Fontes dos dados\n          </h3>\n\n          <p data-i18n="aboutGameDataSource">\n            Informações dos jogos: GameDB-PS2 — niemasd/GameDB-PS2\n          </p>\n\n          <p data-i18n="aboutCoverSource">\n            Capas dos jogos: PS2 Covers — xlenore/ps2-covers\n          </p>\n\n        </section>\n\n\n        <section>\n\n          <h3 data-i18n="aboutStorageTitle">\n            Dados salvos no navegador\n          </h3>\n\n          <p data-i18n="aboutStorageText">\n            Sua lista, favoritos e demais marcações são salvos somente no armazenamento local deste navegador. Se você trocar de navegador, usar outro dispositivo ou excluir os dados do navegador, essas informações serão perdidas.\n          </p>\n\n        </section>\n'''
+              h = h.replace('      <div class="about-content">', '      <div class="about-content">' + block, 1)
+
+          app.write_text(a, encoding="utf-8")
+          index.write_text(h, encoding="utf-8")
+
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html js/app.js
-          git rm .github/workflows/apply-site-fix.yml
           if git diff --cached --quiet; then
+            echo "No changes needed"
             exit 0
           fi
-          git commit -m "Update data credits, browser storage notice and game years"
+          git commit -m "Restore game years and update credits"
           git push

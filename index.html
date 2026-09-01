@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
@@ -11,24 +17,97 @@
 
   <title>PS2 Randomizer</title>
 
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
 </head>
+
 
 <body>
 
+  <!-- =========================
+       TOPO
+  ========================= -->
+
   <header class="topbar">
 
-    <a class="brand" href="#">
+    <a
+      class="brand"
+      href="#"
+    >
       PS2<span>RANDOMIZER</span>
     </a>
 
-    <nav class="nav">
-      <a href="#catalogo">Catálogo</a>
-      <a href="#minha-lista">Minha Lista</a>
 
-      <button id="randomOneTop" class="nav-button">
+    <nav class="nav">
+
+      <a href="#catalogo" data-i18n="navCatalog">
+        Catálogo
+      </a>
+
+      <a href="#minha-lista" data-i18n="navList">
+        Minha Lista
+      </a>
+
+
+      <button
+        id="randomOneTop"
+        class="nav-button"
+        data-i18n="randomButton"
+      >
         🎲 Sortear
       </button>
+
+
+      <!-- IDIOMA -->
+
+      <div class="language-selector">
+
+        <button
+          id="languageButton"
+          class="language-button"
+          aria-label="Selecionar idioma"
+        >
+          <span id="currentLanguage">
+            PT
+          </span>
+
+          <span class="language-arrow">
+            ▾
+          </span>
+
+        </button>
+
+
+        <div
+          id="languageMenu"
+          class="language-menu hidden"
+        >
+
+          <button
+            data-language="pt"
+          >
+            Português
+          </button>
+
+          <button
+            data-language="es"
+          >
+            Español
+          </button>
+
+          <button
+            data-language="en"
+          >
+            English
+          </button>
+
+        </div>
+
+      </div>
+
     </nav>
 
   </header>
@@ -36,37 +115,51 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
       <div class="hero-content">
 
-        <p class="eyebrow">
+        <p
+          class="eyebrow"
+          data-i18n="eyebrow"
+        >
           PLAYSTATION 2
         </p>
 
-        <h1>
+
+        <h1 data-i18n="heroTitle">
           Encontre seu próximo jogo.
         </h1>
 
-        <p class="hero-text">
+
+        <p
+          class="hero-text"
+          data-i18n="heroText"
+        >
           Explore o catálogo, marque o que você já jogou
           e deixe a sorte escolher sua próxima aventura.
         </p>
+
 
         <div class="hero-actions">
 
           <button
             id="randomFiveHero"
             class="primary-button"
+            data-i18n="randomFive"
           >
             🎲 Sortear 5 jogos
           </button>
 
+
           <a
             href="#catalogo"
             class="secondary-button"
+            data-i18n="viewCatalog"
           >
             Ver catálogo
           </a>
@@ -78,7 +171,9 @@
     </section>
 
 
-    <!-- CATÁLOGO -->
+    <!-- =========================
+         CATÁLOGO
+    ========================= -->
 
     <section
       class="toolbar-section"
@@ -89,15 +184,20 @@
 
         <div>
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="catalogEyebrow"
+          >
             CATÁLOGO
           </p>
 
-          <h2>
+
+          <h2 data-i18n="catalogTitle">
             Jogos de PS2
           </h2>
 
         </div>
+
 
         <span
           id="gameCount"
@@ -123,6 +223,7 @@
             type="search"
             placeholder="Pesquisar jogo..."
             autocomplete="off"
+            data-i18n-placeholder="searchPlaceholder"
           >
 
         </label>
@@ -130,13 +231,17 @@
 
         <label class="filter-control">
 
-          <span>
+          <span data-i18n="genre">
             Gênero
           </span>
 
+
           <select id="genreFilter">
 
-            <option value="all">
+            <option
+              value="all"
+              data-i18n="all"
+            >
               Todos
             </option>
 
@@ -147,25 +252,41 @@
 
         <label class="filter-control">
 
-          <span>
+          <span data-i18n="status">
             Status
           </span>
 
+
           <select id="statusFilter">
 
-            <option value="all">
+            <option
+              value="all"
+              data-i18n="all"
+            >
               Todos
             </option>
 
-            <option value="played">
+
+            <option
+              value="played"
+              data-i18n="played"
+            >
               Já joguei
             </option>
 
-            <option value="backlog">
+
+            <option
+              value="backlog"
+              data-i18n="backlog"
+            >
               Pretendo jogar
             </option>
 
-            <option value="favorite">
+
+            <option
+              value="favorite"
+              data-i18n="favorite"
+            >
               Favoritos
             </option>
 
@@ -176,7 +297,7 @@
       </div>
 
 
-      <!-- GRID DOS JOGOS -->
+      <!-- GRID -->
 
       <div
         id="gameGrid"
@@ -196,21 +317,33 @@
           🎮
         </div>
 
-        <h3>
+
+        <h3 data-i18n="noGames">
           Nenhum jogo encontrado
         </h3>
 
-        <p>
+
+        <p data-i18n="noGamesText">
           Tente outro termo de pesquisa
           ou altere os filtros.
         </p>
 
       </div>
 
+
+      <!-- PAGINAÇÃO -->
+
+      <div
+        id="pagination"
+        class="pagination"
+      ></div>
+
     </section>
 
 
-    <!-- MINHA LISTA -->
+    <!-- =========================
+         MINHA LISTA
+    ========================= -->
 
     <section
       class="my-list-section"
@@ -221,11 +354,15 @@
 
         <div>
 
-          <p class="eyebrow">
+          <p
+            class="eyebrow"
+            data-i18n="myListEyebrow"
+          >
             MINHA LISTA
           </p>
 
-          <h2>
+
+          <h2 data-i18n="myListTitle">
             Seu progresso
           </h2>
 
@@ -242,7 +379,7 @@
             0
           </strong>
 
-          <span>
+          <span data-i18n="played">
             Já joguei
           </span>
 
@@ -255,7 +392,7 @@
             0
           </strong>
 
-          <span>
+          <span data-i18n="backlog">
             Pretendo jogar
           </span>
 
@@ -268,7 +405,7 @@
             0
           </strong>
 
-          <span>
+          <span data-i18n="favorite">
             Favoritos
           </span>
 
@@ -281,7 +418,9 @@
   </main>
 
 
-  <!-- MODAL DE INFORMAÇÕES DO JOGO -->
+  <!-- =========================
+       MODAL DO JOGO
+  ========================= -->
 
   <div
     id="gameModal"
@@ -323,16 +462,13 @@
             class="eyebrow"
           ></p>
 
+
           <h2 id="modalTitle"></h2>
+
 
           <p
             id="modalMeta"
             class="modal-meta"
-          ></p>
-
-          <p
-            id="modalDescription"
-            class="modal-description"
           ></p>
 
 
@@ -345,12 +481,14 @@
               ☐ Já joguei
             </button>
 
+
             <button
               id="toggleBacklog"
               class="action-button"
             >
               ＋ Pretendo jogar
             </button>
+
 
             <button
               id="toggleFavorite"
@@ -370,7 +508,9 @@
   </div>
 
 
-  <!-- MODAL DO SORTEIO -->
+  <!-- =========================
+       MODAL DO SORTEIO
+  ========================= -->
 
   <div
     id="randomModal"
@@ -397,11 +537,18 @@
       </button>
 
 
-      <p class="eyebrow">
+      <p
+        class="eyebrow"
+        data-i18n="drawEyebrow"
+      >
         SORTEIO
       </p>
 
-      <h2 id="randomTitle">
+
+      <h2
+        id="randomTitle"
+        data-i18n="drawTitle"
+      >
         Seus jogos sorteados
       </h2>
 
@@ -415,6 +562,7 @@
       <button
         id="rerollButton"
         class="primary-button full-width"
+        data-i18n="reroll"
       >
         🎲 Sortear novamente
       </button>
@@ -424,9 +572,13 @@
   </div>
 
 
+  <!-- =========================
+       RODAPÉ
+  ========================= -->
+
   <footer class="footer">
 
-    <p>
+    <p data-i18n="footer">
       PS2 Randomizer · Projeto em desenvolvimento
     </p>
 
@@ -436,4 +588,5 @@
   <script src="js/app.js"></script>
 
 </body>
+
 </html>

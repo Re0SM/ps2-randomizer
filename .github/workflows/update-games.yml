@@ -26,6 +26,7 @@ jobs:
           import json
           import os
           import re
+          import unicodedata
 
           with open("PS2.data.json", "r", encoding="utf-8") as f:
               data = json.load(f)
@@ -50,7 +51,10 @@ jobs:
               r"\bgameshark\b",
               r"\bdvd\b",
               r"\bbrowser\b",
-              r"\binstallation disc\b",
+              r"\binstallation disc\b"
+          ]
+
+          edition_patterns = [
               r"\bplaystation 2 the best\b",
               r"\bps2 the best\b",
               r"\bgreatest hits\b",
@@ -60,7 +64,7 @@ jobs:
 
           games = []
           review = []
-          seen = set()
+          groups = {}
 
           def get_value(game, *names):
               for name in names:
@@ -68,6 +72,46 @@ jobs:
                   if value is not None and value != "":
                       return value
               return None
+
+          def normalize_title(title):
+              value = title.strip()
+
+              # Remove informações claramente relacionadas a discos.
+              value = re.sub(
+                  r"\s*[\(\[]\s*(disc|disk|cd|dvd)\s*[0-9ivx]+\s*[\)\]]",
+                  "",
+                  value,
+                  flags=re.IGNORECASE
+              )
+
+              value = re.sub(
+                  r"\s*[-:]\s*(disc|disk|cd|dvd)\s*[0-9ivx]+\s*$",
+                  "",
+                  value,
+                  flags=re.IGNORECASE
+              )
+
+              # Remove edições comerciais que não queremos como jogos separados.
+              for pattern in edition_patterns:
+                  value = re.sub(
+                      r"\s*[\(\[]?\s*" + pattern + r"\s*[\)\]]?\s*$",
+                      "",
+                      value,
+                      flags=re.IGNORECASE
+                  )
+
+              # Normalização para comparação.
+              value = unicodedata.normalize("NFKD", value)
+              value = "".join(
+                  c for c in value
+                  if not unicodedata.combining(c)
+              )
+
+              value = value.lower()
+              value = re.sub(r"[^a-z0-9]+", " ", value)
+              value = re.sub(r"\s+", " ", value).strip()
+
+              return value
 
           def should_remove(title):
               normalized = title.lower()
@@ -130,16 +174,64 @@ jobs:
                   review.append(record)
                   continue
 
-              key = serial or title.strip().lower()
+              group_key = normalize_title(title)
 
-              if key in seen:
+              if not group_key:
                   continue
 
-              seen.add(key)
-              games.append(record)
+              if group_key not in groups:
+                  groups[group_key] = []
+
+              groups[group_key].append(record)
+
+          # Escolhe uma única entrada representativa de cada grupo.
+          # Preferimos uma entrada que tenha mais informações preenchidas.
+          for group_key, variants in groups.items():
+
+              variants.sort(
+                  key=lambda game: (
+                      sum(
+                          value is not None and value != ""
+                          for value in [
+                              game.get("year"),
+                              game.get("developer"),
+                              game.get("publisher"),
+                              game.get("genre"),
+                              game.get("serial")
+                          ]
+                      ),
+                      len(game.get("title", ""))
+                  ),
+                  reverse=True
+              )
+
+              representative = dict(variants[0])
+
+              # Guarda os seriais das outras versões/discos.
+              serials = []
+              titles = []
+
+              for variant in variants:
+                  if variant.get("serial"):
+                      serials.append(variant["serial"])
+
+                  if variant.get("title"):
+                      titles.append(variant["title"])
+
+              representative["serials"] = sorted(set(serials))
+              representative["titles"] = sorted(set(titles))
+
+              # Remove campos redundantes quando não existem variantes.
+              if len(representative["serials"]) <= 1:
+                  representative.pop("serials", None)
+
+              if len(representative["titles"]) <= 1:
+                  representative.pop("titles", None)
+
+              games.append(representative)
 
           games.sort(
-              key=lambda x: x["title"].lower()
+              key=lambda game: game["title"].lower()
           )
 
           os.makedirs("data", exist_ok=True)
@@ -156,6 +248,7 @@ jobs:
                   indent=2
               )
 
+          # Guarda tudo que foi removido pelo filtro.
           with open(
               "data/games-review.json",
               "w",
@@ -168,19 +261,48 @@ jobs:
                   indent=2
               )
 
+          # Guarda grupos com mais de uma variante para futura revisão.
+          duplicate_groups = []
+
+          for group_key, variants in groups.items():
+              if len(variants) > 1:
+                  duplicate_groups.append({
+                      "normalized_title": group_key,
+                      "variants": variants
+                  })
+
+          duplicate_groups.sort(
+              key=lambda item: item["normalized_title"]
+          )
+
+          with open(
+              "data/games-groups-review.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  duplicate_groups,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+
           print("================================")
           print(f"Entradas originais: {len(entries)}")
           print(f"Entradas removidas: {len(review)}")
+          print(f"Grupos com variantes: {len(duplicate_groups)}")
           print(f"Jogos no catálogo: {len(games)}")
           print("================================")
           PY
 
-      - name: Save games.json
+      - name: Save catalog
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/games.json data/games-review.json
+          git add data/games.json
+          git add data/games-review.json
+          git add data/games-groups-review.json
 
           if git diff --cached --quiet; then
             echo "Nenhuma alteração no catálogo."

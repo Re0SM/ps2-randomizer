@@ -75,56 +75,6 @@ jobs:
 
               return None
 
-          def extract_year(game):
-              """
-              Tenta encontrar o ano de lançamento em vários
-              formatos/campos possíveis da base.
-              """
-
-              possible_fields = [
-                  "year",
-                  "Year",
-                  "release_year",
-                  "releaseYear",
-                  "ReleaseYear",
-                  "release_date",
-                  "releaseDate",
-                  "ReleaseDate",
-                  "release",
-                  "Release",
-                  "date",
-                  "Date",
-                  "published",
-                  "publishedDate",
-                  "publicationDate"
-              ]
-
-              for field in possible_fields:
-
-                  value = game.get(field)
-
-                  if value is None:
-                      continue
-
-                  if isinstance(value, int):
-                      if 1970 <= value <= 2030:
-                          return value
-
-                  if isinstance(value, float):
-                      value = str(value)
-
-                  if isinstance(value, str):
-
-                      match = re.search(
-                          r"\b(19[7-9][0-9]|20[0-2][0-9]|2030)\b",
-                          value
-                      )
-
-                      if match:
-                          return int(match.group(1))
-
-              return None
-
           def normalize_title(title):
               value = title.strip()
 
@@ -177,13 +127,141 @@ jobs:
               normalized = title.lower()
 
               for pattern in remove_patterns:
-                  if re.search(
-                      pattern,
-                      normalized
-                  ):
+                  if re.search(pattern, normalized):
                       return True
 
               return False
+
+          def extract_year(value):
+              """
+              Tenta extrair um ano de vários formatos possíveis.
+
+              Exemplos aceitos:
+              2004
+              "2004"
+              "2004-09-22"
+              "22/09/2004"
+              "09/22/2004"
+              "2004/09/22"
+              """
+
+              if value is None:
+                  return None
+
+              if isinstance(value, int):
+                  if 1900 <= value <= 2100:
+                      return value
+
+                  return None
+
+              if isinstance(value, float):
+                  if value.is_integer():
+                      value = int(value)
+
+                      if 1900 <= value <= 2100:
+                          return value
+
+                  return None
+
+              if isinstance(value, dict):
+
+                  for key in [
+                      "year",
+                      "release_year",
+                      "releaseYear",
+                      "date",
+                      "release_date",
+                      "releaseDate"
+                  ]:
+
+                      if key in value:
+
+                          result = extract_year(
+                              value[key]
+                          )
+
+                          if result:
+                              return result
+
+                  return None
+
+              text = str(value).strip()
+
+              if not text:
+                  return None
+
+              match = re.search(
+                  r"\b(19\d{2}|20\d{2})\b",
+                  text
+              )
+
+              if match:
+                  return int(
+                      match.group(1)
+                  )
+
+              return None
+
+          def find_year(game):
+              """
+              Procura a data/ano em todos os campos conhecidos
+              do GameDB-PS2.
+              """
+
+              possible_fields = [
+
+                  "year",
+                  "release_year",
+                  "releaseYear",
+
+                  "release_date",
+                  "releaseDate",
+
+                  "date",
+                  "release",
+
+                  "released",
+                  "ReleaseDate",
+                  "release_date_us",
+                  "release_date_eu",
+                  "release_date_jp"
+
+              ]
+
+              for field in possible_fields:
+
+                  if field not in game:
+                      continue
+
+                  year = extract_year(
+                      game.get(field)
+                  )
+
+                  if year:
+                      return year
+
+              return None
+
+          def find_first_value(
+              variants,
+              field_names,
+              prefer_non_empty=True
+          ):
+
+              for variant in variants:
+
+                  for field in field_names:
+
+                      value = variant.get(field)
+
+                      if (
+                          value is not None
+                          and value != ""
+                      ):
+
+                          return value
+
+              return None
 
           for game in entries:
 
@@ -210,7 +288,7 @@ jobs:
               record = {
                   "title": title,
 
-                  "year": extract_year(game),
+                  "year": find_year(game),
 
                   "developer": get_value(
                       game,
@@ -235,7 +313,9 @@ jobs:
               }
 
               if should_remove(title):
+
                   review.append(record)
+
                   continue
 
               group_key = normalize_title(title)
@@ -248,19 +328,23 @@ jobs:
 
               groups[group_key].append(record)
 
-          # ==========================================
-          # PRIORIDADE DAS REGIÕES
-          # ==========================================
+          # ============================================================
+          # ORDEM DE PREFERÊNCIA DAS REGIÕES
+          # ============================================================
 
           region_priority = [
+
               "SLUS",
               "SLES",
               "SCUS",
               "SCES",
+
               "SLKA",
               "SCAJ",
+
               "SLPM",
               "SLPS"
+
           ]
 
           def serial_priority(serial):
@@ -274,9 +358,7 @@ jobs:
                   region_priority
               ):
 
-                  if serial_upper.startswith(
-                      prefix
-                  ):
+                  if serial_upper.startswith(prefix):
                       return index
 
               return 100
@@ -295,7 +377,9 @@ jobs:
                       continue
 
                   if best is None:
+
                       best = serial
+
                       continue
 
                   if (
@@ -303,13 +387,14 @@ jobs:
                       <
                       serial_priority(best)
                   ):
+
                       best = serial
 
               return best
 
-          # ==========================================
-          # ESCOLHER REPRESENTANTE
-          # ==========================================
+          # ============================================================
+          # ESCOLHE UMA ENTRADA REPRESENTATIVA
+          # ============================================================
 
           for group_key, variants in groups.items():
 
@@ -344,21 +429,80 @@ jobs:
                   variants[0]
               )
 
-              # ======================================
-              # TENTA RECUPERAR ANO DE OUTRA VARIANTE
-              # ======================================
+              # ========================================================
+              # RECUPERA INFORMAÇÕES QUE ESTIVEREM FALTANDO
+              # EM OUTRAS VARIANTES
+              # ========================================================
 
               if not representative.get("year"):
 
                   for variant in variants:
 
-                      if variant.get("year"):
+                      year = variant.get(
+                          "year"
+                      )
 
-                          representative["year"] = (
-                              variant["year"]
-                          )
+                      if year:
+
+                          representative["year"] = year
 
                           break
+
+              if not representative.get(
+                  "developer"
+              ):
+
+                  value = find_first_value(
+                      variants,
+                      [
+                          "developer",
+                          "Developer"
+                      ]
+                  )
+
+                  if value:
+                      representative[
+                          "developer"
+                      ] = value
+
+              if not representative.get(
+                  "publisher"
+              ):
+
+                  value = find_first_value(
+                      variants,
+                      [
+                          "publisher",
+                          "Publisher"
+                      ]
+                  )
+
+                  if value:
+                      representative[
+                          "publisher"
+                      ] = value
+
+              if not representative.get(
+                  "genre"
+              ):
+
+                  value = find_first_value(
+                      variants,
+                      [
+                          "genre",
+                          "genres",
+                          "Genre"
+                      ]
+                  )
+
+                  if value:
+                      representative[
+                          "genre"
+                      ] = value
+
+              # ========================================================
+              # SERIALS
+              # ========================================================
 
               serials = []
               titles = []
@@ -383,11 +527,16 @@ jobs:
                   set(titles)
               )
 
+              # ========================================================
+              # SERIAL DA CAPA
+              # ========================================================
+
               cover_serial = choose_cover_serial(
                   variants
               )
 
               if cover_serial:
+
                   representative[
                       "cover_serial"
                   ] = cover_serial
@@ -414,14 +563,18 @@ jobs:
                   representative
               )
 
-          # ==========================================
-          # ORDENAR CATÁLOGO
-          # ==========================================
+          # ============================================================
+          # ORDENAÇÃO
+          # ============================================================
 
           games.sort(
               key=lambda game:
                   game["title"].lower()
           )
+
+          # ============================================================
+          # DIRETÓRIOS
+          # ============================================================
 
           os.makedirs(
               "data",
@@ -433,9 +586,9 @@ jobs:
               exist_ok=True
           )
 
-          # ==========================================
-          # DEFINIR CAPAS LOCAIS
-          # ==========================================
+          # ============================================================
+          # CAPAS LOCAIS
+          # ============================================================
 
           for game in games:
 
@@ -458,9 +611,9 @@ jobs:
                   None
               )
 
-          # ==========================================
-          # SALVAR games.json
-          # ==========================================
+          # ============================================================
+          # GAMES.JSON
+          # ============================================================
 
           with open(
               "data/games.json",
@@ -475,9 +628,9 @@ jobs:
                   indent=2
               )
 
-          # ==========================================
-          # SALVAR GAMES-REVIEW
-          # ==========================================
+          # ============================================================
+          # GAMES-REVIEW.JSON
+          # ============================================================
 
           with open(
               "data/games-review.json",
@@ -492,9 +645,9 @@ jobs:
                   indent=2
               )
 
-          # ==========================================
-          # GRUPOS COM VARIANTES
-          # ==========================================
+          # ============================================================
+          # GRUPOS DE DUPLICATAS
+          # ============================================================
 
           duplicate_groups = []
 
@@ -503,13 +656,20 @@ jobs:
               if len(variants) > 1:
 
                   duplicate_groups.append({
-                      "normalized_title": group_key,
-                      "variants": variants
+
+                      "normalized_title":
+                          group_key,
+
+                      "variants":
+                          variants
+
                   })
 
           duplicate_groups.sort(
               key=lambda item:
-                  item["normalized_title"]
+                  item[
+                      "normalized_title"
+                  ]
           )
 
           with open(
@@ -525,19 +685,20 @@ jobs:
                   indent=2
               )
 
-          # ==========================================
+          # ============================================================
           # ESTATÍSTICAS
-          # ==========================================
+          # ============================================================
 
-          years_found = sum(
+          games_with_year = sum(
               1
               for game in games
               if game.get("year")
           )
 
-          years_missing = (
+          games_without_year = (
               len(games)
-              - years_found
+              -
+              games_with_year
           )
 
           print(
@@ -545,28 +706,68 @@ jobs:
           )
 
           print(
-              f"Entradas originais: {len(entries)}"
+              f"Entradas originais: "
+              f"{len(entries)}"
           )
 
           print(
-              f"Entradas removidas: {len(review)}"
+              f"Entradas removidas: "
+              f"{len(review)}"
           )
 
           print(
-              f"Grupos com variantes: {len(duplicate_groups)}"
+              f"Grupos com variantes: "
+              f"{len(duplicate_groups)}"
           )
 
           print(
-              f"Jogos no catálogo: {len(games)}"
+              f"Jogos no catálogo: "
+              f"{len(games)}"
           )
 
           print(
-              f"Anos encontrados: {years_found}"
+              f"Jogos com ano: "
+              f"{games_with_year}"
           )
 
           print(
-              f"Anos não encontrados: {years_missing}"
+              f"Jogos sem ano: "
+              f"{games_without_year}"
           )
+
+          print(
+              "================================"
+          )
+
+          # ============================================================
+          # TESTE DE ALGUNS JOGOS
+          # ============================================================
+
+          tests = [
+
+              "Resident Evil 4",
+              "Final Fantasy X",
+              "God of War",
+              "Grand Theft Auto: San Andreas",
+              "Grand Theft Auto San Andreas"
+
+          ]
+
+          print("")
+          print("===== TESTE DE ANOS =====")
+
+          for game in games:
+
+              if game["title"].lower() in [
+                  x.lower()
+                  for x in tests
+              ]:
+
+                  print(
+                      f'{game["title"]} '
+                      f'-> ano: '
+                      f'{game.get("year")}'
+                  )
 
           print(
               "================================"
@@ -625,6 +826,7 @@ jobs:
                   and
                   os.path.getsize(output) > 0
               ):
+
                   continue
 
               serial = os.path.splitext(
@@ -670,7 +872,6 @@ jobs:
                       "-o",
                       output
                   ],
-
                   stdout=subprocess.PIPE,
                   stderr=subprocess.PIPE,
                   text=True
@@ -678,13 +879,18 @@ jobs:
 
               if (
                   result.returncode == 0
-                  and os.path.isfile(output)
-                  and os.path.getsize(output) > 0
+                  and
+                  os.path.isfile(output)
               ):
 
-                  return True, serial
+                  if os.path.getsize(
+                      output
+                  ) > 0:
+
+                      return True, serial
 
               if os.path.exists(output):
+
                   os.remove(output)
 
               return False, serial
@@ -710,10 +916,12 @@ jobs:
                       failed += 1
 
                       print(
-                          f"Não encontrada: {serial}"
+                          f"Não encontrada: "
+                          f"{serial}"
                       )
 
           print("")
+
           print(
               "================================"
           )
@@ -734,7 +942,7 @@ jobs:
 
       - name: Verify generated catalog
         run: |
-          echo "===== TESTE DO CATÁLOGO ====="
+          echo "===== TESTE DE CAPAS E ANOS ====="
 
           python3 - <<'PY'
           import json
@@ -749,11 +957,13 @@ jobs:
               games = json.load(f)
 
           tests = [
+
               "Resident Evil 4",
               "Final Fantasy X",
               "God of War",
               "Grand Theft Auto: San Andreas",
               "Grand Theft Auto San Andreas"
+
           ]
 
           for game in games:
@@ -768,9 +978,13 @@ jobs:
                   )
 
                   exists = (
+
                       cover
-                      and os.path.isfile(cover)
-                      and os.path.getsize(cover) > 0
+                      and
+                      os.path.isfile(cover)
+                      and
+                      os.path.getsize(cover) > 0
+
                   )
 
                   print(
@@ -782,17 +996,29 @@ jobs:
 
           print("")
           print(
-              "===== JOGOS COM ANO ====="
+              "===== RESUMO DOS ANOS ====="
           )
 
-          years = sum(
+          with_year = sum(
               1
               for game in games
               if game.get("year")
           )
 
+          without_year = (
+              len(games)
+              -
+              with_year
+          )
+
           print(
-              f"{years} de {len(games)} jogos possuem ano."
+              f"Jogos com ano: "
+              f"{with_year}"
+          )
+
+          print(
+              f"Jogos sem ano: "
+              f"{without_year}"
           )
 
           PY

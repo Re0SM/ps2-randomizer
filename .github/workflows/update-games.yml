@@ -64,7 +64,7 @@ jobs:
 
           games = []
           review = []
-          groups = {}
+          groups = []
 
           def get_value(game, *names):
               for name in names:
@@ -76,7 +76,6 @@ jobs:
           def normalize_title(title):
               value = title.strip()
 
-              # Remove informações claramente relacionadas a discos.
               value = re.sub(
                   r"\s*[\(\[]\s*(disc|disk|cd|dvd)\s*[0-9ivx]+\s*[\)\]]",
                   "",
@@ -91,7 +90,6 @@ jobs:
                   flags=re.IGNORECASE
               )
 
-              # Remove edições comerciais que não queremos como jogos separados.
               for pattern in edition_patterns:
                   value = re.sub(
                       r"\s*[\(\[]?\s*" + pattern + r"\s*[\)\]]?\s*$",
@@ -100,7 +98,6 @@ jobs:
                       flags=re.IGNORECASE
                   )
 
-              # Normalização para comparação.
               value = unicodedata.normalize("NFKD", value)
               value = "".join(
                   c for c in value
@@ -180,13 +177,68 @@ jobs:
                   continue
 
               if group_key not in groups:
-                  groups[group_key] = []
+                  groups.append(group_key)
+                  globals()[f"group_{len(groups)-1}"] = []
 
-              groups[group_key].append(record)
+          # Reconstrói os grupos sem depender de nomes dinâmicos.
+          grouped = {}
 
-          # Escolhe uma única entrada representativa de cada grupo.
-          # Preferimos uma entrada que tenha mais informações preenchidas.
-          for group_key, variants in groups.items():
+          for game in entries:
+              if not isinstance(game, dict):
+                  continue
+
+              title = get_value(
+                  game,
+                  "title",
+                  "name",
+                  "Title",
+                  "Name"
+              )
+
+              serial = get_value(
+                  game,
+                  "serial",
+                  "Serial"
+              )
+
+              if not title or should_remove(title):
+                  continue
+
+              group_key = normalize_title(title)
+
+              if not group_key:
+                  continue
+
+              record = {
+                  "title": title,
+                  "year": get_value(
+                      game,
+                      "year",
+                      "release_year",
+                      "releaseYear"
+                  ),
+                  "developer": get_value(
+                      game,
+                      "developer",
+                      "Developer"
+                  ),
+                  "publisher": get_value(
+                      game,
+                      "publisher",
+                      "Publisher"
+                  ),
+                  "genre": get_value(
+                      game,
+                      "genre",
+                      "genres",
+                      "Genre"
+                  ),
+                  "serial": serial
+              }
+
+              grouped.setdefault(group_key, []).append(record)
+
+          for group_key, variants in grouped.items():
 
               variants.sort(
                   key=lambda game: (
@@ -207,7 +259,6 @@ jobs:
 
               representative = dict(variants[0])
 
-              # Guarda os seriais das outras versões/discos.
               serials = []
               titles = []
 
@@ -218,15 +269,23 @@ jobs:
                   if variant.get("title"):
                       titles.append(variant["title"])
 
-              representative["serials"] = sorted(set(serials))
-              representative["titles"] = sorted(set(titles))
+              serials = sorted(set(serials))
+              titles = sorted(set(titles))
 
-              # Remove campos redundantes quando não existem variantes.
-              if len(representative["serials"]) <= 1:
-                  representative.pop("serials", None)
+              # URL da capa baseada no serial.
+              if serials:
+                  representative["cover"] = (
+                      "https://raw.githubusercontent.com/"
+                      "xlenore/ps2-covers/main/covers/default/"
+                      + serials[0]
+                      + ".jpg"
+                  )
 
-              if len(representative["titles"]) <= 1:
-                  representative.pop("titles", None)
+              if len(serials) > 1:
+                  representative["serials"] = serials
+
+              if len(titles) > 1:
+                  representative["titles"] = titles
 
               games.append(representative)
 
@@ -248,7 +307,6 @@ jobs:
                   indent=2
               )
 
-          # Guarda tudo que foi removido pelo filtro.
           with open(
               "data/games-review.json",
               "w",
@@ -261,10 +319,9 @@ jobs:
                   indent=2
               )
 
-          # Guarda grupos com mais de uma variante para futura revisão.
           duplicate_groups = []
 
-          for group_key, variants in groups.items():
+          for group_key, variants in grouped.items():
               if len(variants) > 1:
                   duplicate_groups.append({
                       "normalized_title": group_key,

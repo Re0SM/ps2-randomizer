@@ -1,0 +1,140 @@
+name: Add played-games randomizer filter
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-played-filter.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-randomizer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add played-games filter
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          index_path = Path('index.html')
+          app_path = Path('js/app.js')
+
+          index = index_path.read_text(encoding='utf-8')
+          app = app_path.read_text(encoding='utf-8')
+
+          index_marker = 'id="excludePlayed"'
+          app_marker = 'let currentRandomExcludePlayed = false;'
+
+          if index_marker not in index:
+              old = '''      <div\n        id="randomSetupInfo"\n        class="random-setup-info"\n      ></div>'''
+
+              new = '''      <label class="random-option random-option-checkbox">\n\n        <span class="random-option-label" data-i18n="excludePlayed">\n          Não sortear jogos que já joguei\n        </span>\n\n        <input\n          id="excludePlayed"\n          type="checkbox"\n        >\n\n      </label>\n\n\n      <div\n        id="randomSetupInfo"\n        class="random-setup-info"\n      ></div>'''
+
+              if old not in index:
+                  raise SystemExit('Não encontrei o bloco randomSetupInfo em index.html')
+
+              index = index.replace(old, new, 1)
+              index_path.write_text(index, encoding='utf-8')
+
+          if app_marker not in app:
+              app = app.replace(
+                  'let currentRandomRegion = "all";\n\nlet currentGame = null;',
+                  'let currentRandomRegion = "all";\n\nlet currentRandomExcludePlayed = false;\n\nlet currentGame = null;',
+                  1
+              )
+
+              app = app.replace(
+                  'const startRandomButton =\n  document.getElementById("startRandomButton");',
+                  'const startRandomButton =\n  document.getElementById("startRandomButton");\n\nconst excludePlayed =\n  document.getElementById("excludePlayed");',
+                  1
+              )
+
+              app = app.replace(
+                  '    quantity:\n      "Quantidade",',
+                  '    quantity:\n      "Quantidade",\n\n    excludePlayed:\n      "Não sortear jogos que já joguei",',
+                  1
+              )
+
+              app = app.replace(
+                  '    quantity:\n      "Cantidad",',
+                  '    quantity:\n      "Cantidad",\n\n    excludePlayed:\n      "No sortear juegos que ya jugué",',
+                  1
+              )
+
+              app = app.replace(
+                  '    quantity:\n      "Quantity",',
+                  '    quantity:\n      "Quantity",\n\n    excludePlayed:\n      "Do not draw games I have already played",',
+                  1
+              )
+
+              old_random = '''  if (region !== "all") {\n\n    available =\n      available.filter(\n        game =>\n          getGameRegion(game) ===\n          region\n      );\n\n  }\n\n\n  if (!available.length) {'''
+
+              new_random = '''  if (region !== "all") {\n\n    available =\n      available.filter(\n        game =>\n          getGameRegion(game) ===\n          region\n      );\n\n  }\n\n\n  if (currentRandomExcludePlayed) {\n\n    const played =\n      new Set(getUserData().played);\n\n    available =\n      available.filter(\n        game => !played.has(gameId(game))\n      );\n\n  }\n\n\n  if (!available.length) {'''
+
+              if old_random not in app:
+                  raise SystemExit('Não encontrei o bloco de filtro de região em app.js')
+
+              app = app.replace(old_random, new_random, 1)
+
+              old_info = '''  const availableCount =\n    region === "all"\n      ? games.length\n      : games.filter(\n          game =>\n            getGameRegion(game) ===\n            region\n        ).length;'''
+
+              new_info = '''  let availableGames =\n    region === "all"\n      ? [...games]\n      : games.filter(\n          game =>\n            getGameRegion(game) ===\n            region\n        );\n\n\n  if (currentRandomExcludePlayed) {\n\n    const played =\n      new Set(getUserData().played);\n\n    availableGames =\n      availableGames.filter(\n        game => !played.has(gameId(game))\n      );\n\n  }\n\n\n  const availableCount =\n    availableGames.length;'''
+
+              if old_info not in app:
+                  raise SystemExit('Não encontrei o bloco availableCount em app.js')
+
+              app = app.replace(old_info, new_info, 1)
+
+              app = app.replace(
+                  '  if (randomCount) {\n    randomCount.value = "5";\n  }\n\n\n  if (randomRegion) {',
+                  '  if (randomCount) {\n    randomCount.value = "5";\n  }\n\n\n  currentRandomExcludePlayed =\n    Boolean(excludePlayed?.checked);\n\n  if (excludePlayed) {\n    excludePlayed.checked = false;\n  }\n\n\n  if (randomRegion) {',
+                  1
+              )
+
+              app = app.replace(
+                  '  const region =\n    randomRegion?.value ||\n    "all";\n\n\n  currentRandomCount =',
+                  '  const region =\n    randomRegion?.value ||\n    "all";\n\n\n  currentRandomExcludePlayed =\n    Boolean(excludePlayed?.checked);\n\n\n  currentRandomCount =',
+                  1
+              )
+
+              app = app.replace(
+                  '      updateRandomSetupInfo();\n\n    }\n  );\n\n\n  /* COMEÇAR SORTEIO */',
+                  '      updateRandomSetupInfo();\n\n    }\n  );\n\n\n  /* EXCLUIR JOGOS JÁ JOGADOS */\n\n  excludePlayed?.addEventListener(\n    "change",\n    () => {\n\n      currentRandomExcludePlayed =\n        excludePlayed.checked;\n\n      updateRandomSetupInfo();\n\n    }\n  );\n\n\n  /* COMEÇAR SORTEIO */',
+                  1
+              )
+
+              app = app.replace(
+                  '      openRandomResults(\n        currentRandomCount,\n        currentRandomRegion\n      );',
+                  '      openRandomResults(\n        currentRandomCount,\n        currentRandomRegion\n      );',
+                  1
+              )
+
+              # Ensure rerolls keep the selected exclusion state.
+              app = app.replace(
+                  '  currentRandomRegion =\n    region;\n\n\n  const selected =',
+                  '  currentRandomRegion =\n    region;\n\n\n  const selected =',
+                  1
+              )
+
+              app_path.write_text(app, encoding='utf-8')
+
+          print('Filtro de jogos já jogados aplicado/verificado.')
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html js/app.js
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração necessária."
+            exit 0
+          fi
+          git commit -m "Add option to exclude played games from randomizer"
+          git push

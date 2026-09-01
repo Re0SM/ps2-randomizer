@@ -1728,3 +1728,135 @@ body.modal-open {
   }
 
 }
+
+
+
+/* =========================
+   FILTRO DE JOGOS JÁ JOGADOS
+========================= */
+
+.random-option-checkbox {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 14px;
+
+  min-height: 48px;
+
+  padding: 0 14px;
+
+  cursor: pointer;
+
+  user-select: none;
+
+}
+
+
+.random-option-checkbox:hover {
+
+  border-color: rgba(88, 180, 255, 0.28);
+
+  background: rgba(35, 134, 209, 0.06);
+
+}
+
+
+.random-option-checkbox:focus-within {
+
+  border-color: rgba(88, 180, 255, 0.45);
+
+  box-shadow: 0 0 0 3px rgba(35, 134, 209, 0.08);
+
+}
+
+
+.random-option-label {
+
+  color: #d9e7f5;
+
+  font-size: 0.88rem;
+
+  font-weight: 700;
+
+  line-height: 1.35;
+
+}
+
+
+.random-option-checkbox input {
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  flex: 0 0 auto;
+
+  width: 20px;
+
+  height: 20px;
+
+  margin: 0;
+
+  border: 1px solid rgba(120, 180, 230, 0.35);
+
+  border-radius: 5px;
+
+  background: #0a111b;
+
+  cursor: pointer;
+
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+
+}
+
+
+.random-option-checkbox input:hover {
+
+  border-color: rgba(88, 180, 255, 0.65);
+
+}
+
+
+.random-option-checkbox input:checked {
+
+  background: var(--accent);
+
+  border-color: var(--accent-light);
+
+  box-shadow: 0 0 0 3px rgba(35, 134, 209, 0.12);
+
+}
+
+
+.random-option-checkbox input:checked::after {
+
+  content: "✓";
+
+  display: block;
+
+  color: white;
+
+  font-size: 0.78rem;
+
+  font-weight: 900;
+
+  line-height: 18px;
+
+  text-align: center;
+
+}
+
+
+.random-option-checkbox input:focus-visible {
+
+  outline: 2px solid var(--accent-light);
+
+  outline-offset: 2px;
+
+}

@@ -124,6 +124,12 @@ const translations = {
     ps2:
       "PS2",
 
+    gamesCount:
+      "jogos",
+
+    gameCount:
+      "jogo",
+
     previous:
       "<",
 
@@ -228,6 +234,12 @@ const translations = {
     ps2:
       "PS2",
 
+    gamesCount:
+      "juegos",
+
+    gameCount:
+      "juego",
+
     previous:
       "<",
 
@@ -331,6 +343,12 @@ const translations = {
 
     ps2:
       "PS2",
+
+    gamesCount:
+      "games",
+
+    gameCount:
+      "game",
 
     previous:
       "<",
@@ -472,6 +490,8 @@ async function init() {
 
     bindEvents();
 
+    bindListCards();
+
   } catch (error) {
 
     console.error(error);
@@ -561,12 +581,8 @@ function applyTranslations() {
     });
 
 
-  if (elements.currentLanguage) {
-
-    elements.currentLanguage.textContent =
-      currentLanguage.toUpperCase();
-
-  }
+  elements.currentLanguage.textContent =
+    currentLanguage.toUpperCase();
 
 
   document.title =
@@ -615,16 +631,6 @@ function setLanguage(language) {
 
 
 function bindLanguageEvents() {
-
-  if (
-    !elements.languageButton ||
-    !elements.languageMenu
-  ) {
-
-    return;
-
-  }
-
 
   elements.languageButton
     .addEventListener(
@@ -809,6 +815,117 @@ function bindEvents() {
         closeRandomModal();
 
       }
+
+    }
+  );
+
+}
+
+
+/* =========================
+   CARDS DA MINHA LISTA
+========================= */
+
+function bindListCards() {
+
+  const statCards =
+    document.querySelectorAll(
+      ".stat-card"
+    );
+
+
+  if (statCards.length < 3) {
+    return;
+  }
+
+
+  const listTypes = [
+    "played",
+    "backlog",
+    "favorite"
+  ];
+
+
+  statCards.forEach(
+    (card, index) => {
+
+      const type =
+        listTypes[index];
+
+
+      if (!type) {
+        return;
+      }
+
+
+      card.style.cursor =
+        "pointer";
+
+
+      card.setAttribute(
+        "role",
+        "button"
+      );
+
+
+      card.setAttribute(
+        "tabindex",
+        "0"
+      );
+
+
+      const openList =
+        () => {
+
+          elements.statusFilter.value =
+            type;
+
+          currentPage = 1;
+
+          renderCatalog();
+
+
+          const catalog =
+            document.getElementById(
+              "catalogo"
+            );
+
+
+          if (catalog) {
+
+            catalog.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+
+        };
+
+
+      card.addEventListener(
+        "click",
+        openList
+      );
+
+
+      card.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+
+            event.preventDefault();
+
+            openList();
+
+          }
+
+        }
+      );
 
     }
   );
@@ -1013,17 +1130,6 @@ function renderCatalog() {
     "";
 
 
-  /*
-   * O contador de jogos foi removido.
-   * Antes existia aqui:
-   *
-   * elements.gameCount.textContent = ...
-   *
-   * Agora não há mais "7000 jogos"
-   * aparecendo no catálogo.
-   */
-
-
   elements.emptyState
     .classList.toggle(
       "hidden",
@@ -1202,20 +1308,6 @@ function createGameCard(game) {
     title
   );
 
-
-  /*
-   * ANO
-   *
-   * Se o games.json tiver:
-   *
-   * "year": 2005
-   *
-   * aparecerá 2005.
-   *
-   * Se estiver null:
-   *
-   * "Ano não informado"
-   */
 
   const year =
     document.createElement("p");
@@ -1526,6 +1618,37 @@ function updateActionButtons() {
         ? t("isFavorite")
         : t("markFavorite");
 
+
+  /*
+    Se o jogo já foi jogado,
+    ele não pode ficar em
+    "Pretendo jogar" nem
+    em "Favoritos".
+  */
+
+  elements.toggleBacklog.disabled =
+    played;
+
+
+  elements.toggleFavorite.disabled =
+    played;
+
+
+  elements.toggleBacklog.style.opacity =
+    played ? "0.45" : "";
+
+
+  elements.toggleFavorite.style.opacity =
+    played ? "0.45" : "";
+
+
+  elements.toggleBacklog.style.cursor =
+    played ? "not-allowed" : "";
+
+
+  elements.toggleFavorite.style.cursor =
+    played ? "not-allowed" : "";
+
 }
 
 
@@ -1537,6 +1660,28 @@ function toggleStatus(type) {
 
   if (!currentGame) {
     return;
+  }
+
+
+  /*
+    Se o jogo já foi jogado,
+    não permite adicionar
+    backlog/favorito.
+  */
+
+  if (
+    currentGame &&
+    userData.played.includes(
+      currentGame.id
+    ) &&
+    (
+      type === "backlog" ||
+      type === "favorite"
+    )
+  ) {
+
+    return;
+
   }
 
 
@@ -1552,6 +1697,10 @@ function toggleStatus(type) {
 
   if (index >= 0) {
 
+    /*
+      Remover o status atual.
+    */
+
     list.splice(
       index,
       1
@@ -1559,9 +1708,33 @@ function toggleStatus(type) {
 
   } else {
 
+    /*
+      Adicionar o status.
+
+      Se marcar como "Já joguei",
+      remove automaticamente
+      dos outros dois grupos.
+    */
+
     list.push(
       currentGame.id
     );
+
+
+    if (type === "played") {
+
+      removeFromList(
+        userData.backlog,
+        currentGame.id
+      );
+
+
+      removeFromList(
+        userData.favorite,
+        currentGame.id
+      );
+
+    }
 
   }
 
@@ -1573,6 +1746,31 @@ function toggleStatus(type) {
   updateStats();
 
   renderCatalog();
+
+}
+
+
+/* =========================
+   REMOVER DA LISTA
+========================= */
+
+function removeFromList(
+  list,
+  id
+) {
+
+  const index =
+    list.indexOf(id);
+
+
+  if (index >= 0) {
+
+    list.splice(
+      index,
+      1
+    );
+
+  }
 
 }
 
@@ -1790,10 +1988,6 @@ function renderPagination(
     };
 
 
-  /*
-   * BOTÃO ANTERIOR
-   */
-
   elements.pagination
     .appendChild(
 
@@ -1854,10 +2048,6 @@ function renderPagination(
 
   }
 
-
-  /*
-   * BOTÃO PRÓXIMO
-   */
 
   elements.pagination
     .appendChild(

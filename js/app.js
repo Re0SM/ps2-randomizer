@@ -55,6 +55,37 @@ async function init() {
 
     games = await response.json();
 
+    /*
+     * Prepara os dados para o site.
+     * O catálogo usa "genre", enquanto o site trabalha
+     * internamente com "genres".
+     */
+    games = games.map((game, index) => {
+
+      const genres = Array.isArray(game.genre)
+        ? game.genre
+        : game.genre
+          ? [game.genre]
+          : [];
+
+      const id =
+        game.serial ||
+        (
+          Array.isArray(game.serials) &&
+          game.serials.length > 0
+            ? game.serials[0]
+            : null
+        ) ||
+        `${normalize(game.title)}-${index}`;
+
+      return {
+        ...game,
+        id,
+        genres
+      };
+
+    });
+
     setupGenres();
 
     renderCatalog();
@@ -207,9 +238,11 @@ function setupGenres() {
         game => game.genres || []
       )
     )
-  ].sort(
-    (a, b) => a.localeCompare(b, "pt-BR")
-  );
+  ]
+    .filter(Boolean)
+    .sort(
+      (a, b) => a.localeCompare(b, "pt-BR")
+    );
 
 
   elements.genreFilter.innerHTML = `
@@ -794,19 +827,21 @@ function renderRandomResults(count) {
 
   for (const game of results) {
 
-    const card =
-      document.createElement("article");
+    const wrapper =
+      document.createElement("div");
 
-    card.className =
+    wrapper.className =
       "random-card";
 
 
-    card.appendChild(
-      createGameCard(game)
-    );
+    const card =
+      createGameCard(game);
 
 
-    card.addEventListener(
+    wrapper.appendChild(card);
+
+
+    wrapper.addEventListener(
       "click",
       (event) => {
 
@@ -828,7 +863,7 @@ function renderRandomResults(count) {
 
 
     elements.randomResults.appendChild(
-      card
+      wrapper
     );
 
   }

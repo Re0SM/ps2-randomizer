@@ -253,7 +253,8 @@ a {
 .nav-button,
 .primary-button,
 .secondary-button,
-.action-button {
+.action-button,
+.my-list-tab {
 
   border: 0;
 
@@ -265,29 +266,8 @@ a {
     transform 0.15s ease,
     background 0.15s ease,
     border-color 0.15s ease,
+    box-shadow 0.15s ease,
     opacity 0.15s ease;
-}
-
-
-.nav-button {
-
-  padding: 9px 14px;
-
-  background: var(--accent);
-
-  color: white;
-
-  font-weight: 700;
-}
-
-
-.nav-button:hover,
-.primary-button:hover {
-
-  background: var(--accent-hover);
-
-  transform:
-    translateY(-1px);
 }
 
 
@@ -313,6 +293,19 @@ a {
   background: var(--accent);
 
   color: white;
+}
+
+
+.primary-button:hover {
+
+  background: var(--accent-hover);
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 8px 22px
+    rgba(23, 105, 170, 0.25);
 }
 
 
@@ -761,185 +754,107 @@ a {
 
 
 /* =========================
-   MINHA LISTA / PERFIL
+   MINHA LISTA
 ========================= */
 
-.profile-lists {
+.my-list-tabs {
 
-  display: grid;
+  display: flex;
 
-  grid-template-columns: repeat(3, 1fr);
+  flex-wrap: wrap;
 
-  gap: 18px;
-}
+  gap: 10px;
 
+  margin-bottom: 30px;
 
-.profile-list-card {
+  padding: 5px;
 
-  min-width: 0;
+  width: fit-content;
 
-  padding: 20px;
+  max-width: 100%;
 
-  background: var(--surface);
+  background:
+    rgba(13, 20, 32, 0.8);
 
   border:
     1px solid var(--border);
 
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 
-.profile-list-header {
+.my-list-tab {
 
-  display: flex;
+  display: inline-flex;
 
-  align-items: flex-start;
+  align-items: center;
 
-  justify-content: space-between;
+  justify-content: center;
 
-  gap: 15px;
+  gap: 7px;
 
-  margin-bottom: 20px;
-}
+  min-height: 42px;
 
+  padding: 0 16px;
 
-.profile-list-label {
+  background: transparent;
 
-  margin: 0 0 5px;
+  color: #91a5b9;
 
-  color: #7194b3;
+  border:
+    1px solid transparent;
 
-  font-size: 0.68rem;
+  font-size: 0.88rem;
 
   font-weight: 800;
-
-  letter-spacing: 0.12em;
 }
 
 
-.profile-list-header h3 {
+.my-list-tab:hover {
 
-  margin: 0;
+  background:
+    rgba(35, 134, 209, 0.1);
 
-  font-size: 1rem;
-
-  color: var(--muted);
-
-  font-weight: 600;
+  color: #dceeff;
 }
 
 
-.profile-list-header h3 span {
-
-  color: var(--text);
-
-  font-size: 1.4rem;
-
-  font-weight: 900;
-}
-
-
-.profile-list-icon {
-
-  display: grid;
-
-  place-items: center;
-
-  width: 34px;
-
-  height: 34px;
-
-  border-radius: 8px;
-
-  background: #16283a;
-
-  color: var(--accent-light);
-
-  font-weight: 900;
-}
-
-
-.profile-game-grid {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 12px;
-}
-
-
-.profile-game {
-
-  min-width: 0;
-
-  cursor: pointer;
-}
-
-
-.profile-game-cover {
-
-  position: relative;
-
-  overflow: hidden;
-
-  aspect-ratio: 2 / 3;
-
-  border-radius: 6px;
+.my-list-tab.active {
 
   background:
     linear-gradient(
-      145deg,
-      #1b2a3a,
-      #0c1118
+      180deg,
+      #1b5f91,
+      #154a70
     );
+
+  color: white;
+
+  border-color:
+    rgba(88, 180, 255, 0.28);
+
+  box-shadow:
+    0 5px 16px
+    rgba(0, 0, 0, 0.22);
 }
 
 
-.profile-game-cover img {
+.tab-icon {
 
-  width: 100%;
+  display: inline-flex;
 
-  height: 100%;
+  align-items: center;
 
-  object-fit: cover;
+  justify-content: center;
 
-  display: block;
+  font-size: 1rem;
+
+  line-height: 1;
 }
 
 
-.profile-game-title {
-
-  margin: 6px 1px 0;
-
-  overflow: hidden;
-
-  display: -webkit-box;
-
-  -webkit-line-clamp: 2;
-
-  -webkit-box-orient: vertical;
-
-  font-size: 0.74rem;
-
-  line-height: 1.2;
-
-  font-weight: 700;
-}
-
-
-.profile-empty {
-
-  padding: 25px 8px;
-
-  color: #65798e;
-
-  text-align: center;
-
-  font-size: 0.78rem;
-
-  line-height: 1.5;
+.my-list-grid {
+  margin-top: 5px;
 }
 
 
@@ -1002,7 +917,8 @@ a {
 
 
 .modal-panel,
-.random-panel {
+.random-panel,
+.random-setup-panel {
 
   position: relative;
 
@@ -1026,6 +942,10 @@ a {
     rgba(0, 0, 0, 0.65);
 }
 
+
+/* =========================
+   MODAL DO JOGO
+========================= */
 
 .modal-content {
 
@@ -1100,39 +1020,73 @@ a {
 
   flex-wrap: wrap;
 
-  gap: 8px;
+  gap: 10px;
 }
 
 
 .action-button {
 
-  padding: 10px 12px;
+  position: relative;
 
-  background: #182636;
+  padding: 11px 14px;
 
-  color: #e8f3ff;
+  background:
+    linear-gradient(
+      180deg,
+      #1a2b3c,
+      #142332
+    );
+
+  color: #dcecff;
 
   border:
-    1px solid rgba(100, 160, 210, 0.12);
+    1px solid
+    rgba(100, 160, 210, 0.16);
+
+  font-size: 0.85rem;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 3px 10px
+    rgba(0, 0, 0, 0.16);
 }
 
 
 .action-button:hover {
 
-  background: #20364b;
+  background:
+    linear-gradient(
+      180deg,
+      #203a52,
+      #193047
+    );
 
   border-color:
-    rgba(88, 180, 255, 0.25);
+    rgba(88, 180, 255, 0.3);
+
+  transform:
+    translateY(-1px);
 }
 
 
 .action-button.active {
 
-  background: #174e79;
+  background:
+    linear-gradient(
+      180deg,
+      #1b6498,
+      #154d76
+    );
 
-  outline:
-    2px solid
-    rgba(88, 180, 255, 0.18);
+  color: white;
+
+  border-color:
+    rgba(88, 180, 255, 0.45);
+
+  box-shadow:
+    0 5px 18px
+    rgba(23, 105, 170, 0.22);
 }
 
 
@@ -1171,6 +1125,146 @@ a {
     rgba(23, 105, 170, 0.8);
 }
 
+
+/* =========================
+   CONFIGURAÇÃO DO SORTEIO
+========================= */
+
+.random-setup-panel {
+
+  width: min(560px, 100%);
+
+  padding: 34px;
+}
+
+
+.random-setup-panel h2 {
+
+  margin: 0;
+
+  max-width: 430px;
+
+  font-size:
+    clamp(1.8rem, 4vw, 2.5rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
+}
+
+
+.random-setup-text {
+
+  margin: 14px 0 26px;
+
+  color: var(--muted);
+
+  line-height: 1.55;
+}
+
+
+.random-options {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 14px;
+
+  margin-bottom: 16px;
+}
+
+
+.random-option {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.random-option-label {
+
+  color: #8ea7bd;
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+
+.random-option select {
+
+  width: 100%;
+
+  min-height: 46px;
+
+  padding: 0 12px;
+
+  border:
+    1px solid
+    rgba(120, 180, 230, 0.16);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #142131;
+
+  color: #edf7ff;
+
+  cursor: pointer;
+}
+
+
+.random-option select:hover {
+
+  border-color:
+    rgba(88, 180, 255, 0.35);
+}
+
+
+.random-option select:focus {
+
+  border-color:
+    rgba(88, 180, 255, 0.5);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(35, 134, 209, 0.1);
+}
+
+
+.random-option select option {
+  background: #142131;
+  color: white;
+}
+
+
+.random-setup-info {
+
+  min-height: 22px;
+
+  margin: 4px 0 18px;
+
+  color: #7794ad;
+
+  font-size: 0.8rem;
+
+  line-height: 1.4;
+}
+
+
+/* =========================
+   RESULTADOS DO SORTEIO
+========================= */
 
 .random-panel {
   padding: 34px;
@@ -1323,8 +1417,13 @@ body.modal-open {
 
 @media (max-width: 900px) {
 
-  .profile-lists {
-    grid-template-columns: 1fr;
+  .my-list-tabs {
+    width: 100%;
+  }
+
+
+  .my-list-tab {
+    flex: 1;
   }
 
 }
@@ -1365,6 +1464,56 @@ body.modal-open {
 }
 
 
+@media (max-width: 600px) {
+
+  .random-options {
+    grid-template-columns: 1fr;
+  }
+
+
+  .my-list-tabs {
+    padding: 4px;
+
+    gap: 4px;
+  }
+
+
+  .my-list-tab {
+
+    min-height: 40px;
+
+    padding: 0 10px;
+
+    font-size: 0.78rem;
+  }
+
+
+  .pagination {
+
+    gap: 5px;
+
+    margin-top: 30px;
+
+    padding: 0 10px;
+  }
+
+
+  .pagination-button {
+
+    min-width: 38px;
+
+    height: 38px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+  }
+
+}
+
+
 @media (max-width: 560px) {
 
   .topbar {
@@ -1399,20 +1548,6 @@ body.modal-open {
   }
 
 
-  .profile-list-card {
-    padding: 16px;
-  }
-
-
-  .profile-game-grid {
-
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
-
-    gap: 10px;
-  }
-
-
   .modal {
     padding: 12px;
   }
@@ -1436,41 +1571,14 @@ body.modal-open {
   }
 
 
-  .random-panel {
+  .random-panel,
+  .random-setup-panel {
     padding: 26px 18px;
   }
 
 
   .language-menu {
     right: -5px;
-  }
-
-}
-
-
-@media (max-width: 600px) {
-
-  .pagination {
-
-    gap: 5px;
-
-    margin-top: 30px;
-
-    padding: 0 10px;
-  }
-
-
-  .pagination-button {
-
-    min-width: 38px;
-
-    height: 38px;
-
-    padding: 0 8px;
-
-    border-radius: 8px;
-
-    font-size: 13px;
   }
 
 }

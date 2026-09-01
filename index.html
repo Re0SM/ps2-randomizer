@@ -59,15 +59,6 @@
       </a>
 
 
-      <button
-        id="randomOneTop"
-        class="nav-button"
-        data-i18n="randomButton"
-      >
-        🎲 Sortear
-      </button>
-
-
       <!-- IDIOMA -->
 
       <div class="language-selector">
@@ -301,155 +292,107 @@
       id="minha-lista"
     >
 
-      <div class="section-heading">
+      <div class="my-profile">
 
-        <div>
+        <div class="section-heading">
 
-          <p
-            class="eyebrow"
-            data-i18n="myListEyebrow"
-          >
-            MEU PERFIL
-          </p>
+          <div>
+
+            <p
+              class="eyebrow"
+              data-i18n="myListEyebrow"
+            >
+              MINHA LISTA
+            </p>
 
 
-          <h2 data-i18n="myListTitle">
-            Minha Lista
-          </h2>
+            <h2 data-i18n="myListTitle">
+              Minha Lista
+            </h2>
+
+          </div>
 
         </div>
 
-      </div>
 
+        <div
+          class="my-list-tabs"
+          role="tablist"
+        >
 
-      <div class="profile-lists">
+          <button
+            class="my-list-tab"
+            data-list-tab="played"
+            role="tab"
+          >
 
-
-        <!-- JÁ JOGADOS -->
-
-        <article class="profile-list-card">
-
-          <div class="profile-list-header">
-
-            <div>
-
-              <p class="profile-list-label">
-                JÁ JOGADOS
-              </p>
-
-              <h3>
-                <span id="playedCount">0</span>
-                jogos
-              </h3>
-
-            </div>
-
-            <span class="profile-list-icon">
+            <span class="tab-icon">
               ✓
             </span>
 
-          </div>
-
-
-          <div
-            id="playedList"
-            class="profile-game-grid"
-          ></div>
-
-
-          <div
-            id="playedEmpty"
-            class="profile-empty"
-          >
-            Você ainda não marcou nenhum jogo como já jogado.
-          </div>
-
-        </article>
-
-
-        <!-- PRETENDO JOGAR -->
-
-        <article class="profile-list-card">
-
-          <div class="profile-list-header">
-
-            <div>
-
-              <p class="profile-list-label">
-                PRETENDO JOGAR
-              </p>
-
-              <h3>
-                <span id="backlogCount">0</span>
-                jogos
-              </h3>
-
-            </div>
-
-            <span class="profile-list-icon">
-              +
+            <span data-i18n="played">
+              Já joguei
             </span>
 
-          </div>
+          </button>
 
 
-          <div
-            id="backlogList"
-            class="profile-game-grid"
-          ></div>
-
-
-          <div
-            id="backlogEmpty"
-            class="profile-empty"
+          <button
+            class="my-list-tab"
+            data-list-tab="backlog"
+            role="tab"
           >
-            Você ainda não adicionou jogos à sua lista.
-          </div>
 
-        </article>
+            <span class="tab-icon">
+              ＋
+            </span>
+
+            <span data-i18n="backlog">
+              Pretendo jogar
+            </span>
+
+          </button>
 
 
-        <!-- FAVORITOS -->
+          <button
+            class="my-list-tab"
+            data-list-tab="favorites"
+            role="tab"
+          >
 
-        <article class="profile-list-card">
-
-          <div class="profile-list-header">
-
-            <div>
-
-              <p class="profile-list-label">
-                FAVORITOS
-              </p>
-
-              <h3>
-                <span id="favoriteCount">0</span>
-                jogos
-              </h3>
-
-            </div>
-
-            <span class="profile-list-icon">
+            <span class="tab-icon">
               ★
             </span>
 
+            <span data-i18n="favorite">
+              Favoritos
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <div
+          id="myListGrid"
+          class="game-grid my-list-grid"
+        ></div>
+
+
+        <div
+          id="myListEmpty"
+          class="empty-state hidden"
+        >
+
+          <div class="empty-icon">
+            🎮
           </div>
 
+          <h3 data-i18n="noList">
+            Você ainda não adicionou nenhum jogo a esta lista.
+          </h3>
 
-          <div
-            id="favoriteList"
-            class="profile-game-grid"
-          ></div>
-
-
-          <div
-            id="favoriteEmpty"
-            class="profile-empty"
-          >
-            Você ainda não adicionou favoritos.
-          </div>
-
-        </article>
-
+        </div>
 
       </div>
 
@@ -549,7 +492,175 @@
 
 
   <!-- =========================
-       MODAL DO SORTEIO
+       MODAL DE CONFIGURAÇÃO
+       DO SORTEIO
+  ========================= -->
+
+  <div
+    id="randomSetupModal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="randomSetupTitle"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-close-random-setup
+    ></div>
+
+
+    <div class="random-setup-panel">
+
+      <button
+        class="close-button"
+        data-close-random-setup
+        aria-label="Fechar"
+      >
+        ✕
+      </button>
+
+
+      <p
+        class="eyebrow"
+        data-i18n="setupEyebrow"
+      >
+        SORTEIO
+      </p>
+
+
+      <h2
+        id="randomSetupTitle"
+        data-i18n="setupTitle"
+      >
+        Configure seu sorteio
+      </h2>
+
+
+      <p
+        class="random-setup-text"
+        data-i18n="setupText"
+      >
+        Escolha a região e quantos jogos você quer sortear.
+      </p>
+
+
+      <div class="random-options">
+
+        <!-- REGIÃO -->
+
+        <label class="random-option">
+
+          <span
+            class="random-option-label"
+            data-i18n="region"
+          >
+            Região
+          </span>
+
+
+          <select id="randomRegion">
+
+            <option
+              value="all"
+              data-i18n="regionAll"
+            >
+              Todas as regiões
+            </option>
+
+            <option
+              value="america"
+              data-i18n="regionAmerica"
+            >
+              América
+            </option>
+
+            <option
+              value="europe"
+              data-i18n="regionEurope"
+            >
+              Europa
+            </option>
+
+            <option
+              value="japan"
+              data-i18n="regionJapan"
+            >
+              Japão
+            </option>
+
+            <option
+              value="korea"
+              data-i18n="regionKorea"
+            >
+              Coreia
+            </option>
+
+            <option
+              value="other"
+              data-i18n="regionOther"
+            >
+              Outros
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <!-- QUANTIDADE -->
+
+        <label class="random-option">
+
+          <span
+            class="random-option-label"
+            data-i18n="quantity"
+          >
+            Quantidade
+          </span>
+
+
+          <select id="randomCount">
+
+            <option value="1">1 jogo</option>
+            <option value="2">2 jogos</option>
+            <option value="3">3 jogos</option>
+            <option value="4">4 jogos</option>
+            <option value="5" selected>5 jogos</option>
+            <option value="6">6 jogos</option>
+            <option value="7">7 jogos</option>
+            <option value="8">8 jogos</option>
+            <option value="9">9 jogos</option>
+            <option value="10">10 jogos</option>
+
+          </select>
+
+        </label>
+
+      </div>
+
+
+      <div
+        id="randomSetupInfo"
+        class="random-setup-info"
+      ></div>
+
+
+      <button
+        id="startRandomButton"
+        class="primary-button full-width"
+        data-i18n="startRandom"
+      >
+        🎲 Sortear
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       MODAL DOS RESULTADOS
   ========================= -->
 
   <div

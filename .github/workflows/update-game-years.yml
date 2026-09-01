@@ -1,0 +1,287 @@
+name: Update PS2 Game Years
+
+on:
+  workflow_run:
+    workflows:
+      - Update PS2 Games
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-years:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download PlayStation DataCenter dump
+        run: |
+          curl -L \
+            --fail \
+            --retry 3 \
+            --connect-timeout 20 \
+            --max-time 180 \
+            "https://raw.githubusercontent.com/niemasd/GameDB-PS2/main/helper/psxdatacenter_dump/psxdatacenter_dump.zip" \
+            -o psxdatacenter_dump.zip
+
+      - name: Correlate years by serial
+        run: |
+          python3 - <<'PY'
+          import html
+          import json
+          import os
+          import re
+          from datetime import datetime
+          from html.parser import HTMLParser
+          from zipfile import ZipFile
+
+          GAMES_FILE = "data/games.json"
+          ZIP_FILE = "psxdatacenter_dump.zip"
+
+          with open(GAMES_FILE, "r", encoding="utf-8") as f:
+              games = json.load(f)
+
+          if not isinstance(games, list):
+              raise ValueError("data/games.json não contém uma lista")
+
+          def normalize_serial(value):
+              if value is None:
+                  return ""
+
+              return re.sub(
+                  r"[^A-Z0-9]",
+                  "",
+                  str(value).upper()
+              )
+
+          def parse_year(value):
+              if value is None:
+                  return None
+
+              value = html.unescape(str(value)).strip()
+
+              if not value or value.lower() == "none":
+                  return None
+
+              # Data completa, como "15 October 2001".
+              for fmt in ("%d %B %Y", "%d %b %Y"):
+                  try:
+                      return str(datetime.strptime(value, fmt).year)
+                  except ValueError:
+                      pass
+
+              # Data ISO ou qualquer texto que contenha um ano de 4 dígitos.
+              match = re.search(r"\b(19[89][0-9]|20[0-2][0-9])\b", value)
+              if match:
+                  return match.group(1)
+
+              return None
+
+          class TableParser(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.rows = []
+                  self.in_tr = False
+                  self.in_td = False
+                  self.current_row = []
+                  self.current_cell = []
+
+              def handle_starttag(self, tag, attrs):
+                  tag = tag.lower()
+
+                  if tag == "tr":
+                      if self.in_tr:
+                          self.finish_row()
+                      self.in_tr = True
+                      self.current_row = []
+                      self.in_td = False
+                      self.current_cell = []
+
+                  elif tag == "td" and self.in_tr:
+                      if self.in_td:
+                          self.finish_cell()
+                      self.in_td = True
+                      self.current_cell = []
+
+              def handle_endtag(self, tag):
+                  tag = tag.lower()
+
+                  if tag == "td" and self.in_td:
+                      self.finish_cell()
+
+                  elif tag == "tr" and self.in_tr:
+                      self.finish_row()
+
+              def handle_data(self, data):
+                  if self.in_td:
+                      self.current_cell.append(data)
+
+              def finish_cell(self):
+                  value = " ".join("".join(self.current_cell).split())
+                  self.current_row.append(value)
+                  self.current_cell = []
+                  self.in_td = False
+
+              def finish_row(self):
+                  if self.in_td:
+                      self.finish_cell()
+
+                  if self.current_row:
+                      self.rows.append(self.current_row)
+
+                  self.current_row = []
+                  self.current_cell = []
+                  self.in_td = False
+                  self.in_tr = False
+
+          def extract_years_from_html(raw):
+              parser = TableParser()
+              parser.feed(raw)
+              parser.close()
+
+              serials = []
+              year = None
+
+              for row in parser.rows:
+                  if not row:
+                      continue
+
+                  label = row[0].strip().upper()
+
+                  if label == "SERIAL NUMBER(S)":
+                      serials.extend(
+                          normalize_serial(cell)
+                          for cell in row[1:]
+                          if normalize_serial(cell)
+                      )
+
+                  elif label == "DATE RELEASED" and len(row) > 1:
+                      year = parse_year(row[1])
+
+              if not year or not serials:
+                  return {}
+
+              return {
+                  serial: year
+                  for serial in serials
+              }
+
+          serials_needed = set()
+
+          for game in games:
+              values = []
+
+              if game.get("serial"):
+                  values.append(game.get("serial"))
+
+              if isinstance(game.get("serials"), list):
+                  values.extend(game.get("serials"))
+
+              for value in values:
+                  serial = normalize_serial(value)
+                  if serial:
+                      serials_needed.add(serial)
+
+          print(f"Jogos no catálogo: {len(games)}")
+          print(f"Seriais a procurar: {len(serials_needed)}")
+
+          serial_years = {}
+
+          with ZipFile(ZIP_FILE, "r") as archive:
+              html_files = [
+                  name for name in archive.namelist()
+                  if name.lower().endswith(".html")
+              ]
+
+              print(f"Arquivos HTML na base: {len(html_files)}")
+
+              for index, name in enumerate(html_files, 1):
+                  try:
+                      raw = archive.read(name).decode(
+                          "utf-8",
+                          errors="replace"
+                      )
+                  except Exception:
+                      continue
+
+                  found = extract_years_from_html(raw)
+
+                  for serial, year in found.items():
+                      if serial in serials_needed and serial not in serial_years:
+                          serial_years[serial] = year
+
+                  if index % 1000 == 0:
+                      print(
+                          f"Processados: {index}/{len(html_files)} · "
+                          f"seriais encontrados: {len(serial_years)}"
+                      )
+
+          updated = 0
+          unresolved = 0
+
+          for game in games:
+              existing_year = game.get("year")
+
+              if existing_year not in (None, ""):
+                  continue
+
+              candidates = []
+
+              if game.get("serial"):
+                  candidates.append(game.get("serial"))
+
+              if isinstance(game.get("serials"), list):
+                  candidates.extend(game.get("serials"))
+
+              year = None
+
+              for candidate in candidates:
+                  serial = normalize_serial(candidate)
+                  if serial in serial_years:
+                      year = serial_years[serial]
+                      break
+
+              if year:
+                  game["year"] = year
+                  updated += 1
+              else:
+                  unresolved += 1
+
+          with open(GAMES_FILE, "w", encoding="utf-8") as f:
+              json.dump(
+                  games,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+              f.write("\n")
+
+          print("================================")
+          print(f"Anos preenchidos: {updated}")
+          print(f"Sem ano encontrado: {unresolved}")
+          print(f"Seriais com ano na base: {len(serial_years)}")
+          print("================================")
+          PY
+
+      - name: Remove temporary dump
+        run: rm -f psxdatacenter_dump.zip
+
+      - name: Save games.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/games.json
+
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração nos anos."
+          else
+            git commit -m "Fill PS2 game years from serials"
+            git push
+          fi

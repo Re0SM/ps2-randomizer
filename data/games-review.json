@@ -2860,7 +2860,7 @@
     "year": 2004,
     "developer": "Sony",
     "publisher": "Sony",
-    "genre": "Adventure.",
+    "genre": "Adventure",
     "serial": "SCPS-15067"
   },
   {
@@ -3710,7 +3710,7 @@
     "publisher": "Capcom",
     "genre": [
       "Action",
-      "Survival Horror."
+      "Survival Horror"
     ],
     "serial": "SLPM-65023"
   },
@@ -3793,7 +3793,7 @@
     "publisher": "Vivendi Games",
     "genre": [
       "Action",
-      "Platform."
+      "Platformer"
     ],
     "serial": "VUGJ-10001"
   }

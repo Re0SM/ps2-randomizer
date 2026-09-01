@@ -1,0 +1,157 @@
+name: Fix missing PS2 game years
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-years:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download GameDB-PS2
+        run: |
+          curl -L \
+            "https://github.com/niemasd/GameDB-PS2/releases/latest/download/PS2.data.json" \
+            -o PS2.data.json
+
+      - name: Fill missing years by serial
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          games_path = Path("data/games.json")
+          source_path = Path("PS2.data.json")
+
+          with games_path.open("r", encoding="utf-8") as f:
+              games = json.load(f)
+
+          with source_path.open("r", encoding="utf-8") as f:
+              source = json.load(f)
+
+          if not isinstance(games, list):
+              raise ValueError("data/games.json não contém uma lista")
+
+          def clean_serial(value):
+              if value is None:
+                  return ""
+              return re.sub(r"[\\s-]", "", str(value)).strip().upper()
+
+          def extract_year(value):
+              if value is None:
+                  return None
+
+              if isinstance(value, int):
+                  return str(value) if 1900 <= value <= 2100 else None
+
+              if isinstance(value, float):
+                  value = int(value)
+                  return str(value) if 1900 <= value <= 2100 else None
+
+              match = re.search(r"\\b(19|20)\\d{2}\\b", str(value))
+              return match.group(0) if match else None
+
+          serial_to_year = {}
+
+          def add_mapping(serials, release_date):
+              year = extract_year(release_date)
+              if not year:
+                  return
+
+              if isinstance(serials, (list, tuple, set)):
+                  values = serials
+              else:
+                  values = [serials]
+
+              for serial in values:
+                  cleaned = clean_serial(serial)
+                  if cleaned:
+                      serial_to_year[cleaned] = year
+
+          def walk(value):
+              if isinstance(value, dict):
+                  release_date = None
+                  for key in ("release_date", "releaseDate", "date", "release"):
+                      if value.get(key) not in (None, ""):
+                          release_date = value.get(key)
+                          break
+
+                  serials = None
+                  for key in ("serials", "serial", "serial_numbers", "serialNumbers"):
+                      if value.get(key) not in (None, ""):
+                          serials = value.get(key)
+                          break
+
+                  if release_date is not None and serials is not None:
+                      add_mapping(serials, release_date)
+
+                  for key, child in value.items():
+                      if key not in ("serials", "serial", "serial_numbers", "serialNumbers"):
+                          walk(child)
+
+              elif isinstance(value, list):
+                  for child in value:
+                      walk(child)
+
+          walk(source)
+
+          # Também cobre bases em que o serial é a própria chave do objeto.
+          if isinstance(source, dict):
+              for key, value in source.items():
+                  cleaned_key = clean_serial(key)
+                  if re.match(r"^(SLUS|SCUS|SLES|SCES|SLED|SLPS|SLPM|SCPS|SLKA|SCKA)\\d", cleaned_key):
+                      if isinstance(value, dict):
+                          release_date = None
+                          for field in ("release_date", "releaseDate", "date", "release"):
+                              if value.get(field) not in (None, ""):
+                                  release_date = value.get(field)
+                                  break
+                          year = extract_year(release_date)
+                          if year:
+                              serial_to_year[cleaned_key] = year
+
+          changed = 0
+          still_missing = 0
+
+          for game in games:
+              current_year = game.get("year")
+
+              if current_year not in (None, "", "null"):
+                  continue
+
+              serial = clean_serial(game.get("serial"))
+              year = serial_to_year.get(serial)
+
+              if year:
+                  game["year"] = int(year)
+                  changed += 1
+              else:
+                  still_missing += 1
+
+          with games_path.open("w", encoding="utf-8") as f:
+              json.dump(games, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+
+          print(f"Seriais com ano encontrados na GameDB: {len(serial_to_year)}")
+          print(f"Anos preenchidos em games.json: {changed}")
+          print(f"Jogos ainda sem ano: {still_missing}")
+
+          if changed == 0:
+              print("Nenhum ano novo foi preenchido.")
+          PY
+
+      - name: Commit updated games.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/games.json
+          git diff --cached --quiet && echo "Nenhuma alteração necessária." && exit 0
+          git commit -m "Fill missing game years from GameDB serials"
+          git push

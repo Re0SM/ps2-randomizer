@@ -1,8 +1,11 @@
 const STORAGE_KEY = "ps2-randomizer-user-data";
 
+const GAMES_PER_PAGE = 60;
+
 let games = [];
 let currentGame = null;
 let lastRandomCount = 5;
+let currentPage = 1;
 
 const userData = loadUserData();
 
@@ -55,37 +58,6 @@ async function init() {
 
     games = await response.json();
 
-    /*
-     * Prepara os dados para o site.
-     * O catálogo usa "genre", enquanto o site trabalha
-     * internamente com "genres".
-     */
-    games = games.map((game, index) => {
-
-      const genres = Array.isArray(game.genre)
-        ? game.genre
-        : game.genre
-          ? [game.genre]
-          : [];
-
-      const id =
-        game.serial ||
-        (
-          Array.isArray(game.serials) &&
-          game.serials.length > 0
-            ? game.serials[0]
-            : null
-        ) ||
-        `${normalize(game.title)}-${index}`;
-
-      return {
-        ...game,
-        id,
-        genres
-      };
-
-    });
-
     setupGenres();
 
     renderCatalog();
@@ -130,17 +102,28 @@ function bindEvents() {
 
   elements.searchInput.addEventListener(
     "input",
-    renderCatalog
+    () => {
+      currentPage = 1;
+      renderCatalog();
+    }
   );
+
 
   elements.genreFilter.addEventListener(
     "change",
-    renderCatalog
+    () => {
+      currentPage = 1;
+      renderCatalog();
+    }
   );
+
 
   elements.statusFilter.addEventListener(
     "change",
-    renderCatalog
+    () => {
+      currentPage = 1;
+      renderCatalog();
+    }
   );
 
 
@@ -234,15 +217,27 @@ function setupGenres() {
 
   const genres = [
     ...new Set(
-      games.flatMap(
-        game => game.genres || []
-      )
+      games.flatMap(game => {
+
+        if (Array.isArray(game.genre)) {
+          return game.genre;
+        }
+
+        if (Array.isArray(game.genres)) {
+          return game.genres;
+        }
+
+        if (typeof game.genre === "string") {
+          return [game.genre];
+        }
+
+        return [];
+
+      })
     )
-  ]
-    .filter(Boolean)
-    .sort(
-      (a, b) => a.localeCompare(b, "pt-BR")
-    );
+  ].sort(
+    (a, b) => a.localeCompare(b, "pt-BR")
+  );
 
 
   elements.genreFilter.innerHTML = `
@@ -303,9 +298,13 @@ function renderCatalog() {
           .includes(query);
 
 
+      const gameGenres =
+        getGameGenres(game);
+
+
       const matchesGenre =
         genre === "all" ||
-        (game.genres || []).includes(genre);
+        gameGenres.includes(genre);
 
 
       const matchesStatus =
@@ -339,13 +338,205 @@ function renderCatalog() {
   );
 
 
-  for (const game of filtered) {
+  if (filtered.length === 0) {
+
+    removePagination();
+
+    return;
+
+  }
+
+
+  const totalPages =
+    Math.ceil(
+      filtered.length / GAMES_PER_PAGE
+    );
+
+
+  if (currentPage > totalPages) {
+    currentPage = totalPages;
+  }
+
+
+  const start =
+    (currentPage - 1) *
+    GAMES_PER_PAGE;
+
+
+  const end =
+    start + GAMES_PER_PAGE;
+
+
+  const pageGames =
+    filtered.slice(start, end);
+
+
+  for (const game of pageGames) {
 
     elements.gameGrid.appendChild(
       createGameCard(game)
     );
 
   }
+
+
+  renderPagination(
+    totalPages,
+    filtered.length
+  );
+
+}
+
+
+/* =========================
+   PAGINAÇÃO
+========================= */
+
+function renderPagination(
+  totalPages,
+  totalGames
+) {
+
+  removePagination();
+
+
+  if (totalPages <= 1) {
+    return;
+  }
+
+
+  const pagination =
+    document.createElement("div");
+
+  pagination.className =
+    "pagination";
+
+
+  const previous =
+    document.createElement("button");
+
+  previous.className =
+    "pagination-button";
+
+  previous.textContent =
+    "← Anterior";
+
+  previous.disabled =
+    currentPage === 1;
+
+
+  previous.addEventListener(
+    "click",
+    () => {
+
+      if (currentPage > 1) {
+
+        currentPage--;
+
+        renderCatalog();
+
+        scrollToCatalog();
+
+      }
+
+    }
+  );
+
+
+  const info =
+    document.createElement("span");
+
+  info.className =
+    "pagination-info";
+
+  info.textContent =
+    `Página ${currentPage} de ${totalPages}`;
+
+
+  const next =
+    document.createElement("button");
+
+  next.className =
+    "pagination-button";
+
+  next.textContent =
+    "Próxima →";
+
+  next.disabled =
+    currentPage === totalPages;
+
+
+  next.addEventListener(
+    "click",
+    () => {
+
+      if (currentPage < totalPages) {
+
+        currentPage++;
+
+        renderCatalog();
+
+        scrollToCatalog();
+
+      }
+
+    }
+  );
+
+
+  pagination.appendChild(previous);
+
+  pagination.appendChild(info);
+
+  pagination.appendChild(next);
+
+
+  elements.gameGrid.insertAdjacentElement(
+    "afterend",
+    pagination
+  );
+
+}
+
+
+function removePagination() {
+
+  const existing =
+    document.querySelector(
+      ".pagination"
+    );
+
+
+  if (existing) {
+    existing.remove();
+  }
+
+}
+
+
+function scrollToCatalog() {
+
+  const catalog =
+    document.getElementById(
+      "catalogo"
+    );
+
+
+  if (!catalog) {
+    return;
+  }
+
+
+  const top =
+    catalog.getBoundingClientRect().top +
+    window.scrollY -
+    20;
+
+
+  window.scrollTo({
+    top,
+    behavior: "smooth"
+  });
 
 }
 
@@ -381,6 +572,8 @@ function createGameCard(game) {
       `Capa de ${game.title}`;
 
     img.loading = "lazy";
+
+    img.decoding = "async";
 
 
     img.onerror = () => {
@@ -456,9 +649,11 @@ function createGameCard(game) {
   const title =
     document.createElement("h3");
 
-  title.className = "game-title";
+  title.className =
+    "game-title";
 
-  title.textContent = game.title;
+  title.textContent =
+    game.title;
 
   card.appendChild(title);
 
@@ -466,7 +661,8 @@ function createGameCard(game) {
   const year =
     document.createElement("p");
 
-  year.className = "game-year";
+  year.className =
+    "game-year";
 
   year.textContent =
     game.year ||
@@ -506,6 +702,32 @@ function createGameCard(game) {
 
 
 /* =========================
+   GÊNEROS DO JOGO
+========================= */
+
+function getGameGenres(game) {
+
+  if (Array.isArray(game.genres)) {
+    return game.genres;
+  }
+
+
+  if (Array.isArray(game.genre)) {
+    return game.genre;
+  }
+
+
+  if (typeof game.genre === "string") {
+    return [game.genre];
+  }
+
+
+  return [];
+
+}
+
+
+/* =========================
    PLACEHOLDER DA CAPA
 ========================= */
 
@@ -519,7 +741,8 @@ function createPlaceholder(
   placeholder.className =
     "cover-placeholder";
 
-  placeholder.textContent = title;
+  placeholder.textContent =
+    title;
 
   return placeholder;
 
@@ -535,9 +758,11 @@ function createBadge(text) {
   const badge =
     document.createElement("span");
 
-  badge.className = "badge";
+  badge.className =
+    "badge";
 
-  badge.textContent = text;
+  badge.textContent =
+    text;
 
   return badge;
 
@@ -558,7 +783,7 @@ function openGameModal(game) {
 
 
   elements.modalGenre.textContent =
-    (game.genres || []).join(" · ") ||
+    getGameGenres(game).join(" · ") ||
     "PS2";
 
 
@@ -589,6 +814,8 @@ function openGameModal(game) {
 
     img.alt =
       `Capa de ${game.title}`;
+
+    img.decoding = "async";
 
 
     img.onerror = () => {
@@ -827,43 +1054,24 @@ function renderRandomResults(count) {
 
   for (const game of results) {
 
-    const wrapper =
-      document.createElement("div");
+    const card =
+      document.createElement("article");
 
-    wrapper.className =
+    card.className =
       "random-card";
 
 
-    const card =
+    const gameCard =
       createGameCard(game);
 
 
-    wrapper.appendChild(card);
-
-
-    wrapper.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          event.target.closest(
-            "button, a"
-          )
-        ) {
-          return;
-        }
-
-
-        closeRandomModal();
-
-        openGameModal(game);
-
-      }
+    card.appendChild(
+      gameCard
     );
 
 
     elements.randomResults.appendChild(
-      wrapper
+      card
     );
 
   }
